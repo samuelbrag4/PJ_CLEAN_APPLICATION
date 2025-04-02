@@ -40,6 +40,8 @@ const LoginScreen = () => {
           </Link>
         </TouchableOpacity>
 
+        <Text style={styles.or}>Ou</Text>
+
         <View style={styles.socialButtons}>
           <TouchableOpacity style={styles.socialButton}>
             <Text style={styles.socialButtonText}>Criar com Google</Text>
@@ -82,16 +84,22 @@ const styles = StyleSheet.create({
     width: "80%",
     height: 50,
     backgroundColor: "#fff",
-    borderRadius: 8,
+    borderRadius: 30,
     paddingHorizontal: 16,
     marginBottom: 16,
     fontSize: 16,
+  },
+  or: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#fff",
+    margin: 24,
   },
   button: {
     width: "80%",
     height: 50,
     backgroundColor: "#F05080",
-    borderRadius: 8,
+    borderRadius: 30,
     justifyContent: "center",
     alignItems: "center", 
     marginTop: 16,
@@ -115,7 +123,7 @@ const styles = StyleSheet.create({
   socialButton: {
     height: 50,
     backgroundColor: "#fff",
-    borderRadius: 8,
+    borderRadius: 30,
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 16,
@@ -132,7 +140,7 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   linkText: {
-    color: "#fff",
+    color: "#F05080",
     fontWeight: "bold",
     textDecorationLine: "underline",
   },
