@@ -12,10 +12,7 @@ import { Link } from "expo-router";
 
 const LoginScreen = () => {
   return (
-    <LinearGradient
-      colors={["#F05080", "#FAFAFA"]}
-      style={styles.background}
-    >
+    <LinearGradient colors={["#F05080", "#FAFAFA"]} style={styles.background}>
       <View style={styles.container}>
         <Text style={styles.title}>Login</Text>
 
@@ -39,8 +36,10 @@ const LoginScreen = () => {
         />
 
         {/* Botão de Entrar */}
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Entrar</Text>
+        <TouchableOpacity style={styles.button} onPress={() => {}}>
+          <Link href="/" style={{ textDecorationLine: "none" }}>
+            <Text style={styles.buttonText}>Entrar</Text>
+          </Link>
         </TouchableOpacity>
 
         {/* Botões decorativos */}
@@ -72,7 +71,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    fontFamily: "Pacifico",
     alignItems: "center",
     padding: 16,
   },
@@ -97,13 +95,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#F05080",
     borderRadius: 8,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center", 
     marginTop: 16,
   },
   buttonText: {
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
+    textAlign: "center", 
+  },
+  buttonLink: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
   },
   socialButtons: {
     marginTop: 24,

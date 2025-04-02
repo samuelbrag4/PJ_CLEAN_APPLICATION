@@ -34,8 +34,10 @@ const LoginScreen = () => {
           secureTextEntry
         />
 
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Criar</Text>
+        <TouchableOpacity style={styles.button} onPress={() => {}}>
+          <Link href="/login" style={{ textDecorationLine: "none" }}>
+            <Text style={styles.buttonText}>Criar</Text>
+          </Link>
         </TouchableOpacity>
 
         <View style={styles.socialButtons}>
@@ -91,13 +93,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#F05080",
     borderRadius: 8,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center", 
     marginTop: 16,
   },
   buttonText: {
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
+    textAlign: "center", 
+  },
+  buttonLink: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
   },
   socialButtons: {
     marginTop: 24,
