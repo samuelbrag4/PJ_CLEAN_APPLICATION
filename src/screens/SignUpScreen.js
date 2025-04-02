@@ -1,17 +1,25 @@
-import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import React from "react";
+import { View, Text, Button, StyleSheet } from "react-native";
+import { Link } from "expo-router";
 
-const SignUpScreen = ({ navigation }) => {
+const SignUpScreen = () => {
   return (
     <View style={styles.container}>
+      <Text>Teste de renderização</Text>
+
       <Text style={styles.title}>Criar uma conta</Text>
       {/* Adicione aqui os campos de entrada para a criação de conta */}
-      <Button title="Criar Conta" onPress={() => { /* lógica para criar conta */ }} />
+      <Button
+        title="Criar Conta"
+        onPress={() => {
+          /* lógica para criar conta */
+        }}
+      />
       <Text style={styles.footerText}>
-        Já tem uma conta?{' '}
-        <Text style={styles.linkText} onPress={() => navigation.navigate('Login')}>
+        Já tem uma conta?{" "}
+        <Link href="/login" style={styles.linkText}>
           Entre
-        </Text>
+        </Link>
       </Text>
     </View>
   );
@@ -20,8 +28,8 @@ const SignUpScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     padding: 16,
   },
   title: {
@@ -33,8 +41,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   linkText: {
-    color: 'blue',
-    textDecorationLine: 'underline',
+    color: "blue",
+    textDecorationLine: "underline",
   },
 });
 
