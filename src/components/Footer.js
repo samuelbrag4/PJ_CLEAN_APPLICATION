@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import { Link } from "expo-router";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const Footer = ({ themeColor }) => {
@@ -33,10 +40,21 @@ const Footer = ({ themeColor }) => {
 
         <View style={styles.links}>
           <Text style={styles.title}>RELEVANTES</Text>
-          <Text style={styles.link}>Skincare</Text>
-          <Text style={styles.link}>Maquiagem</Text>
-          <Text style={styles.link}>Corpo</Text>
-          <Text style={styles.link}>Blog</Text>
+          <Link href="/produtos" style={styles.link}>
+            Produtos
+          </Link>
+          <Link href="/skincare" style={styles.link}>
+            Skincare
+          </Link>
+          <Link href="/corpo" style={styles.link}>
+            Corpo
+          </Link>
+          <Link href="/make" style={styles.link}>
+            Make
+          </Link>
+          <Link href="/blog" style={styles.link}>
+            Blog
+          </Link>
         </View>
 
         <View style={styles.newsletter}>
@@ -60,86 +78,88 @@ const Footer = ({ themeColor }) => {
 const styles = StyleSheet.create({
   footerContainer: {
     width: "100%",
-    padding: 8,
+    padding: 10,
+    backgroundColor: "#333",
   },
   topSection: {
-    marginBottom: 8,
+    marginBottom: 10,
     alignItems: "center",
   },
   logo: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold",
     fontFamily: "Caveat",
     color: "white",
-    marginBottom: 4,
+    marginBottom: 5,
   },
   description: {
-    fontSize: 10,
+    fontSize: 12,
     color: "white",
     textAlign: "center",
-    lineHeight: 14,
+    lineHeight: 16,
   },
   separator: {
     width: "100%",
     height: 1,
     backgroundColor: "white",
-    marginVertical: 8,
+    marginVertical: 10,
   },
   bottomSection: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: "column", // Ajusta para coluna em telas menores
+    alignItems: "center",
   },
   title: {
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: "bold",
     color: "white",
-    marginBottom: 4,
+    marginBottom: 5,
   },
   connect: {
-    flex: 1,
-    marginRight: 8,
+    marginBottom: 10,
+    alignItems: "center",
   },
   iconRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: 2,
+    marginVertical: 5,
   },
   link: {
     color: "white",
-    fontSize: 10,
-    marginLeft: 4,
+    fontSize: 12,
+    marginLeft: 5,
     textDecorationLine: "underline",
   },
   links: {
-    flex: 1,
-    marginRight: 8,
+    marginBottom: 10,
+    alignItems: "center",
   },
   newsletter: {
-    flex: 1,
+    marginBottom: 10,
+    alignItems: "center",
   },
   inputGroup: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 4,
+    marginTop: 5,
   },
   input: {
     backgroundColor: "white",
-    borderRadius: 4,
-    padding: 6,
+    borderRadius: 5,
+    padding: 8,
     textAlign: "center",
     flex: 1,
-    marginRight: 4,
-    fontSize: 10,
+    marginRight: 5,
+    fontSize: 12,
   },
   button: {
-    backgroundColor: "white",
-    padding: 6,
-    borderRadius: 4,
+    backgroundColor: "rgb(27, 175, 168)",
+    padding: 8,
+    borderRadius: 5,
   },
   buttonText: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 10,
+    fontSize: 12,
   },
 });
 

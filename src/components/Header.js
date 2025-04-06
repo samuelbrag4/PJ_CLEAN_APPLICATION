@@ -8,10 +8,11 @@ import {
   Pressable,
 } from "react-native";
 import { useWindowDimensions } from "react-native";
+import { Link } from "expo-router";
 
 const Header = ({ themeColor, activePage }) => {
   const [menuActive, setMenuActive] = useState(false);
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const handleMenuToggle = () => {
     setMenuActive(!menuActive);
@@ -32,44 +33,44 @@ const Header = ({ themeColor, activePage }) => {
         {width > 768 ? (
           <View style={styles.nav}>
             <TouchableOpacity>
-              <Text
-                style={[
-                  styles.navText,
-                  activePage === "Home" && styles.activeNavText,
-                ]}
+              <Link
+                href="/"
+                style={[styles.navText, activePage === "Home" && styles.activeNavText]}
               >
                 Home
-              </Text>
+              </Link>
             </TouchableOpacity>
             <TouchableOpacity>
-              <Text
-                style={[
-                  styles.navText,
-                  activePage === "Sobre" && styles.activeNavText,
-                ]}
-              >
-                Sobre
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text
-                style={[
-                  styles.navText,
-                  activePage === "Produtos" && styles.activeNavText,
-                ]}
+              <Link
+                href="/produtos"
+                style={[styles.navText, activePage === "Produtos" && styles.activeNavText]}
               >
                 Produtos
-              </Text>
+              </Link>
             </TouchableOpacity>
             <TouchableOpacity>
-              <Text
-                style={[
-                  styles.navText,
-                  activePage === "Blog" && styles.activeNavText,
-                ]}
+              <Link
+                href="/blog"
+                style={[styles.navText, activePage === "Blog" && styles.activeNavText]}
               >
                 Blog
-              </Text>
+              </Link>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Link
+                href="/contato"
+                style={[styles.navText, activePage === "Contato" && styles.activeNavText]}
+              >
+                Contato
+              </Link>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Link
+                href="/conta"
+                style={[styles.navText, activePage === "Minha Conta" && styles.activeNavText]}
+              >
+                Minha Conta
+              </Link>
             </TouchableOpacity>
           </View>
         ) : (
@@ -85,7 +86,6 @@ const Header = ({ themeColor, activePage }) => {
       {/* Overlay + Sidebar */}
       {menuActive && width <= 768 && (
         <View style={styles.absoluteFull}>
-          {/* Fundo transparente (sem sombra preta) */}
           <Pressable
             style={styles.transparentOverlay}
             onPress={handleCloseMenu}
@@ -93,44 +93,44 @@ const Header = ({ themeColor, activePage }) => {
 
           <View style={[styles.sidebar, { backgroundColor: themeColor }]}>
             <TouchableOpacity>
-              <Text
-                style={[
-                  styles.navText,
-                  activePage === "Home" && styles.activeNavText,
-                ]}
+              <Link
+                href="/"
+                style={[styles.navText, activePage === "Home" && styles.activeNavText]}
               >
                 Home
-              </Text>
+              </Link>
             </TouchableOpacity>
             <TouchableOpacity>
-              <Text
-                style={[
-                  styles.navText,
-                  activePage === "Sobre" && styles.activeNavText,
-                ]}
-              >
-                Sobre
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text
-                style={[
-                  styles.navText,
-                  activePage === "Produtos" && styles.activeNavText,
-                ]}
+              <Link
+                href="/produtos"
+                style={[styles.navText, activePage === "Produtos" && styles.activeNavText]}
               >
                 Produtos
-              </Text>
+              </Link>
             </TouchableOpacity>
             <TouchableOpacity>
-              <Text
-                style={[
-                  styles.navText,
-                  activePage === "Blog" && styles.activeNavText,
-                ]}
+              <Link
+                href="/blog"
+                style={[styles.navText, activePage === "Blog" && styles.activeNavText]}
               >
                 Blog
-              </Text>
+              </Link>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Link
+                href="/contato"
+                style={[styles.navText, activePage === "Contato" && styles.activeNavText]}
+              >
+                Contato
+              </Link>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Link
+                href="/conta"
+                style={[styles.navText, activePage === "Minha Conta" && styles.activeNavText]}
+              >
+                Minha Conta
+              </Link>
             </TouchableOpacity>
           </View>
         </View>
@@ -142,12 +142,13 @@ const Header = ({ themeColor, activePage }) => {
 const styles = StyleSheet.create({
   header: {
     paddingHorizontal: 20,
-    paddingVertical: 30, // <-- aumenta o espaço interno
-    minHeight: 80,        // <-- altura mínima pra garantir que não fique esmagado
+    paddingVertical: 15,
+    minHeight: 60,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
+    flexWrap: "wrap", // Permite que os itens se ajustem em telas menores
   },
   logoContainer: {
     flex: 1,
@@ -161,13 +162,15 @@ const styles = StyleSheet.create({
   nav: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "60%",
+    flexWrap: "wrap", // Ajusta os links em telas menores
+    width: "100%",
+    marginTop: 10,
   },
   navText: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "400",
     color: "#ffffff",
-    marginLeft: 20,
+    marginLeft: 10,
     marginBottom: 10,
   },
   activeNavText: {
@@ -190,18 +193,24 @@ const styles = StyleSheet.create({
     left: 0,
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
-    zIndex: 999,
+    zIndex: 1000, // Garante que o overlay e a barra lateral fiquem acima de tudo
     flexDirection: "row",
   },
-  // Overlay totalmente transparente (sem sombra)
   transparentOverlay: {
     flex: 1,
-    backgroundColor: "transparent",
+    backgroundColor: "rgba(0, 0, 0, 0.5)", // Fundo semitransparente para destacar a barra lateral
+    zIndex: 999, // Certifica-se de que o overlay fique abaixo da barra lateral
   },
   sidebar: {
-    width: "70%",
+    position: "absolute", // Garante que a barra lateral fique sobreposta
+    top: 0,
+    right: 0, // Alinha a barra lateral à direita
+    height: "100%", // Ocupa toda a altura da tela
+    width: "70%", // Limita a largura da barra lateral a 70% da tela
+    backgroundColor: "#ffffff", // Fundo branco para contraste
     padding: 20,
-    justifyContent: "flex-start",
+    zIndex: 1001, // Garante que a barra lateral fique acima de todos os outros elementos
+    overflow: "hidden", // Evita que o conteúdo da barra lateral quebre o layout
   },
 });
 
