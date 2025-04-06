@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
 import Header from "../src/components/Header";
+import Footer from "../src/components/Footer"; // Importando a Footer
 
 export default function HomeScreen() {
   return (
@@ -28,6 +29,9 @@ export default function HomeScreen() {
           </Link>
         </TouchableOpacity>
       </View>
+
+      {/* Footer fixa no final */}
+      <Footer themeColor="#F05080" />
     </View>
   );
 }
@@ -36,7 +40,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FAFAFA",
-    padding: 16,
   },
   headerWrapper: {
     minHeight: 100,
@@ -46,6 +49,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    paddingHorizontal: 16,
   },
   title: {
     fontSize: 32,
@@ -70,5 +74,10 @@ const styles = StyleSheet.create({
     color: "#FFF",
     fontSize: 16,
     fontWeight: "bold",
+  },
+  footerContainer: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
   },
 });
