@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
 import Header from "../src/components/Header";
-import Footer from "../src/components/Footer"; // Importando a Footer
+import Footer from "../src/components/Footer";
 
 export default function HomeScreen() {
   return (
@@ -12,7 +12,7 @@ export default function HomeScreen() {
         <Header themeColor="#F05080" activePage="Home" />
       </View>
 
-      {/* Conteúdo centralizado */}
+      {/* Conteúdo principal */}
       <View style={styles.content}>
         <Text style={styles.title}>Bem-vindo à Home!</Text>
         <Text style={styles.subtitle}>Escolha uma opção abaixo:</Text>
@@ -30,7 +30,7 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </View>
 
-      {/* Footer fixa no final */}
+      {/* Footer fixa no rodapé */}
       <Footer themeColor="#F05080" />
     </View>
   );
@@ -42,42 +42,37 @@ const styles = StyleSheet.create({
     backgroundColor: "#FAFAFA",
   },
   headerWrapper: {
-    minHeight: 100,
-    justifyContent: "flex-start",
+    width: "100%",
+    backgroundColor: "#F05080",
   },
   content: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 16,
+    padding: 20,
   },
   title: {
-    fontSize: 32,
+    fontSize: 24,
     fontWeight: "bold",
-    color: "#F05080",
-    marginBottom: 16,
-    fontFamily: "Pacifico", // Se você estiver usando essa fonte personalizada
+    color: "#333",
+    marginBottom: 10,
   },
   subtitle: {
-    fontSize: 18,
-    color: "#333",
-    marginBottom: 24,
+    fontSize: 16,
+    color: "#666",
+    marginBottom: 20,
   },
   button: {
     backgroundColor: "#F05080",
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 8,
-    marginBottom: 16,
+    padding: 15,
+    borderRadius: 5,
+    marginBottom: 10,
+    width: "80%",
+    alignItems: "center",
   },
   buttonText: {
     color: "#FFF",
-    fontSize: 16,
     fontWeight: "bold",
-  },
-  footerContainer: {
-    position: "absolute",
-    bottom: 0,
-    width: "100%",
+    fontSize: 16,
   },
 });

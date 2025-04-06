@@ -9,13 +9,21 @@ import {
 } from "react-native";
 import { useWindowDimensions } from "react-native";
 import { Link } from "expo-router";
+import { Animated } from "react-native";
 
 const Header = ({ themeColor, activePage }) => {
   const [menuActive, setMenuActive] = useState(false);
   const { width } = useWindowDimensions();
 
+  const [sidebarAnimation] = useState(new Animated.Value(-300)); 
+
   const handleMenuToggle = () => {
     setMenuActive(!menuActive);
+    Animated.timing(sidebarAnimation, {
+      toValue: menuActive ? -300 : 0, 
+      duration: 300,
+      useNativeDriver: false,
+    }).start();
   };
 
   const handleCloseMenu = () => {
@@ -35,7 +43,10 @@ const Header = ({ themeColor, activePage }) => {
             <TouchableOpacity>
               <Link
                 href="/"
-                style={[styles.navText, activePage === "Home" && styles.activeNavText]}
+                style={[
+                  styles.navText,
+                  activePage === "Home" && styles.activeNavText,
+                ]}
               >
                 Home
               </Link>
@@ -43,7 +54,10 @@ const Header = ({ themeColor, activePage }) => {
             <TouchableOpacity>
               <Link
                 href="/produtos"
-                style={[styles.navText, activePage === "Produtos" && styles.activeNavText]}
+                style={[
+                  styles.navText,
+                  activePage === "Produtos" && styles.activeNavText,
+                ]}
               >
                 Produtos
               </Link>
@@ -51,7 +65,10 @@ const Header = ({ themeColor, activePage }) => {
             <TouchableOpacity>
               <Link
                 href="/blog"
-                style={[styles.navText, activePage === "Blog" && styles.activeNavText]}
+                style={[
+                  styles.navText,
+                  activePage === "Blog" && styles.activeNavText,
+                ]}
               >
                 Blog
               </Link>
@@ -59,7 +76,10 @@ const Header = ({ themeColor, activePage }) => {
             <TouchableOpacity>
               <Link
                 href="/contato"
-                style={[styles.navText, activePage === "Contato" && styles.activeNavText]}
+                style={[
+                  styles.navText,
+                  activePage === "Contato" && styles.activeNavText,
+                ]}
               >
                 Contato
               </Link>
@@ -67,7 +87,10 @@ const Header = ({ themeColor, activePage }) => {
             <TouchableOpacity>
               <Link
                 href="/conta"
-                style={[styles.navText, activePage === "Minha Conta" && styles.activeNavText]}
+                style={[
+                  styles.navText,
+                  activePage === "Minha Conta" && styles.activeNavText,
+                ]}
               >
                 Minha Conta
               </Link>
@@ -95,7 +118,10 @@ const Header = ({ themeColor, activePage }) => {
             <TouchableOpacity>
               <Link
                 href="/"
-                style={[styles.navText, activePage === "Home" && styles.activeNavText]}
+                style={[
+                  styles.navText,
+                  activePage === "Home" && styles.activeNavText,
+                ]}
               >
                 Home
               </Link>
@@ -103,7 +129,10 @@ const Header = ({ themeColor, activePage }) => {
             <TouchableOpacity>
               <Link
                 href="/produtos"
-                style={[styles.navText, activePage === "Produtos" && styles.activeNavText]}
+                style={[
+                  styles.navText,
+                  activePage === "Produtos" && styles.activeNavText,
+                ]}
               >
                 Produtos
               </Link>
@@ -111,7 +140,10 @@ const Header = ({ themeColor, activePage }) => {
             <TouchableOpacity>
               <Link
                 href="/blog"
-                style={[styles.navText, activePage === "Blog" && styles.activeNavText]}
+                style={[
+                  styles.navText,
+                  activePage === "Blog" && styles.activeNavText,
+                ]}
               >
                 Blog
               </Link>
@@ -119,7 +151,10 @@ const Header = ({ themeColor, activePage }) => {
             <TouchableOpacity>
               <Link
                 href="/contato"
-                style={[styles.navText, activePage === "Contato" && styles.activeNavText]}
+                style={[
+                  styles.navText,
+                  activePage === "Contato" && styles.activeNavText,
+                ]}
               >
                 Contato
               </Link>
@@ -127,7 +162,10 @@ const Header = ({ themeColor, activePage }) => {
             <TouchableOpacity>
               <Link
                 href="/conta"
-                style={[styles.navText, activePage === "Minha Conta" && styles.activeNavText]}
+                style={[
+                  styles.navText,
+                  activePage === "Minha Conta" && styles.activeNavText,
+                ]}
               >
                 Minha Conta
               </Link>
@@ -207,10 +245,16 @@ const styles = StyleSheet.create({
     right: 0, // Alinha a barra lateral à direita
     height: "100%", // Ocupa toda a altura da tela
     width: "70%", // Limita a largura da barra lateral a 70% da tela
+    maxWidth: 300, // Define uma largura máxima para telas maiores
     backgroundColor: "#ffffff", // Fundo branco para contraste
     padding: 20,
     zIndex: 1001, // Garante que a barra lateral fique acima de todos os outros elementos
     overflow: "hidden", // Evita que o conteúdo da barra lateral quebre o layout
+    shadowColor: "#000", // Adiciona uma sombra para destacar a barra lateral
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5, // Sombra para Android
   },
 });
 
