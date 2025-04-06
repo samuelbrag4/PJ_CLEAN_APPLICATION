@@ -53,7 +53,7 @@ const Header = ({ themeColor, activePage }) => {
             </TouchableOpacity>
             <TouchableOpacity>
               <Link
-                href="/produtos"
+                href="/produto"
                 style={[
                   styles.navText,
                   activePage === "Produtos" && styles.activeNavText,
@@ -128,7 +128,7 @@ const Header = ({ themeColor, activePage }) => {
             </TouchableOpacity>
             <TouchableOpacity>
               <Link
-                href="/produtos"
+                href="/produto"
                 style={[
                   styles.navText,
                   activePage === "Produtos" && styles.activeNavText,
