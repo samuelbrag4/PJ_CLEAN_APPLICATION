@@ -1,2 +1,2 @@
-import FavsScreen from "../src/screens/FavsScreen";
+import FavsScreen from "../src/screens/FavsScreen.js";
 export default FavsScreen;

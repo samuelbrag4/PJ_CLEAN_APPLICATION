@@ -1,2 +1,2 @@
-import SobreScreen from "../src/screens/SobreScreen";
+import SobreScreen from "../src/screens/SobreScreen.js";
 export default SobreScreen;

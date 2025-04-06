@@ -1,2 +1,2 @@
-import MakeScreen from "../src/screens/MakeScreen";
+import MakeScreen from "../src/screens/MakeScreen.js";
 export default MakeScreen;
