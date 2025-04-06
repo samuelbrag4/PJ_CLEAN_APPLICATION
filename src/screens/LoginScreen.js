@@ -45,8 +45,13 @@ const LoginScreen = () => {
   });
 
   return (
-    <Animated.View style={[styles.background, { backgroundColor: interpolatedColor }]}>
-      <LinearGradient colors={[currentColor, "#FFFFFF"]} style={styles.background}>
+    <Animated.View
+      style={[styles.background, { backgroundColor: interpolatedColor }]}
+    >
+      <LinearGradient
+        colors={[currentColor, "#FFFFFF"]}
+        style={styles.background}
+      >
         <View style={styles.container}>
           <Text style={styles.title}>Login</Text>
 
