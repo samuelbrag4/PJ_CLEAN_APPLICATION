@@ -1,24 +1,33 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
+import Header from "../src/components/Header";
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Bem-vindo à Home!</Text>
-      <Text style={styles.subtitle}>Escolha uma opção abaixo:</Text>
+      {/* Header fixa no topo */}
+      <View style={styles.headerWrapper}>
+        <Header themeColor="#F05080" activePage="Home" />
+      </View>
 
-      <TouchableOpacity style={styles.button}>
-        <Link href="/login" style={styles.buttonText}>
-          Ir para Login
-        </Link>
-      </TouchableOpacity>
+      {/* Conteúdo centralizado */}
+      <View style={styles.content}>
+        <Text style={styles.title}>Bem-vindo à Home!</Text>
+        <Text style={styles.subtitle}>Escolha uma opção abaixo:</Text>
 
-      <TouchableOpacity style={styles.button}>
-        <Link href="/signup" style={styles.buttonText}>
-          Ir para Cadastro
-        </Link>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Link href="/login" style={styles.buttonText}>
+            Ir para Login
+          </Link>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button}>
+          <Link href="/signup" style={styles.buttonText}>
+            Ir para Cadastro
+          </Link>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -26,17 +35,24 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#FAFAFA",
     padding: 16,
+  },
+  headerWrapper: {
+    minHeight: 100,
+    justifyContent: "flex-start",
+  },
+  content: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   title: {
     fontSize: 32,
     fontWeight: "bold",
     color: "#F05080",
     marginBottom: 16,
-    fontFamily: "Pacifico", // Use a fonte Pacifico se estiver carregada
+    fontFamily: "Pacifico", // Se você estiver usando essa fonte personalizada
   },
   subtitle: {
     fontSize: 18,
