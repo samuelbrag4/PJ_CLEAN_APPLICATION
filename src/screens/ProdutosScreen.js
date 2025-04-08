@@ -72,22 +72,38 @@ const ProdutosScreen = () => {
           />
         </View>
 
-        {/* Seção 3: Depoimentos */}
-        <Text style={styles.sectionHeader}>DEPOIMENTOS</Text>
-        <FlatList
-          horizontal
-          data={testimonials}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => (
-            <View style={styles.testimonialCard}>
-              <Image source={{ uri: item.avatar }} style={styles.avatar} />
-              <Text style={styles.testimonialName}>{item.name}</Text>
-              <Text style={styles.testimonialText}>"{item.text}"</Text>
-            </View>
-          )}
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.testimonialsContainer}
-        />
+{/* Seção 3: Depoimentos - Carrossel Aprimorado */}
+<View style={styles.testimonialsSection}>
+  <Text style={styles.sectionHeader}>DEPOIMENTOS DE CLIENTES</Text>
+  <Text style={styles.sectionSubtitle}>Veja o que nossos clientes estão dizendo</Text>
+  
+  <FlatList
+    horizontal
+    data={testimonials}
+    keyExtractor={item => item.id}
+    renderItem={({ item }) => (
+      <View style={styles.testimonialCard}>
+        <View style={styles.avatarContainer}>
+          <Image source={{ uri: item.avatar }} style={styles.avatar} />
+          <View style={styles.quoteIcon}>
+            <Text style={styles.quoteText}>”</Text>
+          </View>
+        </View>
+        <Text style={styles.testimonialName}>{item.name}</Text>
+        <Text style={styles.testimonialText}>"{item.text}"</Text>
+        <View style={styles.ratingContainer}>
+          {[1, 2, 3, 4, 5].map((star) => (
+            <Text key={star} style={styles.star}>★</Text>
+          ))}
+        </View>
+      </View>
+    )}
+    showsHorizontalScrollIndicator={false}
+    contentContainerStyle={styles.testimonialsContainer}
+    snapToInterval={200} // Ajuste para o tamanho do card + margem
+    decelerationRate="fast"
+  />
+</View>
 
         {/* Seção 4: Produtos similares */}
         <Text style={styles.sectionHeader}>PRODUTOS SEMELHANTES</Text>
@@ -271,6 +287,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: 'bold',
   },
+  
 });
 
 export default ProdutosScreen;
