@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Dimensions,
   Pressable,
+  Modal,
 } from "react-native";
 import { useWindowDimensions } from "react-native";
 import { Link } from "expo-router";
@@ -15,15 +16,8 @@ const Header = ({ themeColor, activePage }) => {
   const [menuActive, setMenuActive] = useState(false);
   const { width } = useWindowDimensions();
 
-  const [sidebarAnimation] = useState(new Animated.Value(-300)); 
-
   const handleMenuToggle = () => {
     setMenuActive(!menuActive);
-    Animated.timing(sidebarAnimation, {
-      toValue: menuActive ? -300 : 0, 
-      duration: 300,
-      useNativeDriver: false,
-    }).start();
   };
 
   const handleCloseMenu = () => {
@@ -106,15 +100,31 @@ const Header = ({ themeColor, activePage }) => {
         )}
       </View>
 
-      {/* Overlay + Sidebar */}
-      {menuActive && width <= 768 && (
+      {/* Modal para o menu hamburguer */}
+      <Modal
+        visible={menuActive}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={handleCloseMenu} // Fecha o menu ao pressionar "voltar" no Android
+      >
         <View style={styles.absoluteFull}>
+          {/* Overlay transparente para fechar o menu ao clicar fora */}
           <Pressable
             style={styles.transparentOverlay}
-            onPress={handleCloseMenu}
+            onPress={handleCloseMenu} // Fecha o menu ao clicar no overlay
           />
 
+          {/* Menu lateral */}
           <View style={[styles.sidebar, { backgroundColor: themeColor }]}>
+            {/* Botão de fechar */}
+            <TouchableOpacity
+              onPress={handleCloseMenu}
+              style={styles.closeButton}
+            >
+              <Text style={styles.closeButtonText}>X</Text>
+            </TouchableOpacity>
+
+            {/* Links do menu */}
             <TouchableOpacity>
               <Link
                 href="/"
@@ -172,7 +182,7 @@ const Header = ({ themeColor, activePage }) => {
             </TouchableOpacity>
           </View>
         </View>
-      )}
+      </Modal>
     </View>
   );
 };
@@ -186,7 +196,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
-    flexWrap: "wrap", // Permite que os itens se ajustem em telas menores
+    flexWrap: "wrap",
   },
   logoContainer: {
     flex: 1,
@@ -200,7 +210,7 @@ const styles = StyleSheet.create({
   nav: {
     flexDirection: "row",
     justifyContent: "space-between",
-    flexWrap: "wrap", // Ajusta os links em telas menores
+    flexWrap: "wrap",
     width: "100%",
     marginTop: 10,
   },
@@ -226,35 +236,34 @@ const styles = StyleSheet.create({
     color: "#ffffff",
   },
   absoluteFull: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
-    zIndex: 1000, // Garante que o overlay e a barra lateral fiquem acima de tudo
-    flexDirection: "row",
+    flex: 1,
+    justifyContent: "flex-end",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   transparentOverlay: {
     flex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Fundo semitransparente para destacar a barra lateral
-    zIndex: 999, // Certifica-se de que o overlay fique abaixo da barra lateral
   },
   sidebar: {
-    position: "absolute", // Garante que a barra lateral fique sobreposta
-    top: 0,
-    right: 0, // Alinha a barra lateral à direita
-    height: "100%", // Ocupa toda a altura da tela
-    width: "70%", // Limita a largura da barra lateral a 70% da tela
-    maxWidth: 300, // Define uma largura máxima para telas maiores
-    backgroundColor: "#ffffff", // Fundo branco para contraste
+    height: "100%",
+    width: "70%",
+    maxWidth: 300,
+    backgroundColor: "#ffffff",
     padding: 20,
-    zIndex: 1001, // Garante que a barra lateral fique acima de todos os outros elementos
-    overflow: "hidden", // Evita que o conteúdo da barra lateral quebre o layout
-    shadowColor: "#000", // Adiciona uma sombra para destacar a barra lateral
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5, // Sombra para Android
+    elevation: 15,
+  },
+  closeButton: {
+    alignSelf: "flex-end",
+    padding: 10,
+    marginBottom: 10,
+  },
+  closeButtonText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#333",
   },
 });
 
