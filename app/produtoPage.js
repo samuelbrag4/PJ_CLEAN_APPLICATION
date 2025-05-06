@@ -1,2 +1,2 @@
-import ProdutoPageScreen from "../src/screens/ProdutoPageScreen.js";
+import ProdutoPageScreen from "../screens/produtoPageScreen";
 export default ProdutoPageScreen;
