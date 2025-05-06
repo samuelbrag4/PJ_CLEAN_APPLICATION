@@ -3,6 +3,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import Footer from "../components/Footer"; // Importe a Footer
 
 const ContaScreen = () => {
   const navigation = useNavigation();
@@ -22,7 +23,7 @@ const ContaScreen = () => {
       items: [
         { 
           name: "Cadastro", 
-          onPress: () => navigation.navigate('CorpoScreen') // Usando a tela CorpoScreen existente (passando parâmetros)
+          onPress: () => navigation.navigate('CorpoScreen')
         }
       ]
     },
@@ -32,11 +33,11 @@ const ContaScreen = () => {
       items: [
         { 
           name: "Produtos salvos (12)", 
-          onPress: () => navigation.navigate('FavsScreen') // Tela existente
+          onPress: () => navigation.navigate('FavsScreen')
         },
         { 
           name: "Lojas favoritas (3)", 
-          onPress: () => navigation.navigate('FavsScreen', { tab: 'stores' }) // Pode passar parâmetros
+          onPress: () => navigation.navigate('FavsScreen', { tab: 'stores' })
         }
       ]
     },
@@ -46,11 +47,11 @@ const ContaScreen = () => {
       items: [
         { 
           name: "Avaliações (5)", 
-          onPress: () => navigation.navigate('ComentScreen') // Tela existente
+          onPress: () => navigation.navigate('ComentScreen')
         },
         { 
           name: "Comentários (8)", 
-          onPress: () => navigation.navigate('ComentScreen', { tab: 'comments' }) // Pode passar parâmetros
+          onPress: () => navigation.navigate('ComentScreen', { tab: 'comments' })
         }
       ]
     }
@@ -93,12 +94,15 @@ const ContaScreen = () => {
             </View>
           ))}
         </View>
+
+        {/* Footer - Adicionado dentro do ScrollView */}
+        <Footer />
       </ScrollView>
     </View>
   );
 };
 
-// Estilos (mantidos os mesmos)
+// Estilos atualizados
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -110,6 +114,7 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     paddingBottom: 20,
+    flexGrow: 1, // Permite que o ScrollView cresça para incluir o Footer
   },
   profileSection: {
     alignItems: "center",
@@ -145,6 +150,7 @@ const styles = StyleSheet.create({
   sectionsContainer: {
     paddingHorizontal: 15,
     marginTop: 10,
+    marginBottom: 20, // Adicionado espaço para o Footer
   },
   sectionCard: {
     backgroundColor: "#FFF",
@@ -183,7 +189,5 @@ const styles = StyleSheet.create({
     color: "#555",
   },
 });
-
-
 
 export default ContaScreen;
