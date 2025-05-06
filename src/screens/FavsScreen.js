@@ -16,4 +16,9 @@ const styles = StyleSheet.create({
   },
   text: { fontSize: 18, fontWeight: "bold", color: "#333" },
 });
+
+
+
 export default FavsScreen;
+
+
