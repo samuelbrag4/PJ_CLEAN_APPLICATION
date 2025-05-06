@@ -6,7 +6,7 @@ const BlogScreen = () => {
   return (
     <View style={styles.container}>
       {/* Header */}
-      <Header themeColor="#F05080" activePage="Blog" />
+      <Header themeColor="#00DAC7" activePage="Blog" />
 
       {/* Conteúdo principal */}
       <View style={styles.content}>

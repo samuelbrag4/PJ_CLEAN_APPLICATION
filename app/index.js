@@ -40,10 +40,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FAFAFA",
+    position: "relative", // Mantém o layout relativo para o conteúdo principal
+    zIndex: 0, // Garante que o conteúdo principal fique abaixo do menu
   },
   headerWrapper: {
     width: "100%",
     backgroundColor: "#F05080",
+    overflow: "hidden", // Evita que o menu hamburguer quebre a tela
   },
   content: {
     flex: 1,
