@@ -69,6 +69,28 @@ const Header = ({ themeColor, activePage }) => {
             </TouchableOpacity>
             <TouchableOpacity>
               <Link
+                href="/blog-video"
+                style={[
+                  styles.navText,
+                  activePage === "Blog Video" && styles.activeNavText,
+                ]}
+              >
+                Blog Video
+              </Link>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Link
+                href="/blog-artigo"
+                style={[
+                  styles.navText,
+                  activePage === "Blog Artigo" && styles.activeNavText,
+                ]}
+              >
+                Blog Artigo
+              </Link>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Link
                 href="/contato"
                 style={[
                   styles.navText,
@@ -156,6 +178,28 @@ const Header = ({ themeColor, activePage }) => {
                 ]}
               >
                 Blog
+              </Link>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Link
+                href="/blog-video"
+                style={[
+                  styles.navText,
+                  activePage === "Blog Video" && styles.activeNavText,
+                ]}
+              >
+                Blog Video
+              </Link>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Link
+                href="/blog-artigo"
+                style={[
+                  styles.navText,
+                  activePage === "Blog Artigo" && styles.activeNavText,
+                ]}
+              >
+                Blog Artigo
               </Link>
             </TouchableOpacity>
             <TouchableOpacity>
