@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, ScrollView } from "react-native";
 import Header from "../components/Header";
+import { Modal } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+
 
 const ProdutosScreen = () => {
   // Dados dos produtos
@@ -107,6 +110,12 @@ const ProdutosScreen = () => {
 
   // Estados para filtros
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [showFilterModal, setShowFilterModal] = useState(false);
+  const flatListRef = React.useRef(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [sortOption, setSortOption] = useState(null);
+
+
 
   // Categorias disponíveis (apenas as solicitadas)
   const categories = [
@@ -117,9 +126,16 @@ const ProdutosScreen = () => {
   ];
 
   // Função para filtrar produtos
-  const filteredProducts = products.filter(product => 
-    selectedCategory === 'all' || product.category === selectedCategory
-  );
+  const filteredProducts = [...products]
+  .filter(product => selectedCategory === 'all' || product.category === selectedCategory)
+  .sort((a, b) => {
+    if (sortOption === 'lowPrice') return a.price - b.price;
+    if (sortOption === 'highPrice') return b.price - a.price;
+    if (sortOption === 'rating') return b.rating - a.rating;
+    return 0;
+  });
+
+  
 
   // Renderizar cada item do produto
   const renderProductItem = ({ item }) => (
@@ -166,18 +182,64 @@ const ProdutosScreen = () => {
         ))}
       </ScrollView>
 
+
+
+
+<Text style={styles.modalTitle}>Ordenar por</Text>
+
+<TouchableOpacity onPress={() => setSortOption('lowPrice')} style={styles.sortOption}>
+  <Text style={styles.sortText}>Preço: menor para maior</Text>
+</TouchableOpacity>
+
+<TouchableOpacity onPress={() => setSortOption('highPrice')} style={styles.sortOption}>
+  <Text style={styles.sortText}>Preço: maior para menor</Text>
+</TouchableOpacity>
+
+<TouchableOpacity onPress={() => setSortOption('rating')} style={styles.sortOption}>
+  <Text style={styles.sortText}>Melhor avaliados</Text>
+</TouchableOpacity>
+
+<TouchableOpacity
+  onPress={() => {
+    setShowFilterModal(false);
+  }}
+  style={styles.closeModal}
+>
+  <Text style={{ color: '#fff' }}>Aplicar</Text>
+</TouchableOpacity>
+
+
+
       {/* Lista de produtos */}
       <FlatList
-        data={filteredProducts}
-        renderItem={renderProductItem}
-        keyExtractor={item => item.id}
-        numColumns={2}
-        contentContainerStyle={styles.productsList}
-        columnWrapperStyle={styles.productsRow}
-      />
+  ref={flatListRef}
+  onScroll={(e) => {
+    const offsetY = e.nativeEvent.contentOffset.y;
+    setShowScrollTop(offsetY > 100);
+  }}
+  scrollEventThrottle={16}
+  data={filteredProducts}
+  renderItem={renderProductItem}
+  keyExtractor={(item, index) => item.id + index}
+  numColumns={2}
+  contentContainerStyle={styles.productsList}
+  columnWrapperStyle={styles.productsRow}
+/>
+
+
+{showScrollTop && (
+  <TouchableOpacity
+    style={styles.scrollTopButton}
+    onPress={() => flatListRef.current.scrollToOffset({ offset: 0, animated: true })}
+  >
+    <AntDesign name="arrowup" size={24} color="#fff" />
+  </TouchableOpacity>
+)}
+
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -186,31 +248,36 @@ const styles = StyleSheet.create({
   },
   categoryContainer: {
     paddingVertical: 12,
-    paddingHorizontal: 16,
+    paddingLeft: 16,
     backgroundColor: '#FFF',
     borderBottomWidth: 1,
     borderBottomColor: '#F0F0F0',
   },
   categoryButton: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
-    marginRight: 8,
-    backgroundColor: '#F0F0F0',
+    paddingHorizontal: 12,
+    paddingVertical: 15,
+    borderRadius: 30,
+    marginRight: 10,
+    backgroundColor: '#E0E0E0',
   },
   selectedCategoryButton: {
     backgroundColor: '#F05080',
   },
   categoryText: {
-    color: '#666',
+    color: '#555',
     fontSize: 14,
+
+    
+   
   },
   selectedCategoryText: {
     color: '#FFF',
     fontWeight: 'bold',
   },
   productsList: {
-    padding: 8,
+    paddingHorizontal: 12,
+    paddingTop: 10,
+    paddingBottom: 16,
   },
   productsRow: {
     justifyContent: 'space-between',
@@ -218,19 +285,20 @@ const styles = StyleSheet.create({
   productCard: {
     width: '48%',
     backgroundColor: '#FFF',
-    borderRadius: 10,
+    borderRadius: 16,
     overflow: 'hidden',
     marginBottom: 16,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
+    shadowOpacity: 0.05,
+    shadowRadius: 6,
     elevation: 2,
   },
   productImage: {
     width: '100%',
-    height: 160,
-    resizeMode: 'cover',
+    height: 150,
+    resizeMode: 'contain',
+    backgroundColor: '#FAFAFA',
   },
   productInfo: {
     padding: 12,
@@ -242,9 +310,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   nameText: {
-    fontSize: 14,
+    fontSize: 13,
     color: '#333',
-    marginBottom: 8,
+    marginBottom: 6,
   },
   priceContainer: {
     flexDirection: 'row',
@@ -258,8 +326,75 @@ const styles = StyleSheet.create({
   },
   ratingText: {
     fontSize: 12,
-    color: '#666',
+    color: '#777',
   },
+scrollTopButton: {
+  position: 'absolute',
+  bottom: 20,
+  right: 20,
+  backgroundColor: '#F05080',
+  borderRadius: 30,
+  padding: 12,
+  elevation: 5,
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.3,
+  shadowRadius: 4,
+  zIndex: 999,
+},
+filterButton: {
+  alignSelf: 'flex-end',
+  marginRight: 16,
+  marginBottom: 10,
+  backgroundColor: '#F05080',
+  paddingVertical: 6,
+  paddingHorizontal: 16,
+  borderRadius: 20,
+},
+filterButtonText: {
+  color: '#fff',
+  fontSize: 14,
+  fontWeight: 'bold',
+},
+modalOverlay: {
+  flex: 1,
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  justifyContent: 'center',
+  alignItems: 'center',
+},
+modalContainer: {
+  width: '80%',
+  backgroundColor: '#fff',
+  borderRadius: 16,
+  padding: 20,
+  alignItems: 'center',
+},
+
+
+modalTitle: {
+  backgroundColor: '#F05080',
+  paddingVertical: 10,
+  paddingHorizontal: 20,
+  borderRadius: 8,
+  marginTop: 20,
+  
+},
+
+sortOption: {
+  paddingVertical: 10,
+  width: '100%',
+  borderBottomWidth: 1,
+  borderBottomColor: '#EEE',
+},
+sortText: {
+  fontSize: 16,
+  color: '#333',
+  textAlign: 'center',
+},
+
+
 });
+
+
 
 export default ProdutosScreen;
