@@ -10,40 +10,40 @@ const BlogScreen = () => {
       image1: "https://solangefreire.com.br/wp-content/uploads/2019/07/2-5.jpg",
       image2: "https://solangefreire.com.br/wp-content/uploads/2019/07/2-5.jpg",
       cards: [
-        { title: "Hidratação com Argila", description: "Máscara de argila para remoção de impurezas." },
-        { title: "Esfoliação", description: "Renove sua pele com esfoliação suave semanalmente." },
-        { title: "Massagem", description: "Ative a circulação e relaxe com massagens faciais." },
-        { title: "Tônico Facial", description: "Equilibre o pH da pele com um bom tônico." },
-        { title: "Alimentação", description: "Inclua alimentos antioxidantes na sua dieta." },
-        { title: "Proteção", description: "Não esqueça do protetor solar diariamente." },
+        { title: "Hidratação com Argila", description: "A argila é um dos ingredientes naturais mais poderosos para a saúde da pele, oferecendo propriedades purificantes.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s"},
+        { title: "Esfoliação", description: "A esfoliação facial tem vários benefícios, como a renovação celular, a redução de cravos e espinhas, e a preparação da pele para tratamentos.", image: "https://cdn.shopify.com/s/files/1/0592/2678/3899/files/FB-0611.jpg?v=1715686614"},
+        { title: "Massagem", description: "ATras vários benefícios, a melhora da circulação, reduz inchaços, tonifica a pele, suaviza linhas de expressão, alivia o stress, melhora o sono, melhora a imunidade, rejuvenesce a pele.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuyZNHBxnuOoDx2ZPN-arpGSVPXD01sBsTEg&s" },
+        { title: "Tônico Facial", description: "A tonificação facial tem vários benefícios, como a limpeza profunda, o equilíbrio do pH, a redução da oleosidade e a desobstrução dos poros. ", image: "https://boxmagenta.com.br/blog/content/images/2021/04/tonico-facial-1.jpg" },
+        { title: "Alimentação", description: "Uma alimentação equilibrada, rica em vitaminas, minerais e antioxidantes, pode ajudar a manter a pele saudável e bonita.", image: "https://www.assai.com.br/sites/default/files/styles/blog_destaque/public/blog/alimentacao_saudavel.jpg?itok=MN_S3u8-" },
+        { title: "Proteção", description: " A proteção do rosto com protetor solar facial traz diversos benefícios, como prevenir manchas, queimaduras e câncer de pele e evitar o envelhecimento precoce.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSySdad707O1V53Kb3--BxoLIq6eKzyF0t_FQ&s" },
       ],
     },
     {
       title: "Maquiagem",
-      description: "A maquiagem realça a beleza natural e permite explorar diferentes estilos e tendências. Com os produtos certos, é possível destacar seus traços e expressar sua personalidade de forma criativa.",
-      image1: "https://solangefreire.com.br/wp-content/uploads/2019/07/2-5.jpg",
-      image2: "https://solangefreire.com.br/wp-content/uploads/2019/07/2-5.jpg",
+      description: "A maquiagem realça a beleza e aumenta a autoestima, mas a escolha dos produtos certos faz toda a diferença. Usar maquiagens de qualidade evita irritações, alergias e até problemas mais sérios na pele. Além disso, produtos bem formulados garantem um acabamento mais bonito e duradouro, deixando sua make impecável sem prejudicar a saúde da pele.",
+      image1: "https://media.istockphoto.com/id/1383008311/pt/foto/accenting-her-beauty.jpg?s=612x612&w=0&k=20&c=QfliiSiKJOUVxzTBbG383plr0NloLSkeiNL_tOXRU0Q=",
+      image2: "https://res.cloudinary.com/beleza-na-web/image/upload/f_auto,fl_progressive,q_auto:eco/blog/wordpress/prod/sites/7/2023/02/22084023/shutterstock_2140128415.jpg",
       cards: [
-        { title: "Base Perfeita", description: "Como escolher a base ideal para sua pele." },
-        { title: "Contorno", description: "Dicas para um contorno natural e elegante." },
-        { title: "Iluminador", description: "Realce seus traços com iluminação estratégica." },
-        { title: "Olho Esfumado", description: "Passo a passo para um olhar marcante." },
-        { title: "Batom Duradouro", description: "Técnicas para fixar o batom o dia todo." },
-        { title: "Delineado Gatinho", description: "Truques para um delineado perfeito." },
+        { title: "Preparação de Pele", description: "Uma boa maquiagem começa com a pele preparada: primer, hidratação e proteção solar.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
+        { title: "Cobertura Perfeita", description: "	Bases e corretivos de qualidade garantem um acabamento natural e uniforme.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
+        { title: "Olhos em Destaque", description: "	Aprenda técnicas de sombra, delineado e máscara para realçar seu olhar.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
+        { title: "Lábios Impecáveis", description: "	Saiba como escolher batons e lip tints que valorizem seu tom de pele e durem mais.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
+        { title: "Contorno e Iluminação", description: "	Crie profundidade e brilho para um visual sofisticado e harmônico.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
+        { title: "Fixação e Durabilidade", description: "	Finalize sua make com sprays fixadores e truques para maior durabilidade ao longo do dia.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
       ],
     },
     {
       title: "Corpo",
-      description: "Cuidar do corpo envolve práticas de bem-estar, hidratação e proteção. A rotina de cuidados corporais promove a saúde da pele, previne o ressecamento e proporciona momentos de autocuidado essenciais.",
-      image1: "https://solangefreire.com.br/wp-content/uploads/2019/07/2-5.jpg",
-      image2: "https://solangefreire.com.br/wp-content/uploads/2019/07/2-5.jpg",
+      description: "Hidratar, esfoliar e proteger a pele do corpo são hábitos fundamentais para mantê-la macia, firme e saudável. Produtos como hidratantes, óleos corporais e protetores solares ajudam a evitar o ressecamento, a flacidez e os danos causados pelo sol. Além da estética, cuidar da pele do corpo proporciona uma sensação de bem-estar e relaxamento no dia a dia. ",
+      image1: "https://qcenterbanheiras.com.br/wp-content/uploads/2019/07/spa-em-sao-paulo.jpg",
+      image2: "https://qcenterbanheiras.com.br/wp-content/uploads/2019/07/spa-em-sao-paulo.jpg",
       cards: [
-        { title: "Esfoliação Corporal", description: "Renove sua pele com esfoliação semanal." },
-        { title: "Hidratação Profunda", description: "Mantenha a pele do corpo sempre macia." },
-        { title: "Proteção Solar", description: "Importância do protetor no corpo." },
-        { title: "Massagem Relaxante", description: "Benefícios das massagens para o bem-estar." },
-        { title: "Banho Revitalizante", description: "Transforme o banho em um ritual relaxante." },
-        { title: "Alimentação Balanceada", description: "Como a nutrição impacta a saúde da pele." },
+        { title: "Pele Seca?", description: "A pele seca pode causar desconforto, ressecamento e até descamação, principalmente em climas frios ou ambientes.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s"  },
+        { title: "Depilação", description: "Uma depilação mal feita ou inadequada pode causar dermatites alérgicas, queimaduras, manchas, sem falar nos possíveis riscos de transmissão de doenças e podendo causar alergia", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
+        { title: "Esfoliação", description: "A esfoliação corporal tem vários benefícios, como deixar a pele mais macia, uniformizar o tom, e estimular a produção de colágeno. É importante não exagerar, pois pode causar irritação.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s"},
+        { title: "Massagem", description: "A massagem corporal tem benefícios como por exemplo: aliviar dores, tensões musculares, melhora a circulação sanguínea, reduz inchaço e a recuperação muscular.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
+        { title: "Sais de Banho", description: " Os sais de banho podem ser bons para o corpo, pois ajudam a relaxar, desintoxicar a pele, melhorar a circulação e a hidratação da pele.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
+        { title: "Sol", description: "Tomar sol pode fazer bem à saúde, mas é importante não exagerar. A exposição ao sol é fundamental para a produção de vitamina D, que é essencial para a saúde dos ossos e músculos.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
       ],
     },
   ];
@@ -59,6 +59,7 @@ const BlogScreen = () => {
           <Text style={styles.description}>
             Aqui, você encontrará dicas, tendências e informações sobre skincare, maquiagem, produtos de beleza e cuidados com o corpo.
           </Text>
+        
           <View style={styles.buttonRow}>
             <TouchableOpacity style={styles.button}>
               <Text style={styles.buttonText}>Dicas</Text>
@@ -67,7 +68,8 @@ const BlogScreen = () => {
               <Text style={styles.buttonText}>Vídeos</Text>
             </TouchableOpacity>
           </View>
-        </View>
+          </View>
+   
 
         {/* Seções Dinâmicas */}
         {sections.map((section, index) => (
@@ -95,7 +97,7 @@ const renderCards = (cards) => (
   <View style={styles.cardsContainer}>
     {cards.map((tip, index) => (
       <View key={index} style={styles.card}>
-        <Image source={{ uri: 'https://vittaespa.com.br/wp-content/uploads/2021/10/Imagem1.jpg' }} style={styles.cardImage} />
+        <Image source={{ uri: tip.image }} style={styles.cardImage} />
         <Text style={styles.cardTitle}>{tip.title}</Text>
         <Text style={styles.cardDescription}>{tip.description}</Text>
         <TouchableOpacity style={styles.cardButton}>
@@ -105,6 +107,7 @@ const renderCards = (cards) => (
     ))}
   </View>
 );
+
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#FAFAFA" },
@@ -128,6 +131,9 @@ const styles = StyleSheet.create({
   cardDescription: { fontSize: 13, color: "#666", marginBottom: 10 },
   cardButton: { alignSelf: "flex-start", backgroundColor: "#00DAC7", paddingVertical: 6, paddingHorizontal: 12, borderRadius: 20 },
   cardButtonText: { color: "#fff", fontSize: 12 },
+  
+
+
 });
 
 export default BlogScreen;
