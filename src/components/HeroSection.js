@@ -1,6 +1,6 @@
 import { View, Image, TouchableOpacity, StyleSheet, Text } from "react-native";
 
-const HeroSection = ({ linkImage, title, text }) => {
+const HeroSection = ({ linkImage, title, text, corPrincipal }) => {
     return (
         <View style={styles.container}>
             {/* Imagem de fundo */}
@@ -14,11 +14,11 @@ const HeroSection = ({ linkImage, title, text }) => {
                 <Text style={styles.text}>{text}</Text>
 
                 <View style={styles.buttons}>
-                    <TouchableOpacity style={styles.buttonFilled}>
+                    <TouchableOpacity style={[styles.buttonFilled, { backgroundColor: corPrincipal }]} >
                         <Text style={styles.buttonTextFilled}>Ler mais</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonOutlined}>
-                        <Text style={styles.buttonTextOutlined}>Sobre</Text>
+                    <TouchableOpacity style={[styles.buttonOutlined, { borderColor: corPrincipal }]}>
+                        <Text style={[styles.buttonTextOutlined, { color: corPrincipal }]}>Sobre</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
         gap: 10
     },
     buttonFilled: {
-        backgroundColor: "#00DAC7",
         paddingVertical: 5,
         paddingHorizontal: 15,
         borderRadius: 5,
@@ -79,13 +78,11 @@ const styles = StyleSheet.create({
     },
     buttonOutlined: {
         borderWidth: 1,
-        borderColor: "#00DAC7",
         paddingVertical: 5,
         paddingHorizontal: 15,
         borderRadius: 5,
     },
     buttonTextOutlined: {
-        color: "#00DAC7",
         fontWeight: "bold",
     },
 });
