@@ -7,8 +7,8 @@ const BlogScreen = () => {
     {
       title: "Skincare",
       description: "Cuidar da pele vai muito além da estética — é uma forma de manter-se saudável e protegida. O skincare ajuda a prevenir o envelhecimento precoce, controla a oleosidade, estimula o crescimento de fios e corrige agressões diárias.",
-      image1: "https://solangefreire.com.br/wp-content/uploads/2019/07/2-5.jpg",
-      image2: "https://solangefreire.com.br/wp-content/uploads/2019/07/2-5.jpg",
+      image1: "https://blog.lojasrenner.com.br/wp-content/uploads/2022/07/01-foto-principal-3.jpg",
+      image2: "https://oxioz.com.br/wp-content/uploads/2024/02/rotina-skincare-cuidados-com-a-pele.jpg",
       cards: [
         { title: "Hidratação com Argila", description: "A argila é um dos ingredientes naturais mais poderosos para a saúde da pele, oferecendo propriedades purificantes.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s"},
         { title: "Esfoliação", description: "A esfoliação facial tem vários benefícios, como a renovação celular, a redução de cravos e espinhas, e a preparação da pele para tratamentos.", image: "https://cdn.shopify.com/s/files/1/0592/2678/3899/files/FB-0611.jpg?v=1715686614"},
@@ -24,12 +24,12 @@ const BlogScreen = () => {
       image1: "https://media.istockphoto.com/id/1383008311/pt/foto/accenting-her-beauty.jpg?s=612x612&w=0&k=20&c=QfliiSiKJOUVxzTBbG383plr0NloLSkeiNL_tOXRU0Q=",
       image2: "https://res.cloudinary.com/beleza-na-web/image/upload/f_auto,fl_progressive,q_auto:eco/blog/wordpress/prod/sites/7/2023/02/22084023/shutterstock_2140128415.jpg",
       cards: [
-        { title: "Preparação de Pele", description: "Uma boa maquiagem começa com a pele preparada: primer, hidratação e proteção solar.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
-        { title: "Cobertura Perfeita", description: "	Bases e corretivos de qualidade garantem um acabamento natural e uniforme.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
-        { title: "Olhos em Destaque", description: "	Aprenda técnicas de sombra, delineado e máscara para realçar seu olhar.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
-        { title: "Lábios Impecáveis", description: "	Saiba como escolher batons e lip tints que valorizem seu tom de pele e durem mais.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
-        { title: "Contorno e Iluminação", description: "	Crie profundidade e brilho para um visual sofisticado e harmônico.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
-        { title: "Fixação e Durabilidade", description: "	Finalize sua make com sprays fixadores e truques para maior durabilidade ao longo do dia.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
+        { title: "Preparação de Pele", description: "Uma boa maquiagem começa com a pele preparada: primer, hidratação e proteção solar.", image: "https://www.tendaatacado.com.br/dicas/wp-content/uploads/2021/04/o-que-e-skincare.jpg" },
+        { title: "Cobertura Perfeita", description: "	Bases e corretivos de qualidade garantem um acabamento natural e uniforme.", image: "https://www.maybelline.com.br/dicas-de-maquiagem/rosto/-/media/project/loreal/brand-sites/mny/americas/br/artigos/2024/rosto/base/como-disfarcar-olheiras/mulher-branca-passando-corretivo-para-cobrir-olheiras.jpg?rev=1c0cfb451cdd4e11a8969bae4ef76465" },
+        { title: "Olhos em Destaque", description: "	Aprenda técnicas de sombra, delineado e máscara para realçar seu olhar.", image: "https://s2.glbimg.com/nyWKe7dBgHQqvbCbN6EAwqGzAj4=/e.glbimg.com/og/ed/f/original/2019/11/21/delineador_branco_adelabartak.jpg" },
+        { title: "Lábios Impecáveis", description: "	Saiba como escolher batons e lip tints que valorizem seu tom de pele e durem mais.", image: "https://blog.oceane.com.br/wp-content/uploads/2024/02/DESTAQUE_MAKE_2403.jpg" },
+        { title: "Contorno e Iluminação", description: "	Crie profundidade e brilho para um visual sofisticado e harmônico.", image: "https://blog.optemais.com.br/wp-content/uploads/2019/05/Como-usar-iluminador.jpg" },
+        { title: "Fixação e Durabilidade", description: "	Finalize sua make com sprays fixadores e truques para maior durabilidade ao longo do dia.", image: "https://s2-marieclaire.glbimg.com/TOYBns7eUT-WGJzwOgFiOBUds98=/0x0:1440x810/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_51f0194726ca4cae994c33379977582d/internal_photos/bs/2024/T/Y/L9p0ktTpSda0yzQCI1ZQ/clipdown.app-434150676-18426441856004344-3743900848806498386-n-1-1-.jpg" },
       ],
     },
     {
