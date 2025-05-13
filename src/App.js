@@ -9,6 +9,7 @@ import ContaScreen from "../screens/ContaScreen";
 import CorpoScreen from "../screens/CorpoScreen";
 import FavsScreen from "../screens/FavsScreen";
 import ComentScreen from "../screens/ComentScreen";
+import BlogVideoScreen from "./screens/BlogVideoScreen";
 
 const Stack = createStackNavigator();
 
@@ -58,6 +59,11 @@ export default function App() {
         <Stack.Screen
           name="ComentScreen"
           component={ComentScreen}
+          options={{ headerShown: false }}
+        />
+         <Stack.Screen
+          name="BlogVideoScreen"
+          component={BlogBideoScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
