@@ -1,19 +1,42 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import Header from "../components/Header";
+import HeroSection from "../components/HeroSection";
+
 const MakeScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Página Make</Text>
+      {/* Header */}
+      <Header themeColor="#F05080" activePage="Blog" />
+
+      {/* Conteúdo principal */}
+      
+      <HeroSection
+        corPrincipal="#F05080"
+        linkImage="https://i.pinimg.com/736x/fa/68/a5/fa68a517817e95ea9e05e0b939e1e7e8.jpg"
+        title="A arte de se maquiar!"
+        text="Descubra a arte de se maquiar e transforme sua beleza em confiança! Aprenda técnicas, desde o básico até looks incríveis, para realçar sua beleza natural. Com a maquiagem, você pode expressar sua personalidade, aumentar sua autoestima e celebrar o que tem de mais único. Comece hoje e brilhe!"
+      />
+
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#FAFAFA",
   },
-  text: { fontSize: 18, fontWeight: "bold", color: "#333" },
+  content: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#333",
+  },
 });
+
 export default MakeScreen;
