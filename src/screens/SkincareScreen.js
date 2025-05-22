@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import { View, Text, StyleSheet } from "react-native";
@@ -15,6 +14,9 @@ const SkincareScreen = () => {
         title="Beleza começa com uma pele bem cuidada."
         text="Quer saber como conquistar um rosto naturalmente bonito? Nesta página, você aprenderá tudo sobre cuidados com a pele. Descubra sua melhor versão e brilhe com confiança!"
       />
+
+      
+
     </View>
   );
 };
