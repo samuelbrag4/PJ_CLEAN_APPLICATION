@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, ScrollView, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import Header from "../components/Header";
+import HeroSection from "../components/HeroSection";
 
 const BlogScreen = () => {
   const navigation = useNavigation();
@@ -175,3 +177,4 @@ const styles = StyleSheet.create({
 });
 
 export default BlogScreen;
+// ...existing code...
