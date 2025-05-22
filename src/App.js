@@ -5,16 +5,20 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import SignUpScreen from "../screens/SignUpScreen";
 import LoginScreen from "../screens/LoginScreen";
+import ContaScreen from "../screens/ContaScreen";
+import CorpoScreen from "../screens/CorpoScreen";
+import FavsScreen from "../screens/FavsScreen";
+import ComentScreen from "../screens/ComentScreen";
+
 
 const Stack = createStackNavigator();
 
 export default function App() {
   // Carregando a fonte Pacifico
   const [fontsLoaded] = useFonts({
-    Pacifico: require("../assets/fonts/Pacifico-Regular.ttf"), // Certifique-se de que o caminho está correto
+    Pacifico: require("../assets/fonts/Pacifico-Regular.ttf"),
   });
 
-  // Exibe um indicador de carregamento enquanto a fonte não é carregada
   if (!fontsLoaded) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -23,7 +27,6 @@ export default function App() {
     );
   }
 
-  // Configuração da navegação
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="SignUp">
@@ -34,9 +37,32 @@ export default function App() {
         />
         <Stack.Screen
           name="Login"
+          
           component={LoginScreen}
           options={{ headerShown: false }}
         />
+        {/* Adicione estas novas telas */}
+        <Stack.Screen
+          name="Conta"
+          component={ContaScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CorpoScreen"
+          component={CorpoScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="FavsScreen"
+          component={FavsScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ComentScreen"
+          component={ComentScreen}
+          options={{ headerShown: false }}
+        />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

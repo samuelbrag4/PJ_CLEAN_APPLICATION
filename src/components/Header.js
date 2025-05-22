@@ -13,8 +13,8 @@ import { useNavigation } from '@react-navigation/native';
 
 const Header = ({ themeColor, activePage }) => {
   const [menuActive, setMenuActive] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
   const { width } = useWindowDimensions();
-  // Verificar se navigation foi definido corretamente
   const navigation = useNavigation();
 
   const handleMenuToggle = () => {
@@ -23,25 +23,18 @@ const Header = ({ themeColor, activePage }) => {
 
   const handleCloseMenu = () => {
     setMenuActive(false);
+    setShowDropdown(false);
   };
 
-  // Função simplificada para navegação direta
   const navigateTo = (screen) => {
-    handleCloseMenu(); // Fecha o menu se estiver aberto
-    
+    handleCloseMenu();
     try {
-      console.log(`Navegando para: ${screen}`);
-      
-      // Usar uma implementação mais direta para navegação
       if (navigation && navigation.navigate) {
         navigation.navigate(screen);
-        console.log(`Navegação para ${screen} bem-sucedida!`);
       } else {
-        console.warn("Objeto navigation não está disponível ou não tem método navigate");
         Alert.alert("Erro de navegação", "Sistema de navegação não está disponível.");
       }
     } catch (error) {
-      console.error(`Erro ao navegar para ${screen}:`, error);
       Alert.alert("Erro", `Não foi possível navegar para ${screen}`);
     }
   };
@@ -57,77 +50,84 @@ const Header = ({ themeColor, activePage }) => {
         {width > 768 ? (
           <View style={styles.nav}>
             <TouchableOpacity onPress={() => navigateTo("Home")}>
-              <Text style={styles.navText}>
+              <Text style={[
+                styles.navText,
+                activePage === "Home" && styles.activeNavText
+              ]}>
                 Home
               </Text>
             </TouchableOpacity>
-            
-            {/* Produtos com submenu */}
+
+            {/* Produtos com dropdown */}
             <View style={styles.dropdownContainer}>
-              <TouchableOpacity>
-                <Text style={styles.navText}>
+              <TouchableOpacity onPress={() => setShowDropdown(!showDropdown)}>
+                <Text style={[
+                  styles.navText,
+                  activePage === "Produtos" && styles.activeNavText
+                ]}>
                   Produtos
                 </Text>
               </TouchableOpacity>
-              <View style={styles.dropdown}>
-                <TouchableOpacity 
-                  style={styles.dropdownButton}
-                  onPress={() => navigateTo("SkincareScreen")}
-                >
-                  <Text style={styles.dropdownItem}>Skincare</Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                  style={styles.dropdownButton}
-                  onPress={() => navigateTo("MakeScreen")}
-                >
-                  <Text style={styles.dropdownItem}>Maquiagem</Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                  style={styles.dropdownButton}
-                  onPress={() => navigateTo("CorpoScreen")}
-                >
-                  <Text style={styles.dropdownItem}>Corpo</Text>
-                </TouchableOpacity>
-              </View>
+              {showDropdown && (
+                <View style={styles.dropdown}>
+                  <TouchableOpacity
+                    style={styles.dropdownButton}
+                    onPress={() => navigateTo("SkincareScreen")}
+                  >
+                    <Text style={styles.dropdownItem}>Skincare</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.dropdownButton}
+                    onPress={() => navigateTo("MakeScreen")}
+                  >
+                    <Text style={styles.dropdownItem}>Maquiagem</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.dropdownButton}
+                    onPress={() => navigateTo("CorpoScreen")}
+                  >
+                    <Text style={styles.dropdownItem}>Corpo</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
             </View>
-            
+
             <TouchableOpacity onPress={() => navigateTo("BlogScreen")}>
-              <Text style={styles.navText}>
+              <Text style={[
+                styles.navText,
+                activePage === "Blog" && styles.activeNavText
+              ]}>
                 Blog
               </Text>
             </TouchableOpacity>
-            
+
             <TouchableOpacity onPress={() => navigateTo("SobreScreen")}>
-              <Text style={styles.navText}>
+              <Text style={[
+                styles.navText,
+                activePage === "Sobre" && styles.activeNavText
+              ]}>
                 Sobre Nós
               </Text>
             </TouchableOpacity>
-            
+
             {/* Conta com submenu */}
             <View style={styles.dropdownContainer}>
               <TouchableOpacity onPress={() => navigateTo("Conta")}>
-                <Text style={styles.navText}>
+                <Text style={[
+                  styles.navText,
+                  activePage === "Minha Conta" && styles.activeNavText
+                ]}>
                   Minha Conta
                 </Text>
               </TouchableOpacity>
-              <View style={styles.dropdown}>
-                <TouchableOpacity 
-                  style={styles.dropdownButton}
-                  onPress={() => navigateTo("FavsScreen")}
-                >
-                  <Text style={styles.dropdownItem}>Favoritos</Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                  style={styles.dropdownButton}
-                  onPress={() => navigateTo("ComentScreen")}
-                >
-                  <Text style={styles.dropdownItem}>Comentários</Text>
-                </TouchableOpacity>
-              </View>
+              {/* Submenu pode ser adicionado aqui se desejar */}
             </View>
-            
+
             <TouchableOpacity onPress={() => navigateTo("LoginScreen")}>
-              <Text style={styles.navText}>
+              <Text style={[
+                styles.navText,
+                activePage === "Login" && styles.activeNavText
+              ]}>
                 Login
               </Text>
             </TouchableOpacity>
@@ -163,8 +163,7 @@ const Header = ({ themeColor, activePage }) => {
               <Text style={styles.closeButtonText}>X</Text>
             </TouchableOpacity>
 
-            {/* Links do menu mobile */}
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.menuItem}
               onPress={() => navigateTo("Home")}
             >
@@ -172,10 +171,10 @@ const Header = ({ themeColor, activePage }) => {
                 Home
               </Text>
             </TouchableOpacity>
-            
-            {/* Cabeçalho produtos */}
+
+            {/* Produtos */}
             <Text style={styles.sidebarHeader}>Produtos</Text>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.menuSubItem}
               onPress={() => navigateTo("SkincareScreen")}
             >
@@ -183,7 +182,7 @@ const Header = ({ themeColor, activePage }) => {
                 Skincare
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.menuSubItem}
               onPress={() => navigateTo("MakeScreen")}
             >
@@ -191,7 +190,7 @@ const Header = ({ themeColor, activePage }) => {
                 Maquiagem
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.menuSubItem}
               onPress={() => navigateTo("CorpoScreen")}
             >
@@ -199,8 +198,8 @@ const Header = ({ themeColor, activePage }) => {
                 Corpo
               </Text>
             </TouchableOpacity>
-            
-            <TouchableOpacity 
+
+            <TouchableOpacity
               style={styles.menuItem}
               onPress={() => navigateTo("BlogScreen")}
             >
@@ -208,8 +207,8 @@ const Header = ({ themeColor, activePage }) => {
                 Blog
               </Text>
             </TouchableOpacity>
-            
-            <TouchableOpacity 
+
+            <TouchableOpacity
               style={styles.menuItem}
               onPress={() => navigateTo("SobreScreen")}
             >
@@ -217,9 +216,8 @@ const Header = ({ themeColor, activePage }) => {
                 Sobre Nós
               </Text>
             </TouchableOpacity>
-            
-            {/* Conta */}
-            <TouchableOpacity 
+
+            <TouchableOpacity
               style={styles.menuItem}
               onPress={() => navigateTo("Conta")}
             >
@@ -227,7 +225,7 @@ const Header = ({ themeColor, activePage }) => {
                 Minha Conta
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.menuSubItem}
               onPress={() => navigateTo("FavsScreen")}
             >
@@ -235,7 +233,7 @@ const Header = ({ themeColor, activePage }) => {
                 Favoritos
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.menuSubItem}
               onPress={() => navigateTo("ComentScreen")}
             >
@@ -243,8 +241,8 @@ const Header = ({ themeColor, activePage }) => {
                 Comentários
               </Text>
             </TouchableOpacity>
-            
-            <TouchableOpacity 
+
+            <TouchableOpacity
               style={styles.menuItem}
               onPress={() => navigateTo("LoginScreen")}
             >
@@ -318,8 +316,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
     zIndex: 1000,
-    display: "none", // Inicialmente oculto
-    width: 140, // Largura fixa para dropdown
+    width: 140,
   },
   dropdownButton: {
     paddingVertical: 6,
