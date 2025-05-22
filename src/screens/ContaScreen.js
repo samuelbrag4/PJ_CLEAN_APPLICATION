@@ -9,25 +9,23 @@ import {
   TextInput,
   Alert
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import Header from "../components/Header.js";
 import { Feather, FontAwesome } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
-// import Footer from "../components/Footer"; // Descomente se quiser usar o Footer
 
 const ContaScreen = () => {
   const navigation = useNavigation();
-
-  // Estado para edição e dados do usuário
   const [isEditing, setIsEditing] = useState(false);
   const [userData, setUserData] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
     senha: "",
-    idioma: "pt-BR"
+    idioma: "pt-BR",
   });
 
   useEffect(() => {
@@ -35,19 +33,26 @@ const ContaScreen = () => {
   }, []);
 
   const fetchUserData = async () => {
+    setIsLoading(true);
+    setErrorMessage("");
     try {
       setTimeout(() => {
         const mockUser = {
           nome: "Maria Silva",
           email: "maria@exemplo.com",
           senha: "senha123",
-          idioma: "pt-BR"
+          idioma: "pt-BR",
+          avatar: "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg",
+          createdAt: "2024-01-01T12:00:00Z",
+          verificado: true,
         };
         setUserData(mockUser);
         setFormData(mockUser);
+        setIsLoading(false);
       }, 1000);
     } catch (error) {
-      setErrorMessage("Erro ao buscar dados do usuário");
+      setErrorMessage("Erro ao buscar dados do usuário. Verifique sua conexão.");
+      setIsLoading(false);
     }
   };
 
@@ -63,7 +68,7 @@ const ContaScreen = () => {
   const handleInputChange = (field, value) => {
     setFormData({
       ...formData,
-      [field]: value
+      [field]: value,
     });
   };
 
@@ -76,10 +81,18 @@ const ContaScreen = () => {
   };
 
   const handleLogout = () => {
-    Alert.alert("Logout", "Saindo da conta...");
+    Alert.alert("Sair da conta", "Tem certeza que deseja sair?", [
+      { text: "Cancelar", style: "cancel" },
+      {
+        text: "Sair",
+        style: "destructive",
+        onPress: () => {
+          Alert.alert("Logout", "Você saiu da sua conta");
+        },
+      },
+    ]);
   };
 
-  // Seções principais com navegação
   const sections = [
     { 
       title: "Meu Cadastro", 
@@ -120,6 +133,14 @@ const ContaScreen = () => {
       ]
     }
   ];
+
+  if (isLoading && !userData) {
+    return (
+      <View style={styles.loadingContainer}>
+        <Text style={styles.loadingText}>Carregando dados...</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -244,10 +265,19 @@ const ContaScreen = () => {
                 </Text>
               </TouchableOpacity>
             </View>
+            <View style={styles.accountInfo}>
+              <Text style={styles.accountInfoText}>
+                Conta criada em:{" "}
+                {userData?.createdAt
+                  ? new Date(userData.createdAt).toLocaleDateString("pt-BR")
+                  : ""}
+              </Text>
+              <Text style={styles.accountInfoText}>
+                Status: {userData?.verificado ? "Verificado" : "Não verificado"}
+              </Text>
+            </View>
           </View>
         </View>
-
-        {/* <Footer /> */}
       </ScrollView>
     </View>
   );
@@ -261,6 +291,17 @@ const styles = StyleSheet.create({
   headerWrapper: {
     width: "100%",
     backgroundColor: "#FF7EB9",
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#FAFAFA",
+  },
+  loadingText: {
+    marginTop: 10,
+    fontSize: 16,
+    color: "#666",
   },
   scrollContainer: {
     paddingBottom: 20,
@@ -460,7 +501,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#FFF",
     fontWeight: "bold",
-  }
+  },
+  accountInfo: {
+    marginTop: 20,
+    paddingTop: 16,
+    borderTopWidth: 1,
+    borderTopColor: "#EEE",
+  },
+  accountInfoText: {
+    fontSize: 14,
+    color: "#888",
+    marginBottom: 4,
+  },
 });
 
 export default ContaScreen;
