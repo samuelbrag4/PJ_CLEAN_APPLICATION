@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, Image, StyleSheet, TouchableOpacity } from "react-native";
 import Header from "../components/Header";
+import HeroSection from "../components/HeroSection";
 
 const BlogScreen = () => {
   const sections = [
@@ -25,11 +26,11 @@ const BlogScreen = () => {
       image2: "https://res.cloudinary.com/beleza-na-web/image/upload/f_auto,fl_progressive,q_auto:eco/blog/wordpress/prod/sites/7/2023/02/22084023/shutterstock_2140128415.jpg",
       cards: [
         { title: "Preparação de Pele", description: "Uma boa maquiagem começa com a pele preparada: primer, hidratação e proteção solar.", image: "https://www.tendaatacado.com.br/dicas/wp-content/uploads/2021/04/o-que-e-skincare.jpg" },
-        { title: "Cobertura Perfeita", description: "	Bases e corretivos de qualidade garantem um acabamento natural e uniforme.", image: "https://www.maybelline.com.br/dicas-de-maquiagem/rosto/-/media/project/loreal/brand-sites/mny/americas/br/artigos/2024/rosto/base/como-disfarcar-olheiras/mulher-branca-passando-corretivo-para-cobrir-olheiras.jpg?rev=1c0cfb451cdd4e11a8969bae4ef76465" },
-        { title: "Olhos em Destaque", description: "	Aprenda técnicas de sombra, delineado e máscara para realçar seu olhar.", image: "https://s2.glbimg.com/nyWKe7dBgHQqvbCbN6EAwqGzAj4=/e.glbimg.com/og/ed/f/original/2019/11/21/delineador_branco_adelabartak.jpg" },
-        { title: "Lábios Impecáveis", description: "	Saiba como escolher batons e lip tints que valorizem seu tom de pele e durem mais.", image: "https://blog.oceane.com.br/wp-content/uploads/2024/02/DESTAQUE_MAKE_2403.jpg" },
-        { title: "Contorno e Iluminação", description: "	Crie profundidade e brilho para um visual sofisticado e harmônico.", image: "https://blog.optemais.com.br/wp-content/uploads/2019/05/Como-usar-iluminador.jpg" },
-        { title: "Fixação e Durabilidade", description: "	Finalize sua make com sprays fixadores e truques para maior durabilidade ao longo do dia.", image: "https://s2-marieclaire.glbimg.com/TOYBns7eUT-WGJzwOgFiOBUds98=/0x0:1440x810/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_51f0194726ca4cae994c33379977582d/internal_photos/bs/2024/T/Y/L9p0ktTpSda0yzQCI1ZQ/clipdown.app-434150676-18426441856004344-3743900848806498386-n-1-1-.jpg" },
+        { title: "Cobertura Perfeita", description: "Bases e corretivos de qualidade garantem um acabamento natural e uniforme.", image: "https://www.maybelline.com.br/dicas-de-maquiagem/rosto/-/media/project/loreal/brand-sites/mny/americas/br/artigos/2024/rosto/base/como-disfarcar-olheiras/mulher-branca-passando-corretivo-para-cobrir-olheiras.jpg?rev=1c0cfb451cdd4e11a8969bae4ef76465" },
+        { title: "Olhos em Destaque", description: "Aprenda técnicas de sombra, delineado e máscara para realçar seu olhar.", image: "https://s2.glbimg.com/nyWKe7dBgHQqvbCbN6EAwqGzAj4=/e.glbimg.com/og/ed/f/original/2019/11/21/delineador_branco_adelabartak.jpg" },
+        { title: "Lábios Impecáveis", description: "Saiba como escolher batons e lip tints que valorizem seu tom de pele e durem mais.", image: "https://blog.oceane.com.br/wp-content/uploads/2024/02/DESTAQUE_MAKE_2403.jpg" },
+        { title: "Contorno e Iluminação", description: "Crie profundidade e brilho para um visual sofisticado e harmônico.", image: "https://blog.optemais.com.br/wp-content/uploads/2019/05/Como-usar-iluminador.jpg" },
+        { title: "Fixação e Durabilidade", description: "Finalize sua make com sprays fixadores e truques para maior durabilidade ao longo do dia.", image: "https://s2-marieclaire.glbimg.com/TOYBns7eUT-WGJzwOgFiOBUds98=/0x0:1440x810/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_51f0194726ca4cae994c33379977582d/internal_photos/bs/2024/T/Y/L9p0ktTpSda0yzQCI1ZQ/clipdown.app-434150676-18426441856004344-3743900848806498386-n-1-1-.jpg" },
       ],
     },
     {
@@ -42,7 +43,7 @@ const BlogScreen = () => {
         { title: "Depilação", description: "Uma depilação mal feita ou inadequada pode causar dermatites alérgicas, queimaduras, manchas, sem falar nos possíveis riscos de transmissão de doenças e podendo causar alergia", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs9iWaHca3Qg_5735oNe00wvfBG11dXHHp-A&s" },
         { title: "Esfoliação", description: "A esfoliação corporal tem vários benefícios, como deixar a pele mais macia, uniformizar o tom, e estimular a produção de colágeno. É importante não exagerar, pois pode causar irritação.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_W61mjIiR2st57I3uShp1b1VLsumyas-gRw&s"},
         { title: "Massagem", description: "A massagem corporal tem benefícios como por exemplo: aliviar dores, tensões musculares, melhora a circulação sanguínea, reduz inchaço e a recuperação muscular.", image: "https://img.freepik.com/fotos-gratis/mulher-passando-tempo-no-spa-e-recebendo-uma-massagem-relaxante_23-2149871869.jpg" },
-        { title: "Sais de Banho", description: " Os sais de banho podem ser bons para o corpo, pois ajudam a relaxar, desintoxicar a pele, melhorar a circulação e a hidratação da pele.", image: "https://www.espacoprana.com.br/wp-content/uploads/2023/10/blog.jpg" },
+        { title: "Sais de Banho", description: "Os sais de banho podem ser bons para o corpo, pois ajudam a relaxar, desintoxicar a pele, melhorar a circulação e a hidratação da pele.", image: "https://www.espacoprana.com.br/wp-content/uploads/2023/10/blog.jpg" },
         { title: "Sol", description: "Tomar sol pode fazer bem à saúde, mas é importante não exagerar. A exposição ao sol é fundamental para a produção de vitamina D, que é essencial para a saúde dos ossos e músculos.", image: "https://media.istockphoto.com/id/1211311866/pt/foto/stylish-casual-woman-enjoying-sun-at-tropical-beach.jpg?s=612x612&w=0&k=20&c=W52Cl-zvdNoAzPE65KtsXE4-9-bvP8cr6QQBssK6o_Q=" },
       ],
     },
@@ -68,8 +69,7 @@ const BlogScreen = () => {
               <Text style={styles.buttonText}>Vídeos</Text>
             </TouchableOpacity>
           </View>
-          </View>
-   
+        </View>
 
         {/* Seções Dinâmicas */}
         {sections.map((section, index) => (
@@ -78,7 +78,6 @@ const BlogScreen = () => {
             {renderCards(section.cards)}
           </View>
         ))}
-
       </ScrollView>
     </View>
   );
@@ -108,7 +107,6 @@ const renderCards = (cards) => (
   </View>
 );
 
-
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#FAFAFA" },
   scroll: { flex: 1 },
@@ -131,9 +129,6 @@ const styles = StyleSheet.create({
   cardDescription: { fontSize: 13, color: "#666", marginBottom: 10 },
   cardButton: { alignSelf: "flex-start", backgroundColor: "#00DAC7", paddingVertical: 6, paddingHorizontal: 12, borderRadius: 20 },
   cardButtonText: { color: "#fff", fontSize: 12 },
-  
-
-
 });
 
 export default BlogScreen;

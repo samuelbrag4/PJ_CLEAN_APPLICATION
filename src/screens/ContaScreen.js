@@ -1,18 +1,82 @@
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  TextInput,
+  Alert
+} from "react-native";
 import Header from "../components/Header.js";
-import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import { Feather, FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import Footer from "../components/Footer"; // Importe a Footer
+// import Footer from "../components/Footer"; // Descomente se quiser usar o Footer
 
 const ContaScreen = () => {
   const navigation = useNavigation();
 
-  // Dados do usuário
-  const userData = {
-    name: "Ana Florzinha",
-    email: "ana.florzinha@email.com",
-    avatar: "https://i.pinimg.com/564x/3a/53/53/3a5353e7f0b5f4e0f7e2e6e5d8a5d5e5.jpg",
+  // Estado para edição e dados do usuário
+  const [isEditing, setIsEditing] = useState(false);
+  const [userData, setUserData] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [formData, setFormData] = useState({
+    nome: "",
+    email: "",
+    senha: "",
+    idioma: "pt-BR"
+  });
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  const fetchUserData = async () => {
+    try {
+      setTimeout(() => {
+        const mockUser = {
+          nome: "Maria Silva",
+          email: "maria@exemplo.com",
+          senha: "senha123",
+          idioma: "pt-BR"
+        };
+        setUserData(mockUser);
+        setFormData(mockUser);
+      }, 1000);
+    } catch (error) {
+      setErrorMessage("Erro ao buscar dados do usuário");
+    }
+  };
+
+  const handleEdit = () => {
+    if (isEditing) {
+      setUserData(formData);
+      setSuccessMessage("Dados atualizados com sucesso!");
+      setTimeout(() => setSuccessMessage(""), 3000);
+    }
+    setIsEditing(!isEditing);
+  };
+
+  const handleInputChange = (field, value) => {
+    setFormData({
+      ...formData,
+      [field]: value
+    });
+  };
+
+  const navigateTo = (screen, params) => {
+    if (navigation && navigation.navigate) {
+      navigation.navigate(screen, params);
+    } else {
+      Alert.alert("Navegação", `Navegando para ${screen}`);
+    }
+  };
+
+  const handleLogout = () => {
+    Alert.alert("Logout", "Saindo da conta...");
   };
 
   // Seções principais com navegação
@@ -23,7 +87,7 @@ const ContaScreen = () => {
       items: [
         { 
           name: "Cadastro", 
-          onPress: () => navigation.navigate('CorpoScreen')
+          onPress: () => navigateTo('CorpoScreen')
         }
       ]
     },
@@ -33,11 +97,11 @@ const ContaScreen = () => {
       items: [
         { 
           name: "Produtos salvos (12)", 
-          onPress: () => navigation.navigate('FavsScreen')
+          onPress: () => navigateTo('FavsScreen')
         },
         { 
           name: "Lojas favoritas (3)", 
-          onPress: () => navigation.navigate('FavsScreen', { tab: 'stores' })
+          onPress: () => navigateTo('FavsScreen', { tab: 'stores' })
         }
       ]
     },
@@ -47,11 +111,11 @@ const ContaScreen = () => {
       items: [
         { 
           name: "Avaliações (5)", 
-          onPress: () => navigation.navigate('ComentScreen')
+          onPress: () => navigateTo('ComentScreen')
         },
         { 
           name: "Comentários (8)", 
-          onPress: () => navigation.navigate('ComentScreen', { tab: 'comments' })
+          onPress: () => navigateTo('ComentScreen', { tab: 'comments' })
         }
       ]
     }
@@ -59,20 +123,28 @@ const ContaScreen = () => {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
       <View style={styles.headerWrapper}>
         <Header themeColor="#F05080" activePage="Conta" />
       </View>
-
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {/* Perfil */}
         <View style={styles.profileSection}>
-          <Image source={{ uri: userData.avatar }} style={styles.avatar} />
-          <Text style={styles.userName}>{userData.name}</Text>
-          <Text style={styles.userEmail}>{userData.email}</Text>
+          <Image
+            source={{
+              uri: userData?.avatar ||
+                "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg"
+            }}
+            style={styles.avatar}
+          />
+          <Text style={styles.userName}>{userData?.nome || "Carregando..."}</Text>
+          <Text style={styles.userEmail}>{userData?.email || ""}</Text>
+          <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+            <FontAwesome name="sign-out" size={18} color="#FFF" />
+            <Text style={styles.logoutText}>Sair</Text>
+          </TouchableOpacity>
         </View>
 
-        {/* Seções */}
+        {/* Menu de navegação */}
         <View style={styles.sectionsContainer}>
           {sections.map((section, index) => (
             <View key={index} style={styles.sectionCard}>
@@ -80,10 +152,9 @@ const ContaScreen = () => {
                 <Feather name={section.icon} size={20} color="#FF7EB9" />
                 <Text style={styles.sectionTitle}>{section.title}</Text>
               </View>
-              
               {section.items.map((item, itemIndex) => (
-                <TouchableOpacity 
-                  key={itemIndex} 
+                <TouchableOpacity
+                  key={itemIndex}
                   style={styles.itemButton}
                   onPress={item.onPress}
                 >
@@ -95,18 +166,97 @@ const ContaScreen = () => {
           ))}
         </View>
 
-        {/* Footer - Adicionado dentro do ScrollView */}
-        <Footer />
+        {/* Formulário de edição */}
+        <View style={styles.formContainer}>
+          <View style={styles.formHeader}>
+            <Text style={styles.formTitle}>Minha Conta</Text>
+            <TouchableOpacity style={styles.editButton} onPress={handleEdit}>
+              <FontAwesome name={isEditing ? "save" : "edit"} size={18} color="#FFF" />
+              <Text style={styles.editButtonText}>{isEditing ? "Salvar" : "Editar"}</Text>
+            </TouchableOpacity>
+          </View>
+          {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
+          {successMessage ? <Text style={styles.successMessage}>{successMessage}</Text> : null}
+          <View style={styles.formGroup}>
+            <Text style={styles.label}>Nome</Text>
+            <TextInput
+              style={styles.input}
+              value={formData.nome}
+              onChangeText={(text) => handleInputChange("nome", text)}
+              editable={isEditing}
+            />
+          </View>
+          <View style={styles.formGroup}>
+            <Text style={styles.label}>Email</Text>
+            <TextInput
+              style={styles.input}
+              value={formData.email}
+              onChangeText={(text) => handleInputChange("email", text)}
+              keyboardType="email-address"
+              editable={isEditing}
+            />
+          </View>
+          <View style={styles.formGroup}>
+            <Text style={styles.label}>Senha</Text>
+            <View style={styles.passwordContainer}>
+              <TextInput
+                style={styles.passwordInput}
+                value={formData.senha}
+                onChangeText={(text) => handleInputChange("senha", text)}
+                secureTextEntry={!showPassword}
+                editable={isEditing}
+              />
+              {isEditing && (
+                <TouchableOpacity
+                  style={styles.eyeIcon}
+                  onPress={() => setShowPassword(!showPassword)}
+                >
+                  <FontAwesome name={showPassword ? "eye-slash" : "eye"} size={20} color="#888" />
+                </TouchableOpacity>
+              )}
+            </View>
+          </View>
+          <View style={styles.formGroup}>
+            <Text style={styles.label}>Idioma</Text>
+            <View style={styles.languageSelector}>
+              <TouchableOpacity
+                style={[
+                  styles.languageOption,
+                  formData.idioma === "pt-BR" && styles.languageOptionSelected
+                ]}
+                onPress={() => isEditing && handleInputChange("idioma", "pt-BR")}
+                disabled={!isEditing}
+              >
+                <Text style={formData.idioma === "pt-BR" ? styles.languageTextSelected : styles.languageText}>
+                  Português
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.languageOption,
+                  formData.idioma === "en-US" && styles.languageOptionSelected
+                ]}
+                onPress={() => isEditing && handleInputChange("idioma", "en-US")}
+                disabled={!isEditing}
+              >
+                <Text style={formData.idioma === "en-US" ? styles.languageTextSelected : styles.languageText}>
+                  Inglês
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+
+        {/* <Footer /> */}
       </ScrollView>
     </View>
   );
 };
 
-// Estilos atualizados
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFF9FB",
+    backgroundColor: "#FAFAFA",
   },
   headerWrapper: {
     width: "100%",
@@ -114,7 +264,7 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     paddingBottom: 20,
-    flexGrow: 1, // Permite que o ScrollView cresça para incluir o Footer
+    flexGrow: 1,
   },
   profileSection: {
     alignItems: "center",
@@ -147,10 +297,24 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#888",
   },
+  logoutButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#F05080",
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 20,
+    marginTop: 10,
+  },
+  logoutText: {
+    color: "#FFF",
+    marginLeft: 6,
+    fontWeight: "500",
+  },
   sectionsContainer: {
     paddingHorizontal: 15,
     marginTop: 10,
-    marginBottom: 20, // Adicionado espaço para o Footer
+    marginBottom: 20,
   },
   sectionCard: {
     backgroundColor: "#FFF",
@@ -188,6 +352,115 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: "#555",
   },
+  formContainer: {
+    backgroundColor: "#FFF",
+    borderRadius: 10,
+    padding: 16,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    marginHorizontal: 15,
+    marginBottom: 20,
+  },
+  formHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  formTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#333",
+  },
+  editButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#F05080",
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 6,
+  },
+  editButtonText: {
+    color: "#FFF",
+    marginLeft: 6,
+    fontWeight: "500",
+  },
+  formGroup: {
+    marginBottom: 16,
+  },
+  label: {
+    fontSize: 16,
+    color: "#666",
+    marginBottom: 8,
+    fontWeight: "500",
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#DDD",
+    borderRadius: 8,
+    padding: 12,
+    fontSize: 16,
+    backgroundColor: "#F9F9F9",
+  },
+  passwordContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#DDD",
+    borderRadius: 8,
+    backgroundColor: "#F9F9F9",
+  },
+  passwordInput: {
+    flex: 1,
+    padding: 12,
+    fontSize: 16,
+  },
+  eyeIcon: {
+    padding: 12,
+  },
+  errorMessage: {
+    backgroundColor: "#FFE0E0",
+    color: "#D00000",
+    padding: 10,
+    borderRadius: 6,
+    marginBottom: 16,
+  },
+  successMessage: {
+    backgroundColor: "#E0FFE0",
+    color: "#008000",
+    padding: 10,
+    borderRadius: 6,
+    marginBottom: 16,
+  },
+  languageSelector: {
+    flexDirection: "row",
+    borderWidth: 1,
+    borderColor: "#DDD",
+    borderRadius: 8,
+    overflow: "hidden",
+  },
+  languageOption: {
+    flex: 1,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    alignItems: "center",
+    backgroundColor: "#F9F9F9",
+  },
+  languageOptionSelected: {
+    backgroundColor: "#F05080",
+  },
+  languageText: {
+    fontSize: 16,
+    color: "#666",
+  },
+  languageTextSelected: {
+    fontSize: 16,
+    color: "#FFF",
+    fontWeight: "bold",
+  }
 });
 
 export default ContaScreen;

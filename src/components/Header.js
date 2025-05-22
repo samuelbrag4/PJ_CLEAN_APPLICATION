@@ -34,6 +34,7 @@ const Header = ({ themeColor, activePage }) => {
 
         {width > 768 ? (
           <View style={styles.nav}>
+
             <TouchableOpacity>
               <Link
                 href="/"
@@ -45,6 +46,7 @@ const Header = ({ themeColor, activePage }) => {
                 Home
               </Link>
             </TouchableOpacity>
+
             <TouchableOpacity>
               <Link
                 href="/produto"
@@ -56,6 +58,7 @@ const Header = ({ themeColor, activePage }) => {
                 Produtos
               </Link>
             </TouchableOpacity>
+
             <TouchableOpacity>
               <Link
                 href="/blog"
@@ -67,6 +70,43 @@ const Header = ({ themeColor, activePage }) => {
                 Blog
               </Link>
             </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Link
+                href="/skincare"
+                style={[
+                  styles.navText,
+                  activePage === "Skincare" && styles.activeNavText,
+                ]}
+              >
+                Skincare
+              </Link>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Link
+                href="/corpo"
+                style={[
+                  styles.navText,
+                  activePage === "Corpo" && styles.activeNavText,
+                ]}
+              >
+                Corpo
+              </Link>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Link
+                href="/makeup"
+                style={[
+                  styles.navText,
+                  activePage === "Maquiagem" && styles.activeNavText,
+                ]}
+              >
+                Maquiagem
+              </Link>
+            </TouchableOpacity>
+
             <TouchableOpacity>
               <Link
                 href="/blog-video"
@@ -100,6 +140,7 @@ const Header = ({ themeColor, activePage }) => {
                 Contato
               </Link>
             </TouchableOpacity>
+
             <TouchableOpacity>
               <Link
                 href="/conta"
@@ -111,6 +152,7 @@ const Header = ({ themeColor, activePage }) => {
                 Minha Conta
               </Link>
             </TouchableOpacity>
+
           </View>
         ) : (
           <TouchableOpacity
@@ -158,6 +200,7 @@ const Header = ({ themeColor, activePage }) => {
                 Home
               </Link>
             </TouchableOpacity>
+
             <TouchableOpacity>
               <Link
                 href="/produto"
@@ -169,6 +212,7 @@ const Header = ({ themeColor, activePage }) => {
                 Produtos
               </Link>
             </TouchableOpacity>
+
             <TouchableOpacity>
               <Link
                 href="/blog"
@@ -180,6 +224,43 @@ const Header = ({ themeColor, activePage }) => {
                 Blog
               </Link>
             </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Link
+                href="/skincare"
+                style={[
+                  styles.navText,
+                  activePage === "Skincare" && styles.activeNavText,
+                ]}
+              >
+                Skincare
+              </Link>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Link
+                href="/corpo"
+                style={[
+                  styles.navText,
+                  activePage === "Corpo" && styles.activeNavText,
+                ]}
+              >
+                Corpo
+              </Link>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Link
+                href="/make"
+                style={[
+                  styles.navText,
+                  activePage === "Maquiagem" && styles.activeNavText,
+                ]}
+              >
+                Maquiagem
+              </Link>
+            </TouchableOpacity>
+
             <TouchableOpacity>
               <Link
                 href="/blog-video"
@@ -213,6 +294,7 @@ const Header = ({ themeColor, activePage }) => {
                 Contato
               </Link>
             </TouchableOpacity>
+
             <TouchableOpacity>
               <Link
                 href="/conta"
@@ -224,6 +306,7 @@ const Header = ({ themeColor, activePage }) => {
                 Minha Conta
               </Link>
             </TouchableOpacity>
+            
           </View>
         </View>
       </Modal>
