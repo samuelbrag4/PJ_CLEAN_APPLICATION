@@ -1,9 +1,7 @@
-import React, { useState } from "react"
-import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, ScrollView } from "react-native";
+import React, { useState, useRef } from "react";
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, ScrollView, Modal } from "react-native";
 import Header from "../components/Header";
-import { Modal } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-
 
 const ProdutosScreen = () => {
   // Dados dos produtos
@@ -17,7 +15,6 @@ const ProdutosScreen = () => {
       image: 'https://images.tcdn.com.br/img/img_prod/926373/creme_hidratante_facial_lata_nivea_56g_33_4_fda70b6f889ac923fda5246eeec97507_20220825113147.jpeg',
       category: 'skincare'
     },
-
     {
       id: '2',
       name: 'Loção Corporal',
@@ -63,7 +60,6 @@ const ProdutosScreen = () => {
       image: 'https://epocacosmeticos.vteximg.com.br/arquivos/ids/523106-800-800/paleta-de-sombras-vult-essentials-rose--2-.jpg?v=638054266813530000',
       category: 'makeup'
     },
-
     {
       id: '7',
       name: 'Base Líquida Skin',
@@ -73,9 +69,8 @@ const ProdutosScreen = () => {
       image: 'https://m.media-amazon.com/images/I/31dFE5nhetS._SS200_.jpg',
       category: 'makeup'
     },
-
     {
-      id: '7',
+      id: '8',
       name: 'Hidratante Facial - Pele mista e Oleosa',
       brand: 'Natura',
       price: 89.90,
@@ -83,9 +78,8 @@ const ProdutosScreen = () => {
       image: 'https://production.na01.natura.com/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dwefd00299/NATBRA-91821_2.jpg',
       category: 'skincare'
     },
-
     {
-      id: '7',
+      id: '9',
       name: 'Esfoliante Corporal Pitaya',
       brand: 'Labotrat',
       price: 89.90,
@@ -93,9 +87,8 @@ const ProdutosScreen = () => {
       image: 'https://m.media-amazon.com/images/I/61OT3D332nL._AC_SX679_.jpg',
       category: 'body'
     },
-
     {
-      id: '7',
+      id: '10',
       name: 'Máscara de Cílios',
       brand: 'O Boticário',
       price: 89.90,
@@ -103,21 +96,16 @@ const ProdutosScreen = () => {
       image: 'https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_210,h_210/v1/imagens/products/B50756/50756_MAKE-B_MASCARA-DE-CILIOS_CILIOS-POSTICOS_FRONTAL_1.jpg',
       category: 'makeup'
     },
-
-
-
   ]);
 
   // Estados para filtros
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [showFilterModal, setShowFilterModal] = useState(false);
-  const flatListRef = React.useRef(null);
+  const flatListRef = useRef(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [sortOption, setSortOption] = useState(null);
 
-
-
-  // Categorias disponíveis (apenas as solicitadas)
+  // Categorias disponíveis
   const categories = [
     { id: 'all', name: 'Todos' },
     { id: 'skincare', name: 'Skincare' },
@@ -125,17 +113,15 @@ const ProdutosScreen = () => {
     { id: 'makeup', name: 'Maquiagem' },
   ];
 
-  // Função para filtrar produtos
+  // Função para filtrar e ordenar produtos
   const filteredProducts = [...products]
-  .filter(product => selectedCategory === 'all' || product.category === selectedCategory)
-  .sort((a, b) => {
-    if (sortOption === 'lowPrice') return a.price - b.price;
-    if (sortOption === 'highPrice') return b.price - a.price;
-    if (sortOption === 'rating') return b.rating - a.rating;
-    return 0;
-  });
-
-  
+    .filter(product => selectedCategory === 'all' || product.category === selectedCategory)
+    .sort((a, b) => {
+      if (sortOption === 'lowPrice') return a.price - b.price;
+      if (sortOption === 'highPrice') return b.price - a.price;
+      if (sortOption === 'rating') return b.rating - a.rating;
+      return 0;
+    });
 
   // Renderizar cada item do produto
   const renderProductItem = ({ item }) => (
@@ -154,13 +140,12 @@ const ProdutosScreen = () => {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
       <Header themeColor="#F05080" activePage="Produtos" />
 
       {/* Filtros por categoria */}
-      <ScrollView 
-        horizontal 
-        showsHorizontalScrollIndicator={false} 
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
         style={styles.categoryContainer}
       >
         {categories.map(category => (
@@ -180,66 +165,70 @@ const ProdutosScreen = () => {
             </Text>
           </TouchableOpacity>
         ))}
+        <TouchableOpacity
+          style={styles.filterButton}
+          onPress={() => setShowFilterModal(true)}
+        >
+          <Text style={styles.filterButtonText}>Ordenar</Text>
+        </TouchableOpacity>
       </ScrollView>
 
-
-
-
-<Text style={styles.modalTitle}>Ordenar por</Text>
-
-<TouchableOpacity onPress={() => setSortOption('lowPrice')} style={styles.sortOption}>
-  <Text style={styles.sortText}>Preço: menor para maior</Text>
-</TouchableOpacity>
-
-<TouchableOpacity onPress={() => setSortOption('highPrice')} style={styles.sortOption}>
-  <Text style={styles.sortText}>Preço: maior para menor</Text>
-</TouchableOpacity>
-
-<TouchableOpacity onPress={() => setSortOption('rating')} style={styles.sortOption}>
-  <Text style={styles.sortText}>Melhor avaliados</Text>
-</TouchableOpacity>
-
-<TouchableOpacity
-  onPress={() => {
-    setShowFilterModal(false);
-  }}
-  style={styles.closeModal}
->
-  <Text style={{ color: '#fff' }}>Aplicar</Text>
-</TouchableOpacity>
-
-
+      {/* Modal de ordenação */}
+      <Modal
+        visible={showFilterModal}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setShowFilterModal(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContainer}>
+            <Text style={styles.modalTitle}>Ordenar por</Text>
+            <TouchableOpacity onPress={() => setSortOption('lowPrice')} style={styles.sortOption}>
+              <Text style={styles.sortText}>Preço: menor para maior</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setSortOption('highPrice')} style={styles.sortOption}>
+              <Text style={styles.sortText}>Preço: maior para menor</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setSortOption('rating')} style={styles.sortOption}>
+              <Text style={styles.sortText}>Melhor avaliados</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => setShowFilterModal(false)}
+              style={styles.closeModal}
+            >
+              <Text style={{ color: '#fff' }}>Aplicar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
 
       {/* Lista de produtos */}
       <FlatList
-  ref={flatListRef}
-  onScroll={(e) => {
-    const offsetY = e.nativeEvent.contentOffset.y;
-    setShowScrollTop(offsetY > 100);
-  }}
-  scrollEventThrottle={16}
-  data={filteredProducts}
-  renderItem={renderProductItem}
-  keyExtractor={(item, index) => item.id + index}
-  numColumns={2}
-  contentContainerStyle={styles.productsList}
-  columnWrapperStyle={styles.productsRow}
-/>
+        ref={flatListRef}
+        onScroll={(e) => {
+          const offsetY = e.nativeEvent.contentOffset.y;
+          setShowScrollTop(offsetY > 100);
+        }}
+        scrollEventThrottle={16}
+        data={filteredProducts}
+        renderItem={renderProductItem}
+        keyExtractor={(item, index) => item.id + index}
+        numColumns={2}
+        contentContainerStyle={styles.productsList}
+        columnWrapperStyle={styles.productsRow}
+      />
 
-
-{showScrollTop && (
-  <TouchableOpacity
-    style={styles.scrollTopButton}
-    onPress={() => flatListRef.current.scrollToOffset({ offset: 0, animated: true })}
-  >
-    <AntDesign name="arrowup" size={24} color="#fff" />
-  </TouchableOpacity>
-)}
-
+      {showScrollTop && (
+        <TouchableOpacity
+          style={styles.scrollTopButton}
+          onPress={() => flatListRef.current.scrollToOffset({ offset: 0, animated: true })}
+        >
+          <AntDesign name="arrowup" size={24} color="#fff" />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -266,12 +255,22 @@ const styles = StyleSheet.create({
   categoryText: {
     color: '#555',
     fontSize: 14,
-
-    
-   
   },
   selectedCategoryText: {
     color: '#FFF',
+    fontWeight: 'bold',
+  },
+  filterButton: {
+    alignSelf: 'center',
+    marginLeft: 10,
+    backgroundColor: '#F05080',
+    paddingVertical: 6,
+    paddingHorizontal: 16,
+    borderRadius: 20,
+  },
+  filterButtonText: {
+    color: '#fff',
+    fontSize: 14,
     fontWeight: 'bold',
   },
   productsList: {
@@ -328,73 +327,62 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#777',
   },
-scrollTopButton: {
-  position: 'absolute',
-  bottom: 20,
-  right: 20,
-  backgroundColor: '#F05080',
-  borderRadius: 30,
-  padding: 12,
-  elevation: 5,
-  shadowColor: '#000',
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.3,
-  shadowRadius: 4,
-  zIndex: 999,
-},
-filterButton: {
-  alignSelf: 'flex-end',
-  marginRight: 16,
-  marginBottom: 10,
-  backgroundColor: '#F05080',
-  paddingVertical: 6,
-  paddingHorizontal: 16,
-  borderRadius: 20,
-},
-filterButtonText: {
-  color: '#fff',
-  fontSize: 14,
-  fontWeight: 'bold',
-},
-modalOverlay: {
-  flex: 1,
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  justifyContent: 'center',
-  alignItems: 'center',
-},
-modalContainer: {
-  width: '80%',
-  backgroundColor: '#fff',
-  borderRadius: 16,
-  padding: 20,
-  alignItems: 'center',
-},
-
-
-modalTitle: {
-  backgroundColor: '#F05080',
-  paddingVertical: 10,
-  paddingHorizontal: 20,
-  borderRadius: 8,
-  marginTop: 20,
-  
-},
-
-sortOption: {
-  paddingVertical: 10,
-  width: '100%',
-  borderBottomWidth: 1,
-  borderBottomColor: '#EEE',
-},
-sortText: {
-  fontSize: 16,
-  color: '#333',
-  textAlign: 'center',
-},
-
-
+  scrollTopButton: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+    backgroundColor: '#F05080',
+    borderRadius: 30,
+    padding: 12,
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    zIndex: 999,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    width: '80%',
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    padding: 20,
+    alignItems: 'center',
+  },
+  modalTitle: {
+    backgroundColor: '#F05080',
+    color: '#fff',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    marginTop: 20,
+    marginBottom: 10,
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  sortOption: {
+    paddingVertical: 10,
+    width: '100%',
+    borderBottomWidth: 1,
+    borderBottomColor: '#EEE',
+  },
+  sortText: {
+    fontSize: 16,
+    color: '#333',
+    textAlign: 'center',
+  },
+  closeModal: {
+    backgroundColor: '#F05080',
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    marginTop: 20,
+  },
 });
-
-
 
 export default ProdutosScreen;
