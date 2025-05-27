@@ -33,15 +33,14 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: "column",
     borderRadius: 12,
-    padding: 18,
     alignItems: "center",
-    margin: 10,
+    marginHorizontal: 20,
+    gap: 16,
   },
   image: {
-    width: 290,
+    width: "100%",
     height: 190,
     borderRadius: 8,
-    marginRight: 18,
     backgroundColor: "#eee",
   },
   content: {
