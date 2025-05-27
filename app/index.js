@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { Link } from "expo-router";
 import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
@@ -12,25 +12,30 @@ export default function HomeScreen() {
         <Header themeColor="#F05080" activePage="Home" />
       </View>
 
-      {/* Conteúdo principal */}
-      <View style={styles.content}>
-        {/* Seção de boas-vindas (original) */}
-        <Text style={styles.title}>Bem Vindo a Home!</Text>
-        <Text style={styles.subtitle}>Escolha uma opção abaixo:</Text>
+      {/* Conteúdo principal com ScrollView */}
+      <ScrollView 
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+      >
+        {/* Seção original */}
+        <View style={styles.originalContent}>
+          <Text style={styles.title}>Bem Vindo a Home!</Text>
+          <Text style={styles.subtitle}>Escolha uma opção abaixo:</Text>
 
-        <TouchableOpacity style={styles.button}>
-          <Link href="/login" style={styles.buttonText}>
-            Ir para Login
-          </Link>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <Link href="/login" style={styles.buttonText}>
+              Ir para Login
+            </Link>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
-          <Link href="/signup" style={styles.buttonText}>
-            Ir para Cadastro
-          </Link>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <Link href="/signup" style={styles.buttonText}>
+              Ir para Cadastro
+            </Link>
+          </TouchableOpacity>
+        </View>
 
-        {/* Novo conteúdo baseado na imagem (adicionado abaixo dos botões originais) */}
+        {/* Conteúdo da imagem */}
         <View style={styles.imageContent}>
           <Text style={styles.mainTitle}>Aqui a sua Beleza Entra</Text>
           <Text style={styles.mainSubtitle}>em Primeiro Lugar</Text>
@@ -85,7 +90,7 @@ export default function HomeScreen() {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </ScrollView>
 
       {/* Footer fixa no rodapé */}
       <Footer themeColor="#F05080" />
@@ -97,18 +102,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FAFAFA",
-    position: "relative",
   },
   headerWrapper: {
     width: "100%",
     backgroundColor: "#F05080",
     overflow: "hidden",
   },
-  content: {
+  scrollView: {
     flex: 1,
-    padding: 20,
   },
-  // Estilos originais mantidos
+  scrollContent: {
+    padding: 20,
+    paddingBottom: 80, // Espaço para o footer
+  },
+  originalContent: {
+    marginBottom: 30,
+  },
   title: {
     fontSize: 24,
     fontWeight: "bold",
@@ -133,15 +142,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,
   },
-  // Novos estilos adicionados para o conteúdo da imagem
   imageContent: {
-    marginTop: 30,
+    marginTop: 20,
   },
   mainTitle: {
     fontSize: 28,
     fontWeight: "bold",
     color: "#333",
-    marginTop: 20,
     textAlign: "center",
   },
   mainSubtitle: {
