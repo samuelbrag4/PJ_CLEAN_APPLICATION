@@ -1,4 +1,3 @@
-import React from "react";
 import {
   View,
   Text,
@@ -6,48 +5,29 @@ import {
   StyleSheet,
   Dimensions,
 } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+
 
 const { width } = Dimensions.get("window");
 
-const beneficios = [
-  {
-    icone: "🧼",
-    titulo: "Limpeza",
-    descricao: "Remova impurezas e prepare sua pele para os próximos cuidados.",
-  },
-  {
-    icone: "🧴",
-    titulo: "Esfoliação",
-    descricao: "Elimine células mortas e renove a vitalidade da sua pele.",
-  },
-  {
-    icone: "💧",
-    titulo: "Tonificação",
-    descricao: "Equilibre o pH e potencialize a absorção dos produtos.",
-  },
-  {
-    icone: "🥛",
-    titulo: "Hidratação",
-    descricao: "Mantenha sua pele macia, protegida e radiante todos os dias.",
-  },
-];
-
-const OurMissionSection = ({corPrincipal }) => (
+const OurMissionSection = ({corPrincipal, gradientColors, subtitle, title, descricao, cards }) => (
+  <LinearGradient
+    colors={gradientColors}
+    start={{ x: 0.5, y: 0 }}
+    end={{ x: 0.5, y: 1 }}
+    style={styles.gradient}
+  >
   <View style={styles.container}>
     <View style={styles.topo}>
-      <Text style={[styles.label, { color: corPrincipal }]}>Nossa Missão</Text>
-      <Text style={styles.titulo}>
-        Cuide de sua Pele da{"\n"}Forma que ela{"\n"}Merece
-      </Text>
-      <Text style={styles.descricao}>
-        Sua pele merece atenção especial. Com uma rotina de skincare simples e eficaz, você pode manter sua pele saudável e radiante.
-      </Text>
+      <Text style={[styles.label, { color: corPrincipal }]}>{subtitle}</Text>
+      <Text style={styles.titulo}>{title}</Text>
+      <Text style={styles.descricao}>{descricao}</Text>
       <TouchableOpacity style={[styles.botao, { backgroundColor: corPrincipal }]}>
         <Text style={styles.textoBotao}>Ler Mais</Text>
       </TouchableOpacity>
     </View>
     <View style={styles.beneficiosContainer}>
-      {beneficios.map((item, idx) => (
+      {cards.map((item, idx) => (
         <View key={idx} style={styles.beneficio}>
           <View style={[styles.iconeContainer, { backgroundColor: corPrincipal }]}>
             <Text style={styles.icone}>{item.icone}</Text>
@@ -58,16 +38,20 @@ const OurMissionSection = ({corPrincipal }) => (
       ))}
     </View>
   </View>
+  </LinearGradient>
 );
 
 export default OurMissionSection;
 
 const styles = StyleSheet.create({
+  gradient: {
+    flex: 1,
+    paddingVertical: 0,
+  },
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     paddingVertical: 40,
-    paddingHorizontal: 20, 
+    paddingHorizontal: 20,
   },
   topo: {
     marginBottom: 32,
@@ -110,7 +94,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 12,
     padding: 10,
-    width: (width - 32) / 2 - 12, // Ajuste para caber dois itens lado a lado
+    width: (width - 32) / 2 - 12,
     marginBottom: 10,
     alignItems: "center",
     shadowColor: "#eafafd",

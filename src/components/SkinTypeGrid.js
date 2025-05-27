@@ -1,10 +1,10 @@
 import { View, Text, Image, StyleSheet } from "react-native";
 
 
-const SkinTypeGrid = ({corPrincipal, infoCards = []}) => (
+const SkinTypeGrid = ({corPrincipal, infoCards = [], categoria, title}) => (
   <View style={styles.container}>
-    <Text style={[styles.label, {color: corPrincipal}]}>Skincare</Text>
-    <Text style={styles.title}>Tipos de pele</Text>
+    <Text style={[styles.label, {color: corPrincipal}]}>{categoria}</Text>
+    <Text style={styles.title}>{title}</Text>
     {infoCards.map((item, idx) => (
       <View key={idx} style={styles.card}>
         <Image
