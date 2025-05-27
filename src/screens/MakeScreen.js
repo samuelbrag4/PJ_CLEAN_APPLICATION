@@ -3,8 +3,37 @@ import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import InfoCard from "../components/InfoCard";
 import OurMissionSection from "../components/OurMissionSection";
+import SkinTypeGrid from "../components/SkinTypeGrid";
 
 const MakeScreen = () => {
+
+  const infoCards = [
+  {
+    titulo: "Oleosa",
+    descricao:
+      "Uma pele oleosa produz excesso de sebo, com poros dilatados e tendência a brilho, especialmente na zona T (testa, nariz e queixo).",
+    imagem: "https://topview.com.br/wp-content/uploads/2024/01/retrato-de-mulher-jovem-e-bonita-com-um-produto-de-maquiagem.jpg", // Coloque o link da imagem aqui
+  },
+  {
+    titulo: "Seca",
+    descricao:
+      "Combina áreas oleosas (zona T) com áreas normais ou secas (bochechas), exigindo cuidados específicos para cada região.",
+    imagem: "https://www.fashionbubbles.com/wp-content/uploads/2024/11/make-azul-bebe-tendencia-2.jpg", // Coloque o link da imagem aqui
+  },
+  {
+    titulo: "Mista",
+    descricao:
+      "Propensa a espinhas, cravos e inflamações, geralmente associada à oleosidade excessiva e poros obstruídos.",
+    imagem: "https://24698e6a.delivery.rocketcdn.me/wp-content/uploads/2022/03/makes-de-euphoria-ideias-de-maquiagens-inspiradas-na-serie-de-sucesso-63.jpg", // Coloque o link da imagem aqui
+  },
+  {
+    titulo: "Normal",
+    descricao:
+      "Falta de hidratação natural, com textura áspera, sensação de repuxamento e tendência à descamação.",
+    imagem: "https://nomoremag.com/wp-content/uploads/2023/04/young-female-model-portrait-10x8-1.jpg", // Coloque o link da imagem aqui
+  },
+];
+
   return (
     <ScrollView style={styles.container}>
       {/* Header */}
@@ -29,6 +58,11 @@ const MakeScreen = () => {
 
       <OurMissionSection
         corPrincipal="#F05080"
+      />
+
+      <SkinTypeGrid
+        corPrincipal="#F05080"
+        infoCards={infoCards}
       />
 
     </ScrollView>
