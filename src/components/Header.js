@@ -4,18 +4,17 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
+  Dimensions,
   Pressable,
   Modal,
-  Alert,
 } from "react-native";
 import { useWindowDimensions } from "react-native";
-import { useNavigation } from '@react-navigation/native';
+import { Link } from "expo-router";
+import { Animated } from "react-native";
 
 const Header = ({ themeColor, activePage }) => {
   const [menuActive, setMenuActive] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
   const { width } = useWindowDimensions();
-  const navigation = useNavigation();
 
   const handleMenuToggle = () => {
     setMenuActive(!menuActive);
@@ -23,20 +22,6 @@ const Header = ({ themeColor, activePage }) => {
 
   const handleCloseMenu = () => {
     setMenuActive(false);
-    setShowDropdown(false);
-  };
-
-  const navigateTo = (screen) => {
-    handleCloseMenu();
-    try {
-      if (navigation && navigation.navigate) {
-        navigation.navigate(screen);
-      } else {
-        Alert.alert("Erro de navegação", "Sistema de navegação não está disponível.");
-      }
-    } catch (error) {
-      Alert.alert("Erro", `Não foi possível navegar para ${screen}`);
-    }
   };
 
   return (
@@ -49,88 +34,125 @@ const Header = ({ themeColor, activePage }) => {
 
         {width > 768 ? (
           <View style={styles.nav}>
-            <TouchableOpacity onPress={() => navigateTo("Home")}>
-              <Text style={[
-                styles.navText,
-                activePage === "Home" && styles.activeNavText
-              ]}>
+
+            <TouchableOpacity>
+              <Link
+                href="/"
+                style={[
+                  styles.navText,
+                  activePage === "Home" && styles.activeNavText,
+                ]}
+              >
                 Home
-              </Text>
+              </Link>
             </TouchableOpacity>
 
-            {/* Produtos com dropdown */}
-            <View style={styles.dropdownContainer}>
-              <TouchableOpacity onPress={() => setShowDropdown(!showDropdown)}>
-                <Text style={[
+            <TouchableOpacity>
+              <Link
+                href="/produto"
+                style={[
                   styles.navText,
-                  activePage === "Produtos" && styles.activeNavText
-                ]}>
-                  Produtos
-                </Text>
-              </TouchableOpacity>
-              {showDropdown && (
-                <View style={styles.dropdown}>
-                  <TouchableOpacity
-                    style={styles.dropdownButton}
-                    onPress={() => navigateTo("SkincareScreen")}
-                  >
-                    <Text style={styles.dropdownItem}>Skincare</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={styles.dropdownButton}
-                    onPress={() => navigateTo("MakeScreen")}
-                  >
-                    <Text style={styles.dropdownItem}>Maquiagem</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={styles.dropdownButton}
-                    onPress={() => navigateTo("CorpoScreen")}
-                  >
-                    <Text style={styles.dropdownItem}>Corpo</Text>
-                  </TouchableOpacity>
-                </View>
-              )}
-            </View>
+                  activePage === "Produtos" && styles.activeNavText,
+                ]}
+              >
+                Produtos
+              </Link>
+            </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigateTo("BlogScreen")}>
-              <Text style={[
-                styles.navText,
-                activePage === "Blog" && styles.activeNavText
-              ]}>
+            <TouchableOpacity>
+              <Link
+                href="/blog"
+                style={[
+                  styles.navText,
+                  activePage === "Blog" && styles.activeNavText,
+                ]}
+              >
                 Blog
-              </Text>
+              </Link>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigateTo("SobreScreen")}>
-              <Text style={[
-                styles.navText,
-                activePage === "Sobre" && styles.activeNavText
-              ]}>
-                Sobre Nós
-              </Text>
-            </TouchableOpacity>
-
-            {/* Conta com submenu */}
-            <View style={styles.dropdownContainer}>
-              <TouchableOpacity onPress={() => navigateTo("Conta")}>
-                <Text style={[
+            <TouchableOpacity>
+              <Link
+                href="/skincare"
+                style={[
                   styles.navText,
-                  activePage === "Minha Conta" && styles.activeNavText
-                ]}>
-                  Minha Conta
-                </Text>
-              </TouchableOpacity>
-              {/* Submenu pode ser adicionado aqui se desejar */}
-            </View>
-
-            <TouchableOpacity onPress={() => navigateTo("LoginScreen")}>
-              <Text style={[
-                styles.navText,
-                activePage === "Login" && styles.activeNavText
-              ]}>
-                Login
-              </Text>
+                  activePage === "Skincare" && styles.activeNavText,
+                ]}
+              >
+                Skincare
+              </Link>
             </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Link
+                href="/corpo"
+                style={[
+                  styles.navText,
+                  activePage === "Corpo" && styles.activeNavText,
+                ]}
+              >
+                Corpo
+              </Link>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Link
+                href="/makeup"
+                style={[
+                  styles.navText,
+                  activePage === "Maquiagem" && styles.activeNavText,
+                ]}
+              >
+                Maquiagem
+              </Link>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Link
+                href="/blog-video"
+                style={[
+                  styles.navText,
+                  activePage === "Blog Video" && styles.activeNavText,
+                ]}
+              >
+                Blog Video
+              </Link>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Link
+                href="/blog-artigo"
+                style={[
+                  styles.navText,
+                  activePage === "Blog Artigo" && styles.activeNavText,
+                ]}
+              >
+                Blog Artigo
+              </Link>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Link
+                href="/contato"
+                style={[
+                  styles.navText,
+                  activePage === "Contato" && styles.activeNavText,
+                ]}
+              >
+                Contato
+              </Link>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Link
+                href="/conta"
+                style={[
+                  styles.navText,
+                  activePage === "Minha Conta" && styles.activeNavText,
+                ]}
+              >
+                Minha Conta
+              </Link>
+            </TouchableOpacity>
+
           </View>
         ) : (
           <TouchableOpacity
@@ -147,15 +169,18 @@ const Header = ({ themeColor, activePage }) => {
         visible={menuActive}
         transparent={true}
         animationType="slide"
-        onRequestClose={handleCloseMenu}
+        onRequestClose={handleCloseMenu} // Fecha o menu ao pressionar "voltar" no Android
       >
         <View style={styles.absoluteFull}>
+          {/* Overlay transparente para fechar o menu ao clicar fora */}
           <Pressable
             style={styles.transparentOverlay}
-            onPress={handleCloseMenu}
+            onPress={handleCloseMenu} // Fecha o menu ao clicar no overlay
           />
 
+          {/* Menu lateral */}
           <View style={[styles.sidebar, { backgroundColor: themeColor }]}>
+            {/* Botão de fechar */}
             <TouchableOpacity
               onPress={handleCloseMenu}
               style={styles.closeButton}
@@ -163,93 +188,125 @@ const Header = ({ themeColor, activePage }) => {
               <Text style={styles.closeButtonText}>X</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              style={styles.menuItem}
-              onPress={() => navigateTo("Home")}
-            >
-              <Text style={styles.sidebarText}>
+            {/* Links do menu */}
+            <TouchableOpacity>
+              <Link
+                href="/"
+                style={[
+                  styles.navText,
+                  activePage === "Home" && styles.activeNavText,
+                ]}
+              >
                 Home
-              </Text>
+              </Link>
             </TouchableOpacity>
 
-            {/* Produtos */}
-            <Text style={styles.sidebarHeader}>Produtos</Text>
-            <TouchableOpacity
-              style={styles.menuSubItem}
-              onPress={() => navigateTo("SkincareScreen")}
-            >
-              <Text style={styles.sidebarSubItem}>
-                Skincare
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.menuSubItem}
-              onPress={() => navigateTo("MakeScreen")}
-            >
-              <Text style={styles.sidebarSubItem}>
-                Maquiagem
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.menuSubItem}
-              onPress={() => navigateTo("CorpoScreen")}
-            >
-              <Text style={styles.sidebarSubItem}>
-                Corpo
-              </Text>
+            <TouchableOpacity>
+              <Link
+                href="/produto"
+                style={[
+                  styles.navText,
+                  activePage === "Produtos" && styles.activeNavText,
+                ]}
+              >
+                Produtos
+              </Link>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              style={styles.menuItem}
-              onPress={() => navigateTo("BlogScreen")}
-            >
-              <Text style={styles.sidebarText}>
+            <TouchableOpacity>
+              <Link
+                href="/blog"
+                style={[
+                  styles.navText,
+                  activePage === "Blog" && styles.activeNavText,
+                ]}
+              >
                 Blog
-              </Text>
+              </Link>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              style={styles.menuItem}
-              onPress={() => navigateTo("SobreScreen")}
-            >
-              <Text style={styles.sidebarText}>
-                Sobre Nós
-              </Text>
+            <TouchableOpacity>
+              <Link
+                href="/skincare"
+                style={[
+                  styles.navText,
+                  activePage === "Skincare" && styles.activeNavText,
+                ]}
+              >
+                Skincare
+              </Link>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              style={styles.menuItem}
-              onPress={() => navigateTo("Conta")}
-            >
-              <Text style={styles.sidebarText}>
+            <TouchableOpacity>
+              <Link
+                href="/corpo"
+                style={[
+                  styles.navText,
+                  activePage === "Corpo" && styles.activeNavText,
+                ]}
+              >
+                Corpo
+              </Link>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Link
+                href="/make"
+                style={[
+                  styles.navText,
+                  activePage === "Maquiagem" && styles.activeNavText,
+                ]}
+              >
+                Maquiagem
+              </Link>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Link
+                href="/blog-video"
+                style={[
+                  styles.navText,
+                  activePage === "Blog Video" && styles.activeNavText,
+                ]}
+              >
+                Blog Video
+              </Link>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Link
+                href="/blog-artigo"
+                style={[
+                  styles.navText,
+                  activePage === "Blog Artigo" && styles.activeNavText,
+                ]}
+              >
+                Blog Artigo
+              </Link>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Link
+                href="/contato"
+                style={[
+                  styles.navText,
+                  activePage === "Contato" && styles.activeNavText,
+                ]}
+              >
+                Contato
+              </Link>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Link
+                href="/conta"
+                style={[
+                  styles.navText,
+                  activePage === "Minha Conta" && styles.activeNavText,
+                ]}
+              >
                 Minha Conta
-              </Text>
+              </Link>
             </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.menuSubItem}
-              onPress={() => navigateTo("FavsScreen")}
-            >
-              <Text style={styles.sidebarSubItem}>
-                Favoritos
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.menuSubItem}
-              onPress={() => navigateTo("ComentScreen")}
-            >
-              <Text style={styles.sidebarSubItem}>
-                Comentários
-              </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.menuItem}
-              onPress={() => navigateTo("LoginScreen")}
-            >
-              <Text style={styles.sidebarText}>
-                Login/Cadastro
-              </Text>
-            </TouchableOpacity>
+            
           </View>
         </View>
       </Modal>
@@ -274,13 +331,12 @@ const styles = StyleSheet.create({
   logo: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#FFFFFF",
+    color: "#ffffff",
     fontFamily: "Caveat",
   },
   nav: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
     flexWrap: "wrap",
     width: "100%",
     marginTop: 10,
@@ -288,52 +344,23 @@ const styles = StyleSheet.create({
   navText: {
     fontSize: 14,
     fontWeight: "400",
-    color: "#FFFFFF",
-    marginLeft: 20,
+    color: "#ffffff",
+    marginLeft: 10,
     marginBottom: 10,
-    paddingVertical: 5,
   },
   activeNavText: {
-    color: "#FFFFFF",
+    color: "#ffffff",
     fontWeight: "bold",
     borderBottomWidth: 2,
-    borderBottomColor: "#FFFFFF",
+    borderBottomColor: "#ffffff",
     paddingBottom: 2,
-  },
-  dropdownContainer: {
-    position: "relative",
-  },
-  dropdown: {
-    position: "absolute",
-    top: 30,
-    left: 10,
-    backgroundColor: "#FFFFFF",
-    borderRadius: 5,
-    padding: 5,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    zIndex: 1000,
-    width: 140,
-  },
-  dropdownButton: {
-    paddingVertical: 6,
-    paddingHorizontal: 10,
-    borderRadius: 4,
-  },
-  dropdownItem: {
-    color: "#333333",
-    fontSize: 14,
-    paddingVertical: 2,
   },
   hamburgerButton: {
     padding: 10,
   },
   hamburger: {
     fontSize: 30,
-    color: "#FFFFFF",
+    color: "#ffffff",
   },
   absoluteFull: {
     flex: 1,
@@ -347,7 +374,7 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "70%",
     maxWidth: 300,
-    backgroundColor: "#F05080",
+    backgroundColor: "#ffffff",
     padding: 20,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
@@ -363,41 +390,8 @@ const styles = StyleSheet.create({
   closeButtonText: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#FFFFFF",
+    color: "#333",
   },
-  menuItem: {
-    paddingVertical: 10,
-    paddingHorizontal: 5,
-    borderRadius: 5,
-    marginVertical: 2,
-  },
-  menuSubItem: {
-    paddingVertical: 8,
-    paddingHorizontal: 5,
-    paddingLeft: 20,
-    borderRadius: 5,
-    marginVertical: 1,
-  },
-  sidebarText: {
-    fontSize: 16,
-    fontWeight: "500",
-    color: "#FFFFFF",
-  },
-  sidebarHeader: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#FFFFFF",
-    marginTop: 16,
-    marginBottom: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: "rgba(255,255,255,0.3)",
-    paddingBottom: 4,
-  },
-  sidebarSubItem: {
-    fontSize: 14,
-    color: "#FFFFFF",
-    paddingLeft: 6,
-  }
 });
 
 export default Header;
