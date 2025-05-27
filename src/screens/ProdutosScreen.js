@@ -360,7 +360,7 @@ const ProdutosScreen = () => {
           style={styles.filterButton}
           onPress={() => setShowFilterModal(true)}
         >
-          <Text style={styles.filterButtonText}>Ordenar</Text>
+          <AntDesign name="filter" size={16} color="black" />
         </TouchableOpacity>
       </ScrollView>
 
@@ -428,7 +428,8 @@ const styles = StyleSheet.create({
   },
   categoryContainer: {
     paddingVertical: 12,
-    paddingLeft: 16,
+    paddingLeft: 10,
+    paddingBottom: 30,
     backgroundColor: '#FFF',
     borderBottomWidth: 1,
     borderBottomColor: '#F0F0F0',
@@ -437,7 +438,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 15,
     borderRadius: 30,
-    marginRight: 10,
+    marginRight: 8,
     backgroundColor: '#E0E0E0',
   },
   selectedCategoryButton: {
@@ -446,6 +447,7 @@ const styles = StyleSheet.create({
   categoryText: {
     color: '#555',
     fontSize: 14,
+    top: -10,
   },
   selectedCategoryText: {
     color: '#FFF',
@@ -453,7 +455,8 @@ const styles = StyleSheet.create({
   },
   filterButton: {
     alignSelf: 'center',
-    marginLeft: 10,
+    marginLeft: 0,
+    marginTop: 5,
     backgroundColor: '#F05080',
     paddingVertical: 6,
     paddingHorizontal: 16,
@@ -536,7 +539,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center', 
   },
   modalContainer: {
     width: '80%',
