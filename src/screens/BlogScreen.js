@@ -99,9 +99,7 @@ const renderCards = (cards) => (
         <Image source={{ uri: tip.image }} style={styles.cardImage} />
         <Text style={styles.cardTitle}>{tip.title}</Text>
         <Text style={styles.cardDescription}>{tip.description}</Text>
-        <TouchableOpacity style={styles.cardButton}>
-          <Text style={styles.cardButtonText}>Ver mais</Text>
-        </TouchableOpacity>
+        
       </View>
     ))}
   </View>
