@@ -38,10 +38,9 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   image: {
-    width: 290,
+    width: "100%",
     height: 190,
     borderRadius: 8,
-    marginRight: 18,
     backgroundColor: "#eee",
   },
   content: {

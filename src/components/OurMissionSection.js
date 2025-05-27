@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingVertical: 48,
+    paddingVertical: 40,
     paddingHorizontal: 20, 
   },
   topo: {
@@ -90,15 +90,15 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   botao: {
-    paddingVertical: 10,
-    paddingHorizontal: 28,
-    borderRadius: 6,
     alignSelf: "flex-start",
+    paddingVertical: 8,
+    paddingHorizontal: 22,
+    borderRadius: 6,
   },
   textoBotao: {
     color: "#fff",
-    fontSize: 16,
     fontWeight: "bold",
+    fontSize: 15,
   },
   beneficiosContainer: {
     flexDirection: "row",

@@ -56,13 +56,13 @@ const MakeScreen = () => {
         buttonColor="#F05080" 
       />
 
-      <OurMissionSection
-        corPrincipal="#F05080"
-      />
-
       <SkinTypeGrid
         corPrincipal="#F05080"
         infoCards={infoCards}
+      />
+
+      <OurMissionSection
+        corPrincipal="#F05080"
       />
 
     </ScrollView>

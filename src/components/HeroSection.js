@@ -29,13 +29,11 @@ const HeroSection = ({ linkImage, title, text, corPrincipal }) => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "#fff", // Fundo branco
-        borderRadius: 10,
         alignSelf: "center",
-        width: "90%",
-        maxWidth: 400,
+        width: "100%",
+        maxWidth: 500,
         marginVertical: 30,
         overflow: "hidden",
-        elevation: 4,
     },
     containerFundo: {
         position: "absolute",
@@ -45,7 +43,7 @@ const styles = StyleSheet.create({
         bottom: 0,
         justifyContent: "center",
         alignItems: "center",
-        opacity: 0.4, // Mais suave
+        opacity: 0.3, // Mais suave
         zIndex: 0,
     },
     image: {
