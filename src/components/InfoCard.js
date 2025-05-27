@@ -33,9 +33,9 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: "column",
     borderRadius: 12,
-    padding: 18,
     alignItems: "center",
-    margin: 10,
+    marginHorizontal: 20,
+    gap: 16,
   },
   image: {
     width: 290,

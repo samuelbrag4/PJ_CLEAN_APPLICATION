@@ -1,8 +1,8 @@
-import React from "react";
 import { ScrollView, View, Text, StyleSheet } from "react-native";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import InfoCard from "../components/InfoCard";
+import OurMissionSection from "../components/OurMissionSection";
 
 const MakeScreen = () => {
   return (
@@ -25,6 +25,10 @@ const MakeScreen = () => {
         description="Cuide da sua pele com dicas, produtos e orientações para uma rotina de skincare personalizada. Pequenos gestos podem deixar sua pele saudável, radiante e pronta para brilhar, pois cuidar da pele é cuidar de si mesma."
         buttonText="Ler mais"
         buttonColor="#F05080" 
+      />
+
+      <OurMissionSection
+        corPrincipal="#F05080"
       />
 
     </ScrollView>

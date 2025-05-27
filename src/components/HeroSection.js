@@ -28,9 +28,14 @@ const HeroSection = ({ linkImage, title, text, corPrincipal }) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        backgroundColor: "#fff", // Fundo branco
+        borderRadius: 10,
+        alignSelf: "center",
+        width: "90%",
+        maxWidth: 400,
+        marginVertical: 30,
+        overflow: "hidden",
+        elevation: 4,
     },
     containerFundo: {
         position: "absolute",
@@ -40,12 +45,14 @@ const styles = StyleSheet.create({
         bottom: 0,
         justifyContent: "center",
         alignItems: "center",
-        opacity: 0.4, // Opacidade da imagem de fundo
+        opacity: 0.4, // Mais suave
+        zIndex: 0,
     },
     image: {
         width: "100%",
-        height: "100%",
+        height: 280,
         resizeMode: "contain",
+        backgroundColor: "transparent",
     },
     containerTexto: {
         padding: 20,
