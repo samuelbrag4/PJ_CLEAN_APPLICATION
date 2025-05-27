@@ -12,59 +12,59 @@ const CorpoScreen = () => {
 
   const infoCards = [
     {
-      titulo: "Durabilidade",
+      titulo: "Hidratação",
       descricao:
-        "A durabilidade da maquiagem depende de fatores como a qualidade dos produtos e a preparação da pele. Produtos de longa duração ajudam a manter o visual intacto por mais tempo.",
-      imagem: "https://topview.com.br/wp-content/uploads/2024/01/retrato-de-mulher-jovem-e-bonita-com-um-produto-de-maquiagem.jpg", // Coloque o link da imagem aqui
+      "Manter a pele hidratada é essencial para evitar o ressecamento e a descamação. Cremes com ativos como ureia e ácido hialurônico ajudam a reter a umidade e proteger a pele.",
+      imagem: "https://www.gioesteticaavancada.com.br/wp-content/uploads/2020/08/post_thumbnail-d9966bb36fc0dfe546bb23cfb5a2c9f9.jpeg", // Coloque o link da imagem aqui
     },
     {
-      titulo: "Pigmentação",
+      titulo: "Nutrição",
       descricao:
-        "A pigmentação é essencial para cores vibrantes e intensas. Produtos bem pigmentados garantem um acabamento mais profissional e marcante.",
-      imagem: "https://www.fashionbubbles.com/wp-content/uploads/2024/11/make-azul-bebe-tendencia-2.jpg", // Coloque o link da imagem aqui
+        "A nutrição da pele ajuda a manter sua elasticidade e maciez. Produtos com vitaminas, óleos vegetais e manteigas naturais nutrem profundamente e restauram a barreira cutânea.",
+      imagem: "https://nutrimaiaralima.com.br/wp-content/uploads/2020/09/nutricao-no-combate-as-doencas.jpeg", // Coloque o link da imagem aqui
     },
     {
-      titulo: "Textura",
+      titulo: "Rotina",
       descricao:
-        "A textura dos produtos influencia diretamente na aplicação e no acabamento. Texturas leves e uniformes proporcionam um visual mais natural e confortável.",
-      imagem: "https://24698e6a.delivery.rocketcdn.me/wp-content/uploads/2022/03/makes-de-euphoria-ideias-de-maquiagens-inspiradas-na-serie-de-sucesso-63.jpg", // Coloque o link da imagem aqui
+        "A consistência nos cuidados é chave para resultados duradouros. Estabelecer uma rotina com limpeza, esfoliação e hidratação melhora a saúde da pele ao longo do tempo.",
+      imagem: "https://s2-marieclaire.glbimg.com/zBfNLrL4IMOYPkriNZnYiF85bHU=/0x0:1920x1280/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_51f0194726ca4cae994c33379977582d/internal_photos/bs/2023/l/m/wOdWrASUOrkBLxQcBOPA/ativos-bodycare.jpg", // Coloque o link da imagem aqui
     },
     {
-      titulo: "Segurança",
+      titulo: "Proteção",
       descricao:
-        "A segurança dos produtos é fundamental. Escolha maquiagens dermatologicamente testadas e livres de substâncias nocivas para evitar irritações e alergias.",
-      imagem: "https://nomoremag.com/wp-content/uploads/2023/04/young-female-model-portrait-10x8-1.jpg", // Coloque o link da imagem aqui
+        "A exposição ao sol sem proteção pode causar manchas e envelhecimento precoce. Use protetor solar diariamente, mesmo em dias nublados, para manter sua pele protegida.",
+      imagem: "https://www.maria.pt/wp-content/uploads/2019/06/1-59.jpg", // Coloque o link da imagem aqui
     },
   ];
 
   const tools = [
     {
-      titulo: "Esponja de Maquiagem",
+      titulo: "Escova Corporal a Seco",
       descricao:
-        "Ideal para aplicar base e corretivo com acabamento natural e sem marcas. Pode ser usada seca ou úmida.",
+        "Estimula a circulação sanguínea, promove esfoliação suave e melhora a textura da pele antes do banho.",
       imagem:
-        "https://cdn-cosmos.bluesoft.com.br/products/731509637076/2018-07-27-15-24-37-0300",
+        "https://soulbm.com.br/wp-content/uploads/2024/11/soulbm-produto-escova-seca-0-e1735928901607.png",
     },
     {
-      titulo: "Pincel Kabuki",
+      titulo: "Massageador Corporal de Madeira",
       descricao:
-        "Perfeito para aplicar base líquida ou em pó de maneira uniforme e com alta cobertura.",
+        "Auxilia na redução da tensão muscular, ativa a circulação e pode ajudar no combate à celulite.",
       imagem:
-        "https://images.tcdn.com.br/img/img_prod/615021/pincel_kabuki_maquiagem_rosa_popular_cerda_macia_kit_10un_8295_1_d15c5d9a7a907391b476c2be3c2acbb4.jpg",
+        "https://mlrvosfzmdah.i.optimole.com/w:338/h:338/q:mauto/rt:fill/g:ce/f:avif/id:0bc607dcc5fb2ef9143cb1aad3bc7ee2/https://hakunamatatabrindes.com.br/Carrinho-de-Madeira-para-Massagem.jpg",
     },
     {
-      titulo: "Curvador de Cílios",
+      titulo: "Luvas Esfoliantes",
       descricao:
-        "Realça o olhar curvando os cílios antes da aplicação da máscara, para um efeito mais expressivo.",
+        "Removem células mortas, desobstruem os poros e deixam a pele mais macia e pronta para hidratação.",
       imagem:
-        "https://acdn-us.mitiendanube.com/stores/001/999/459/products/curvex-0b3aa53aa970ea36cd17066257581618-1024-1024.png",
+        "https://img.joomcdn.net/e6321fb0fa4e66b13f44c7ca77b8397cec18088d_original.jpeg",
     },
     {
-      titulo: "Organizador de Maquiagem",
+      titulo: "Massageador de Silicone",
       descricao:
-        "Facilita o armazenamento e acesso rápido aos seus produtos favoritos, mantendo tudo em ordem.",
+        "Ideal para aplicar cremes com movimentos circulares, melhora a absorção dos ativos e promove relaxamento.",
       imagem:
-        "https://acrilicostore.fbitsstatic.net/img/p/organizador-de-maquiagem-4-gavetas-com-bandeja-para-batom-70136/256618-5.jpg?w=1000&h=1000&v=no-change&qs=ignore",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_990510-MLA83238645725_032025-F.webp",
     },
   ];
 
@@ -106,23 +106,23 @@ const CorpoScreen = () => {
       />
 
       <InfoCard
-        image="https://cdn.dooca.store/140109/files/img-9426.jpeg?v=1693943921"
-        title="Descubra o poder transformador da maquiagem em sua rotina diária."
-        description="A maquiagem é uma forma de arte e expressão. Aqui, você encontra dicas, produtos e conselhos para criar looks incríveis, desde o básico até os mais elaborados. Aprenda como realçar sua beleza natural, experimentar novas tendências e transformar sua rotina de maquiagem em um momento de criatividade e autoconfiança. Porque maquiar-se é celebrar quem você é."
+        image="https://simoesfilhoonline.com.br/wp-content/uploads/2020/06/Veja-como-fazer-esfolia%C3%A7%C3%A3o-corporal-e-os-melhores-esfoliantes-caseiros.jpg"
+        title="Mulher aplicando creme no corpo Transforme o cuidado com o corpo em um momento de bem-estar e autoestima."
+        description="Cada parte do seu corpo merece atenção especial. Nesta página, você encontrará orientações, produtos e dicas para hidratação, esfoliação, massagens e muito mais. Crie uma rotina corporal que respeite as necessidades da sua pele, alivie o estresse do dia a dia e eleve sua autoestima. Porque cuidar do corpo é investir em saúde e amor-próprio."
         buttonText="Ler mais"
-        buttonColor="#F05080"
+        buttonColor="#DBBD9C"
       />
 
       <SkinTypeGrid
-        corPrincipal="#F05080"
+        corPrincipal="#DBBD9C"
         infoCards={infoCards}
-        categoria={"MAKEUP"}
-        title="O que influencia na qualidade da sua maquiagem?"
+        categoria={"CORPO"}
+        title="O que influencia na saúde e beleza da sua pele corporal?"
       />
 
       <OurMissionSection
-        corPrincipal="#F05080"
-        gradientColors={["#f89fba", "#FFf"]}
+        corPrincipal="#DBBD9C"
+        gradientColors={["#d2ad84", "#FFf"]}
         subtitle="Skincare Diário"
         title="Rotina Completa para Cuidados com a Pele"
         descricao="Uma rotina de skincare adequada é essencial para manter a saúde da sua pele. Conheça os passos fundamentais para uma pele radiante e saudável em qualquer idade."
@@ -131,8 +131,8 @@ const CorpoScreen = () => {
 
       <AcessoriesSection
         tools={tools}
-        corPrincipal="#F05080"
-        gradientColors={["#fff", "#f89fba"]}
+        corPrincipal="#DBBD9C"
+        gradientColors={["#fff", "#d2ad84"]}
       />
 
     </ScrollView>

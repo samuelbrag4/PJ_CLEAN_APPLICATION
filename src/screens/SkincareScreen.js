@@ -11,59 +11,59 @@ const SkincareScreen = () => {
 
   const infoCards = [
     {
-      titulo: "Hidratação",
+      titulo: "Oleosa",
       descricao:
-        "Manter a pele hidratada é essencial para evitar o ressecamento e a descamação. Cremes com ativos como ureia e ácido hialurônico ajudam a reter a umidade e proteger a pele.",
-      imagem: "https://topview.com.br/wp-content/uploads/2024/01/retrato-de-mulher-jovem-e-bonita-com-um-produto-de-maquiagem.jpg", // Coloque o link da imagem aqui
+      "Uma pele oleosa produz excesso de sebo, o que causa aparência brilhante e tendência a acne, especialmente no nariz T (testa, nariz e queixo).",
+      imagem: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQDgvlvTyk_JzmTiMvzmATKp1XNFPycj-LKsGsa07OlrUVxAhgq", // Coloque o link da imagem aqui
     },
     {
-      titulo: "Nutrição",
+      titulo: "Seca",
       descricao:
-"A nutrição da pele ajuda a manter sua elasticidade e maciez. Produtos com vitaminas, óleos vegetais e manteigas naturais nutrem profundamente e restauram a barreira cutânea.",
-      imagem: "https://www.fashionbubbles.com/wp-content/uploads/2024/11/make-azul-bebe-tendencia-2.jpg", // Coloque o link da imagem aqui
+      "Contém áreas ásperas e tensas, com linhas evidentes ou poros minúsculos, possui pele escamativa, que requer hidratação específica para cada região.",
+      imagem: "https://escolabelezapura.com.br/wp-content/uploads/2024/06/1.jpg", // Coloque o link da imagem aqui
     },
     {
-      titulo: "Textura",
+      titulo: "Mista",
       descricao:
-        "A textura dos produtos influencia diretamente na aplicação e no acabamento. Texturas leves e uniformes proporcionam um visual mais natural e confortável.",
-      imagem: "https://24698e6a.delivery.rocketcdn.me/wp-content/uploads/2022/03/makes-de-euphoria-ideias-de-maquiagens-inspiradas-na-serie-de-sucesso-63.jpg", // Coloque o link da imagem aqui
+        "Apresenta a espinhas, cravos e oleosidade em algumas áreas, combinada à ressecamento, vermelhidão e poros dilatados.",
+      imagem: "https://static.stealthelook.com.br/wp-content/uploads/2024/06/bevurecosmetics-skincare.jpg", // Coloque o link da imagem aqui
     },
     {
-      titulo: "Segurança",
+      titulo: "Normal",
       descricao:
-        "A segurança dos produtos é fundamental. Escolha maquiagens dermatologicamente testadas e livres de substâncias nocivas para evitar irritações e alergias.",
-      imagem: "https://nomoremag.com/wp-content/uploads/2023/04/young-female-model-portrait-10x8-1.jpg", // Coloque o link da imagem aqui
+        "Possui os seus poros pequenos, com textura aveludada, sensação de relaxamento e tendência a estabilidade.",
+      imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvDrXqq2I1Ii8r1EEFvBCSg7nl-6VQm3a9lZ_9Oh4kojkS0eEe", // Coloque o link da imagem aqui
     },
   ];
 
   const tools = [
     {
-      titulo: "Esponja de Maquiagem",
+      titulo: "Gua Sha de Quartzo Rosa",
       descricao:
-        "Ideal para aplicar base e corretivo com acabamento natural e sem marcas. Pode ser usada seca ou úmida.",
+        "Ferramenta de massagem facial que estimula a circulação sanguínea, reduz inchaços e promove relaxamento do rosto.",
       imagem:
-        "https://cdn-cosmos.bluesoft.com.br/products/731509637076/2018-07-27-15-24-37-0300",
+        "https://glov.eu/cdn/shop/products/QuartzGuaSha_ef4b3c01-9fe4-4761-b21d-1097fe2307c6.png?v=1649078742",
     },
     {
-      titulo: "Pincel Kabuki",
+      titulo: "Rolo de Jade",
       descricao:
-        "Perfeito para aplicar base líquida ou em pó de maneira uniforme e com alta cobertura.",
+        "Massageador que ajuda na absorção de produtos, reduz olheiras e linhas finas, além de aliviar a tensão facial.",
       imagem:
-        "https://images.tcdn.com.br/img/img_prod/615021/pincel_kabuki_maquiagem_rosa_popular_cerda_macia_kit_10un_8295_1_d15c5d9a7a907391b476c2be3c2acbb4.jpg",
+        "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_1800,c_limit/e_trim/v1/imagens/products/89926/89926.png",
     },
     {
-      titulo: "Curvador de Cílios",
+      titulo: "Derma Roller",
       descricao:
-        "Realça o olhar curvando os cílios antes da aplicação da máscara, para um efeito mais expressivo.",
+        "Estimula a produção de colágeno, melhora a textura da pele e potencializa a penetração de ativos do skincare.",
       imagem:
-        "https://acdn-us.mitiendanube.com/stores/001/999/459/products/curvex-0b3aa53aa970ea36cd17066257581618-1024-1024.png",
+        "https://www.swisscollc.com/cdn/shop/products/48009.png?v=1594308069",
     },
     {
-      titulo: "Organizador de Maquiagem",
+      titulo: "Esponja Konjac",
       descricao:
-        "Facilita o armazenamento e acesso rápido aos seus produtos favoritos, mantendo tudo em ordem.",
+        "Esfoliante natural que limpa suavemente, remove células mortas e equilibra o pH da pele, ideal para uso diário.",
       imagem:
-        "https://acrilicostore.fbitsstatic.net/img/p/organizador-de-maquiagem-4-gavetas-com-bandeja-para-batom-70136/256618-5.jpg?w=1000&h=1000&v=no-change&qs=ignore",
+        "https://ikesaki.vtexassets.com/arquivos/ids/269140-800-auto?v=637655991804530000&width=800&height=auto&aspect=true",
     },
   ];
 
@@ -103,23 +103,23 @@ const SkincareScreen = () => {
       />
 
       <InfoCard
-        image="https://cdn.dooca.store/140109/files/img-9426.jpeg?v=1693943921"
-        title="Descubra o poder transformador da maquiagem em sua rotina diária."
-        description="A maquiagem é uma forma de arte e expressão. Aqui, você encontra dicas, produtos e conselhos para criar looks incríveis, desde o básico até os mais elaborados. Aprenda como realçar sua beleza natural, experimentar novas tendências e transformar sua rotina de maquiagem em um momento de criatividade e autoconfiança. Porque maquiar-se é celebrar quem você é."
+        image="https://teiacosmeticos.com/cdn/shop/articles/skincare-para-estos-dias-en-casa-395165.jpg?v=1695166167"
+        title="Transforme sua rotina de skincare em um ritual de autocuidado e bem-estar."
+        description="Sua pele é única e merece cuidados personalizados. Aqui, você encontra dicas, produtos e conselhos para criar um ritual de skincare personalizado que vai desde a limpeza diária até os tratamentos mais específicos. Saiba como produtos certos podem tratar suas preocupações específicas e transformar sua rotina em um momento para si em qualquer momento. Porque cuidar da pele é cuidar de você."
         buttonText="Ler mais"
-        buttonColor="#F05080"
+        buttonColor="#5FCED4"
       />
 
       <SkinTypeGrid
-        corPrincipal="#F05080"
+        corPrincipal="#5FCED4"
         infoCards={infoCards}
-        categoria={"MAKEUP"}
-        title="O que influencia na qualidade da sua maquiagem?"
+        categoria={"Skincare"}
+        title="Tipos de pele"
       />
 
       <OurMissionSection
-        corPrincipal="#F05080"
-        gradientColors={["#f89fba", "#FFf"]}
+        corPrincipal="#5FCED4"
+        gradientColors={["#5FCED4", "#FFf"]}
         subtitle="Skincare Diário"
         title="Rotina Completa para Cuidados com a Pele"
         descricao="Uma rotina de skincare adequada é essencial para manter a saúde da sua pele. Conheça os passos fundamentais para uma pele radiante e saudável em qualquer idade."
@@ -128,8 +128,8 @@ const SkincareScreen = () => {
 
       <AcessoriesSection
         tools={tools}
-        corPrincipal="#F05080"
-        gradientColors={["#fff", "#f89fba"]}
+        corPrincipal="#5FCED4"
+        gradientColors={["#fff", "#5FCED4"]}
       />
 
       
