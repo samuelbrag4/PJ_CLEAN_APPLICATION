@@ -75,7 +75,7 @@ const ProdutosScreen = () => {
       brand: 'Natura',
       price: 89.90,
       rating: 4.8,
-      image: 'https://production.na01.natura.com/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dwefd00299/NATBRA-91821_2.jpg',
+      image: 'https://production.na01.natura.com/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dwf9d7212d/NATBRA-91821_1.jpg',
       category: 'skincare'
     },
     {
@@ -94,6 +94,197 @@ const ProdutosScreen = () => {
       price: 89.90,
       rating: 4.8,
       image: 'https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_210,h_210/v1/imagens/products/B50756/50756_MAKE-B_MASCARA-DE-CILIOS_CILIOS-POSTICOS_FRONTAL_1.jpg',
+      category: 'makeup'
+    },
+
+      {
+     id: '10',
+      name: 'Duo Ácido Glicólico e Ácido Mandélico',
+      brand: 'Creamy',
+      price: 130.70,
+      rating: 4.8,
+      image: 'https://creamy.vtexassets.com/assets/vtex.file-manager-graphql/images/a43e9d47-6d09-441a-bd8b-a05c78b9719e___da95454f85f04b9468a2ce635aa33299.png',
+      category: 'skincare'
+    },
+
+      {
+     id: '10',
+      name: 'Solução Niacinamida',
+      brand: 'Simple Organic',
+      price: 120.00,
+      rating: 4.8,
+      image: 'https://simpleorganic.com.br/cdn/shop/files/kit-tom-uniforme-3_1200x.jpg?v=1748271418',
+      category: 'skincare'
+    },
+
+    
+      {
+     id: '10',
+      name: 'Hidratante Facial Hydro Boost Water Gel',
+      brand: 'Neutrogena',
+      price: 55.36,
+      rating: 4.8,
+      image: 'https://m.media-amazon.com/images/I/71C8G5pWenL._AC_SX679_.jpg',
+      category: 'skincare'
+    },
+
+    
+      {
+     id: '10',
+      name: 'Sérum Facial, Vitamina C ',
+      brand: 'Creamy',
+      price: 89.90,
+      rating: 4.8,
+      image: 'https://m.media-amazon.com/images/I/414Lb3vT8eL._AC_SX679_.jpg',
+      category: 'skincare'
+    },
+
+    
+      {
+     id: '10',
+      name: 'Balm CB2',
+      brand: 'Simple Organic',
+      price: 89.00,
+      rating: 4.8,
+      image: 'https://simpleorganic.com.br/cdn/shop/files/balm-cb2_1200x.jpg?v=1743606034',
+      category: 'skincare'
+    },
+
+    
+      {
+     id: '10',
+      name: 'Ácido Salicílico Natural Sérum Secativo',
+      brand: 'Simple Organic',
+      price: 39.00,
+      rating: 4.8,
+      image: 'https://simpleorganic.com.br/cdn/shop/files/acido-salicilico-natural-serum-secativo_1200x.jpg?v=1743606287',
+      category: 'skincare'
+    },
+
+    
+      {
+     id: '10',
+      name: 'Sérum Niacinamida',
+      brand: 'Simple Organic',
+      price: 139.00,
+      rating: 4.8,
+      image: 'https://simpleorganic.com.br/cdn/shop/files/niacinamida-hydra-glow-ritual_1200x.jpg?v=1746975571',
+      category: 'skincare'
+    },
+
+    
+      {
+     id: '10',
+      name: 'Loção Hidratante',
+      brand: 'CeraVe',
+      price: 74.90,
+      rating: 4.8,
+      image: 'https://m.media-amazon.com/images/I/61vyW3Dl-7L._AC_SX679_.jpg',
+      category: 'body'
+    },
+
+    
+      {
+     id: '10',
+      name: 'Gel de Banho',
+      brand: 'Noorskin',
+      price: 114.00,
+      rating: 4.8,
+      image: 'https://d1g2ab1f83fbfh.cloudfront.net/media/catalog/product/cache/9c770b6c7ab808456c12a4ba6fe2fd56/b/o/body_immersion_primaria_1007x888px.jpg',
+      category: 'body'
+    },
+
+    
+      {
+     id: '10',
+      name: 'Iluminador para Corpo',
+      brand: 'Bestbronze',
+      price: 162.00,
+      rating: 4.8,
+      image: 'https://bestbronze.com.br/cdn/shop/products/luminate_650x.jpg?v=1693917979',
+      category: 'body'
+    },
+
+    
+      {
+     id: '10',
+      name: 'Gel hidratante para ocorpo',
+      brand: 'Principia',
+      price: 54.00,
+      rating: 4.8,
+      image: 'https://cdn.principiaskin.com/media/catalog/product/cache/a11fc81ad62814be31cd922a993aa5ec/p/r/principia-skincare-gel-hidratante-gh-01-acidos-hialuronicos-glicerina-1.jpg',
+      category: 'body'
+    },
+
+    
+      {
+     id: '10',
+      name: 'Manteiga Corporal Bacuri ',
+      brand: 'Loccitane',
+      price: 109.90,
+      rating: 4.8,
+      image: 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTEs_l1v6-ZSQerCSesnUZn04jHfEsWrOjjmeCRZody1xwayI5LPAkIomvKwi5iA4X0YcQlXGEo43QpuHm4XS0DdoQrjJ5tRBIiuF0eFQbbf5DIJoTm_R_E-GiI',
+      category: 'body'
+    },
+
+    
+      {
+     id: '10',
+      name: 'Body Cream Infinity Desodorante Hidratante',
+      brand: 'Wepink',
+      price: 37.90,
+      rating: 4.8,
+      image: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRcI00DLzWinIW50E8StFy7YnhhEpSLBXy39emzq7KT20BPwyKq_PNjenTQ2kQ4aS_YX0jQcxSCE5GNi73yjweN9oWJpN-QVHfjt19wjGj09BLjFj62yl6dMg',
+      category: 'body'
+    },
+
+     {
+     id: '10',
+      name: 'Óleo Corporal Red ',
+      brand: 'Wepink',
+      price: 75.90,
+      rating: 4.8,
+      image: 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRPrb2_nyXtuftGgH5kO6T8F_0vCBlAfwXBb6xEnzqIWCJacVYmA2H6PI5ET3sw9s3F3MmU4IOprtBZOfC0B9De4ky63VvaZSy0bJWwEnF_EaJ0MeeU1kn6rg',
+      category: 'body'
+    },
+
+     {
+     id: '10',
+      name: 'Base Líquida Soft Matte Studio Fix',
+      brand: 'MAC',
+      price: 75.90,
+      rating: 3.5,
+      image: 'https://sdcdn.io/mac/br/mac_sku_SRN001_1x1_0.png?width=1080&height=1080',
+      category: 'makeup'
+    },
+
+     {
+     id: '10',
+      name: 'Máscara de Cílios The Colossal Volum',
+      brand: 'Maybelline',
+      price: 34.92,
+      rating: 4.8,
+      image: 'https://m.media-amazon.com/images/I/51rTd-hhlGL._AC_SX679_.jpg',
+      category: 'makeup'
+    },
+
+    {
+     id: '10',
+      name: 'Gloss Labial LipHoney ',
+      brand: 'Franciny Ehlke',
+      price: 58.90,
+      rating: 4.8,
+      image: 'https://epocacosmeticos.vteximg.com.br/arquivos/ids/716490-450-450/7898724572612-01-jpg.jpg?v=638699757942770000',
+      category: 'makeup'
+    },
+
+    {
+     id: '10',
+      name: 'Blush Stick ',
+      brand: 'Eudora',
+      price: 44.90,
+      rating: 4.8,
+      image: 'https://m.media-amazon.com/images/I/51XQKQp4MCL._AC_SX679_.jpg',
       category: 'makeup'
     },
   ]);
@@ -169,7 +360,7 @@ const ProdutosScreen = () => {
           style={styles.filterButton}
           onPress={() => setShowFilterModal(true)}
         >
-          <Text style={styles.filterButtonText}>Ordenar</Text>
+          <AntDesign name="filter" size={16} color="black" />
         </TouchableOpacity>
       </ScrollView>
 
@@ -237,7 +428,8 @@ const styles = StyleSheet.create({
   },
   categoryContainer: {
     paddingVertical: 12,
-    paddingLeft: 16,
+    paddingLeft: 10,
+    paddingBottom: 30,
     backgroundColor: '#FFF',
     borderBottomWidth: 1,
     borderBottomColor: '#F0F0F0',
@@ -246,7 +438,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 15,
     borderRadius: 30,
-    marginRight: 10,
+    marginRight: 8,
     backgroundColor: '#E0E0E0',
   },
   selectedCategoryButton: {
@@ -255,6 +447,7 @@ const styles = StyleSheet.create({
   categoryText: {
     color: '#555',
     fontSize: 14,
+    top: -10,
   },
   selectedCategoryText: {
     color: '#FFF',
@@ -262,7 +455,8 @@ const styles = StyleSheet.create({
   },
   filterButton: {
     alignSelf: 'center',
-    marginLeft: 10,
+    marginLeft: 0,
+    marginTop: 5,
     backgroundColor: '#F05080',
     paddingVertical: 6,
     paddingHorizontal: 16,
@@ -345,7 +539,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center', 
   },
   modalContainer: {
     width: '80%',
