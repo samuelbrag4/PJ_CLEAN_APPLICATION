@@ -1,27 +1,22 @@
+// filepath: c:\Users\Aluno DS\Documents\GitHub\clean_application\app\blog-artigo.js
 import React from "react";
-import { View, ScrollView, StyleSheet } from "react-native";
-import { useRoute } from "@react-navigation/native";
+import { View, ScrollView, StyleSheet, Text } from "react-native";
+import Header from "../components/Header";
 
 const BlogArtigoScreen = () => {
-  const route = useRoute();
-  const { articleId } = route.params;
-
-  // Aqui você pode buscar o artigo completo baseado no ID
-  // Por enquanto, vamos usar o conteúdo estático que você já tem
-
   return (
-    <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        {/* Mantenha todo o conteúdo que você já tinha sobre pele seca */}
-        {/* ... */}
-      </ScrollView>
-    </View>
+    <ScrollView style={styles.container}>
+      <Header themeColor="#00DAC7" activePage="Blog" />
+      <Text>BLOG ARTIGOS</Text>
+    </ScrollView>
   );
 };
 
-// Mantenha os styles que você já tinha
 const styles = StyleSheet.create({
-  // ...
+  container: {
+    flex: 1,
+    backgroundColor: "#FAFAFA",
+  }
 });
 
 export default BlogArtigoScreen;
