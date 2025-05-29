@@ -1,14 +1,14 @@
-import ProdutoPageScreen from "../src/screens/ProdutoPageScreen.js"
+import ProdutoPageScreen from "../screens/ProdutoPageScreen";
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
-export default function ProdutoPage () {
+export default function ProdutoPage() {
   return (
     <View style={styles.container}>
-     <ProdutoPageScreen/>
+      <ProdutoPageScreen />
     </View>
-  )
-};
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -17,5 +17,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#FAFAFA",
   },
-  
 });
