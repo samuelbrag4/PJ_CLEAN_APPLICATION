@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, ScrollView, Image, StyleSheet, TouchableOpacity } from "react-native";
 import Header from "../components/Header";
-import HeroSection from "../components/HeroSection";
+import { Link } from "expo-router";
 
 const BlogScreen = () => {
   const sections = [
@@ -11,8 +11,8 @@ const BlogScreen = () => {
       image1: "https://blog.lojasrenner.com.br/wp-content/uploads/2022/07/01-foto-principal-3.jpg",
       image2: "https://oxioz.com.br/wp-content/uploads/2024/02/rotina-skincare-cuidados-com-a-pele.jpg",
       cards: [
-        { title: "Hidratação com Argila", description: "A argila é um dos ingredientes naturais mais poderosos para a saúde da pele, oferecendo propriedades purificantes.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s"},
-        { title: "Esfoliação", description: "A esfoliação facial tem vários benefícios, como a renovação celular, a redução de cravos e espinhas, e a preparação da pele para tratamentos.", image: "https://cdn.shopify.com/s/files/1/0592/2678/3899/files/FB-0611.jpg?v=1715686614"},
+        { title: "Hidratação com Argila", description: "A argila é um dos ingredientes naturais mais poderosos para a saúde da pele, oferecendo propriedades purificantes.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTYOfm1ttWNqk6747v0_0KlHajbujmY8X9w&s" },
+        { title: "Esfoliação", description: "A esfoliação facial tem vários benefícios, como a renovação celular, a redução de cravos e espinhas, e a preparação da pele para tratamentos.", image: "https://cdn.shopify.com/s/files/1/0592/2678/3899/files/FB-0611.jpg?v=1715686614" },
         { title: "Massagem", description: "ATras vários benefícios, a melhora da circulação, reduz inchaços, tonifica a pele, suaviza linhas de expressão, alivia o stress, melhora o sono, melhora a imunidade, rejuvenesce a pele.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuyZNHBxnuOoDx2ZPN-arpGSVPXD01sBsTEg&s" },
         { title: "Tônico Facial", description: "A tonificação facial tem vários benefícios, como a limpeza profunda, o equilíbrio do pH, a redução da oleosidade e a desobstrução dos poros. ", image: "https://boxmagenta.com.br/blog/content/images/2021/04/tonico-facial-1.jpg" },
         { title: "Alimentação", description: "Uma alimentação equilibrada, rica em vitaminas, minerais e antioxidantes, pode ajudar a manter a pele saudável e bonita.", image: "https://www.assai.com.br/sites/default/files/styles/blog_destaque/public/blog/alimentacao_saudavel.jpg?itok=MN_S3u8-" },
@@ -39,9 +39,9 @@ const BlogScreen = () => {
       image1: "https://blog.adcosprofissional.com.br/wp-content/uploads/2020/10/Creme-de-massagem-corporal-saiba-qual-usar-em-cada-protocolo.jpg",
       image2: "https://qcenterbanheiras.com.br/wp-content/uploads/2019/07/spa-em-sao-paulo.jpg",
       cards: [
-        { title: "Pele Seca?", description: "A pele seca pode causar desconforto, ressecamento e até descamação, principalmente em climas frios ou ambientes.", image: "https://http2.mlstatic.com/D_NQ_NP_859630-MLA72998106925_112023-B.webp"  },
+        { title: "Pele Seca?", description: "A pele seca pode causar desconforto, ressecamento e até descamação, principalmente em climas frios ou ambientes.", image: "https://http2.mlstatic.com/D_NQ_NP_859630-MLA72998106925_112023-B.webp" },
         { title: "Depilação", description: "Uma depilação mal feita ou inadequada pode causar dermatites alérgicas, queimaduras, manchas, sem falar nos possíveis riscos de transmissão de doenças e podendo causar alergia", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs9iWaHca3Qg_5735oNe00wvfBG11dXHHp-A&s" },
-        { title: "Esfoliação", description: "A esfoliação corporal tem vários benefícios, como deixar a pele mais macia, uniformizar o tom, e estimular a produção de colágeno. É importante não exagerar, pois pode causar irritação.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_W61mjIiR2st57I3uShp1b1VLsumyas-gRw&s"},
+        { title: "Esfoliação", description: "A esfoliação corporal tem vários benefícios, como deixar a pele mais macia, uniformizar o tom, e estimular a produção de colágeno. É importante não exagerar, pois pode causar irritação.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_W61mjIiR2st57I3uShp1b1VLsumyas-gRw&s" },
         { title: "Massagem", description: "A massagem corporal tem benefícios como por exemplo: aliviar dores, tensões musculares, melhora a circulação sanguínea, reduz inchaço e a recuperação muscular.", image: "https://img.freepik.com/fotos-gratis/mulher-passando-tempo-no-spa-e-recebendo-uma-massagem-relaxante_23-2149871869.jpg" },
         { title: "Sais de Banho", description: "Os sais de banho podem ser bons para o corpo, pois ajudam a relaxar, desintoxicar a pele, melhorar a circulação e a hidratação da pele.", image: "https://www.espacoprana.com.br/wp-content/uploads/2023/10/blog.jpg" },
         { title: "Sol", description: "Tomar sol pode fazer bem à saúde, mas é importante não exagerar. A exposição ao sol é fundamental para a produção de vitamina D, que é essencial para a saúde dos ossos e músculos.", image: "https://media.istockphoto.com/id/1211311866/pt/foto/stylish-casual-woman-enjoying-sun-at-tropical-beach.jpg?s=612x612&w=0&k=20&c=W52Cl-zvdNoAzPE65KtsXE4-9-bvP8cr6QQBssK6o_Q=" },
@@ -60,15 +60,20 @@ const BlogScreen = () => {
           <Text style={styles.description}>
             Aqui, você encontrará dicas, tendências e informações sobre skincare, maquiagem, produtos de beleza e cuidados com o corpo.
           </Text>
-        
+
           <View style={styles.buttonRow}>
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Dicas</Text>
+              <Link href="/blog-artigo" style={styles.buttonText}>
+                Dicas
+              </Link>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Vídeos</Text>
+              <Link href="/blog-video" style={styles.buttonText}>
+                Vídeos
+              </Link>
             </TouchableOpacity>
           </View>
+
         </View>
 
         {/* Seções Dinâmicas */}
