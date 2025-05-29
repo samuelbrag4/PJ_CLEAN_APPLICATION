@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
-import Header from "../src/components/Header";
-import Footer from "../src/components/Footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function HomeScreen() {
   return (
