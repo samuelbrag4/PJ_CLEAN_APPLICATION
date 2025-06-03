@@ -36,6 +36,34 @@ const MakeScreen = () => {
     
   ];
 
+  const infoCards2 = [
+    {
+      titulo: "Acabamento Matte",
+      descricao:
+        "Ideal para peles oleosas, o acabamento matte ajuda a controlar o brilho ao longo do dia, deixando a maquiagem com aparência mais seca e duradoura.",
+      imagem: "https://s2-marieclaire.glbimg.com/-qoEIaVQO8kosFL9WRjgh1O_IMo=/0x0:1080x608/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_51f0194726ca4cae994c33379977582d/internal_photos/bs/2024/C/A/XBpBUcRp2b4h1gInNU3Q/clipdown.app-448018408-784096320174849-9039574458607882360-n-1-.jpg",
+    },
+    {
+      titulo: "Hidratação e Luminosidade",
+      descricao:
+        "Peles secas se beneficiam de maquiagens hidratantes com efeito glow. Elas evitam o craquelado e conferem um acabamento mais viçoso e natural.",
+      imagem: "https://www.maybelline.com.br/-/media/project/loreal/brand-sites/mny/americas/br/artigos/2024/rosto/categoria-pai/make-glow/extensao-cilios-2.jpg?rev=e762fa8b824145639fd37e9f3922b68c&cx=0.45&cy=0.58&cw=650&ch=650&hash=A139FA9FD5F211C4F3076C588B61D622",
+    },
+    {
+      titulo: "Acabamento Natural",
+      descricao:
+        "Maquiagens com cobertura média e efeito natural são ideais para quem busca equilíbrio. Elas funcionam bem em peles mistas, sem pesar ou ressecar.",
+      imagem: "https://www.maybelline.com.br/-/media/project/loreal/brand-sites/mny/americas/br/artigos/2024/rosto/categoria-pai/tendencia-maquiagem-natural/maquiagem-natural.jpg?rev=01961784b0a34aecb0fc5527ebe32fff&cx=0.45&cy=0.43&cw=650&ch=650&hash=431438EEF2A81887006ECDABE1F66D10",
+    },
+    {
+      titulo: "Versatilidade",
+      descricao:
+        "Quem tem pele equilibrada pode explorar diferentes texturas e efeitos na maquiagem, desde o matte até o glow, adaptando-se ao estilo e ocasião.",
+      imagem: "https://www.adoromaquiagem.com.br/wp-content/uploads/2024/04/horizontal-shot-pleased-woman-closes-eyes-smiles-broadly-holds-cosmetic-brushes-applying-makeup-wears-headband-casual-t-shirt-isolated-beige-background-facial-skin-care-concept-scaled.webp",
+    },
+  ];
+  
+
   const tools = [
     {
       titulo: "Esponja de Maquiagem",
@@ -162,6 +190,12 @@ const MakeScreen = () => {
         gradientColors={["#fff", "#f89fba"]}
       />
 
+<SkinTypeGrid
+        corPrincipal="#F05080"
+        infoCards={infoCards2}
+        categoria={"MAKEUP"}
+        title="O que impacta na qualidade da sua maquiagem?"
+      />
 
 
     </ScrollView>
