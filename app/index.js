@@ -1,252 +1,369 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from "react-native";
+
 import { Link } from "expo-router";
+
 import Header from "../src/components/Header";
+
 import Footer from "../src/components/Footer";
 
 export default function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      {/* Header fixa no topo */}
-      <View style={styles.headerWrapper}>
-        <Header themeColor="#F05080" activePage="Home" />
+
+return (
+
+<View style={styles.container}>
+
+  {/* Header */}
+
+  <View style={styles.headerWrapper}>
+
+    <Header themeColor="#F05080" activePage="Home" />
+
+  </View>
+
+
+
+  <ScrollView contentContainerStyle={styles.scrollContent}>
+
+    {/* Seção inicial */}
+
+    <Text style={styles.mainTitle}>Aqui a sua Beleza Entra</Text>
+
+    <Text style={styles.mainSubtitle}>em Primeiro Lugar</Text>
+
+    <Text style={styles.description}>
+
+      Quer saber como ter uma pele naturalmente bonita?
+
+    </Text>
+
+    <Text style={styles.tips}>
+
+      Descubra 8 dicas de beleza simples para começar hoje mesmo e deixar a pele ainda mais radiante.
+
+    </Text>
+
+
+
+    <View style={styles.actionButtons}>
+
+      <TouchableOpacity style={styles.readMoreButton}>
+
+        <Text style={styles.buttonText}>Ler mais</Text>
+
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.aboutButton}>
+
+        <Text style={styles.aboutButtonText}>Sobre</Text>
+
+      </TouchableOpacity>
+
+    </View>
+
+
+
+    {/* Cards 1, 2, 3 */}
+
+    <View style={styles.cardRow}>
+
+      <View style={styles.card}>
+
+        <Text style={styles.cardTitle}>Página De{"\n"}Skincare.</Text>
+
+        <Text style={styles.cardNumber}>1</Text>
+
       </View>
 
-      {/* Conteúdo principal com ScrollView */}
-      <ScrollView 
-        style={styles.scrollView}
-        contentContainerStyle={styles.scrollContent}
-      >
-        {/* Seção original */}
-        <View style={styles.originalContent}>
-          <Text style={styles.title}>Bem Vindo a Home!</Text>
-          <Text style={styles.subtitle}>Escolha uma opção abaixo:</Text>
 
-          <TouchableOpacity style={styles.button}>
-            <Link href="/login" style={styles.buttonText}>
-              Ir para Login
-            </Link>
-          </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button}>
-            <Link href="/signup" style={styles.buttonText}>
-              Ir para Cadastro
-            </Link>
-          </TouchableOpacity>
-        </View>
+      <View style={styles.card}>
 
-        {/* Conteúdo da imagem */}
-        <View style={styles.imageContent}>
-          <Text style={styles.mainTitle}>Aqui a sua Beleza Entra</Text>
-          <Text style={styles.mainSubtitle}>em Primeiro Lugar</Text>
+        <Text style={styles.cardTitle}>Página De{"\n"}Corpo.</Text>
 
-          <Text style={styles.description}>
-            Quer saber como ter uma pele naturalmente bonita?
-          </Text>
+        <Text style={styles.cardNumber}>2</Text>
 
-          <Text style={styles.tips}>
-            Descubra 8 dicas de beleza simples para começar
-            hoje mesmo e deixar a pele ainda mais radiante.
-          </Text>
+      </View>
 
-          <View style={styles.actionButtons}>
-            <TouchableOpacity style={styles.readMoreButton}>
-              <Text style={styles.buttonText}>Ler mais</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.aboutButton}>
-              <Text style={styles.aboutButtonText}>Sobre</Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.divider} />
-
-          <View style={styles.pageIndicators}>
-            <View style={styles.pageIndicator}>
-              <Text style={styles.pageText}>Página De Skincare.</Text>
-              <View style={styles.pageNumber}>
-                <Text style={styles.numberText}>1</Text>
-              </View>
-            </View>
-
-            <View style={styles.pageIndicator}>
-              <Text style={styles.pageText}>Página De Corpo.</Text>
-              <View style={styles.pageNumber}>
-                <Text style={styles.numberText}>2</Text>
-              </View>
-            </View>
-
-            <View style={styles.pageIndicator}>
-              <Text style={styles.pageText}>Página De Maquiagem.</Text>
-              <View style={styles.pageNumber}>
-                <Text style={styles.numberText}>3</Text>
-              </View>
-            </View>
-          </View>
-
-          <View style={styles.bottomSection}>
-            <Text style={styles.question}>O que não pode faltar na maquiagem?</Text>
-            <TouchableOpacity style={styles.bottomButton}>
-              <Text style={styles.bottomButtonText}>LER MAIS</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </ScrollView>
-
-      {/* Footer fixa no rodapé */}
-      <Footer themeColor="#F05080" />
     </View>
-  );
+
+
+
+    <View style={[styles.card, styles.cardLarge]}>
+
+      <Text style={styles.cardTitle}>Página De{"\n"}Maquiagem.</Text>
+
+      <Text style={styles.cardQuestion}>O que não pode faltar na maquiagem?</Text>
+
+      <TouchableOpacity>
+
+        <Text style={styles.cardLink}>LER MAIS</Text>
+
+      </TouchableOpacity>
+
+      <Text style={styles.cardNumberLarge}>3</Text>
+
+    </View>
+
+
+
+    {/* Produtos Populares */}
+
+    <Text style={styles.sectionTitle}>Produtos Populares</Text>
+
+    <Text style={styles.sectionSubtitle}>
+
+      Os produtos mais procurados da internet! Onde você encontra eles? Aqui mesmo.
+
+    </Text>
+
+
+
+    {[1, 2, 3].map((_, i) => (
+
+      <View key={i} style={styles.productCard}>
+
+        <View style={styles.imagePlaceholder} />
+
+        <Text style={styles.productTitle}>Produto Tal</Text>
+
+        <Text style={styles.productDescription}>
+
+          Kit anti-acne avançado com 5 produtos: um gel de limpeza com mix de tensoativos + salicílico + glicerina, um sérum com mix de 4 ativos
+
+        </Text>
+
+        <Text style={styles.productRating}>⭐️⭐️⭐️⭐️⭐️ (18)</Text>
+
+        <Text style={styles.productLink}>Get Started</Text>
+
+      </View>
+
+    ))}
+
+
+
+    {/* Cards com espaço para imagem */}
+
+    
+
+
+
+    {/* Seção final: estatísticas e texto */}
+
+    <View style={styles.statsContainer}>
+
+      <View style={styles.statsBox}>
+
+        <Text style={styles.statsNumber}>84%</Text>
+
+        <Text style={styles.statsText}>Dos Brasileiros</Text>
+
+        <Text style={styles.statsSub}>
+
+          Buscam ter uma rotina de autocuidado, mas apenas um terço consegue, revela pesquisa
+
+        </Text>
+
+      </View>
+
+      <View style={styles.statsBox}>
+
+        <Text style={styles.statsNumber}>97%</Text>
+
+        <Text style={styles.statsText}>Dos Brasileiros</Text>
+
+        <Text style={styles.statsSub}>
+
+          Buscam ter uma rotina de autocuidado, mas apenas um terço consegue, revela pesquisa
+
+        </Text>
+
+      </View>
+
+    </View>
+
+
+
+    <Text style={styles.paragraph}>
+
+      61,7% dos brasileiros adotaram algum ritual de autocuidado. Este dado é um sinal positivo de que cada vez mais pessoas estão reconhecendo a necessidade de equilibrar a saúde mental e física em suas vidas.
+
+    </Text>
+
+
+
+    <Text style={styles.subsectionTitle}>Autocuidado:</Text>
+
+    <Text style={styles.subsectionSub}>importância, como</Text>
+
+    <Text style={styles.subsectionSub}>praticar e dicas</Text>
+
+    <Text style={styles.signature}>By clean</Text>
+
+  </ScrollView>
+
+
+
+  {/* Footer */}
+
+
+
+</View>
+
+);
+
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#FAFAFA",
-  },
-  headerWrapper: {
-    width: "100%",
-    backgroundColor: "#F05080",
-    overflow: "hidden",
-  },
-  scrollView: {
-    flex: 1,
-  },
-  scrollContent: {
-    padding: 20,
-    paddingBottom: 80, // Espaço para o footer
-  },
-  originalContent: {
-    marginBottom: 30,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#333",
-    marginBottom: 10,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: "#666",
-    marginBottom: 20,
-  },
-  button: {
-    backgroundColor: "#F05080",
-    padding: 15,
-    borderRadius: 5,
-    marginBottom: 10,
-    width: "80%",
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#FFF",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-  imageContent: {
-    marginTop: 20,
-  },
-  mainTitle: {
-    fontSize: 28,
-    fontWeight: "bold",
-    color: "#333",
-    textAlign: "center",
-  },
-  mainSubtitle: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#333",
-    marginBottom: 30,
-    textAlign: "center",
-  },
-  description: {
-    fontSize: 18,
-    color: "#666",
-    textAlign: "center",
-    marginBottom: 10,
-  },
-  tips: {
-    fontSize: 16,
-    color: "#888",
-    textAlign: "center",
-    marginBottom: 30,
-    lineHeight: 24,
-  },
-  actionButtons: {
-    flexDirection: "row",
-    justifyContent: "center",
-    marginBottom: 40,
-  },
-  readMoreButton: {
-    backgroundColor: "#F05080",
-    paddingVertical: 12,
-    paddingHorizontal: 30,
-    borderRadius: 25,
-    marginRight: 15,
-  },
-  aboutButton: {
-    borderWidth: 1,
-    borderColor: "#F05080",
-    paddingVertical: 12,
-    paddingHorizontal: 30,
-    borderRadius: 25,
-  },
-  aboutButtonText: {
-    color: "#F05080",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-  divider: {
-    borderBottomWidth: 1,
-    borderBottomColor: "#EEE",
-    marginVertical: 20,
-  },
-  pageIndicators: {
-    marginBottom: 30,
-  },
-  pageIndicator: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginBottom: 15,
-    paddingBottom: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: "#EEE",
-  },
-  pageText: {
-    fontSize: 16,
-    color: "#555",
-  },
-  pageNumber: {
-    backgroundColor: "#F05080",
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  numberText: {
-    color: "#FFF",
-    fontWeight: "bold",
-  },
-  bottomSection: {
-    marginTop: 20,
-  },
-  question: {
-    fontSize: 18,
-    color: "#555",
-    textAlign: "center",
-    marginBottom: 15,
-  },
-  bottomButton: {
-    backgroundColor: "#F05080",
-    padding: 15,
-    borderRadius: 5,
-    alignItems: "center",
-  },
-  bottomButtonText: {
-    color: "#FFF",
-    fontWeight: "bold",
-    fontSize: 16,
-    textTransform: "uppercase",
-  },
-});
+
+container: { flex: 1, backgroundColor: "#fff" },
+
+headerWrapper: { width: "100%", backgroundColor: "#F05080" },
+
+scrollContent: { padding: 20, paddingBottom: 100 },
+
+mainTitle: { fontSize: 22, fontWeight: "bold", textAlign: "center" },
+
+mainSubtitle: { fontSize: 20, fontWeight: "bold", textAlign: "center", marginBottom: 10 },
+
+description: { textAlign: "center", color: "#666", marginBottom: 5 },
+
+tips: { textAlign: "center", color: "#888", marginBottom: 20 },
+
+actionButtons: { flexDirection: "row", justifyContent: "center", gap: 10, marginBottom: 30 },
+
+readMoreButton: { backgroundColor: "#F05080", padding: 10, borderRadius: 10 },
+
+aboutButton: { borderColor: "#F05080", borderWidth: 1, padding: 10, borderRadius: 10 },
+
+buttonText: { color: "#fff" },
+
+aboutButtonText: { color: "#F05080" },
+
+cardRow: { flexDirection: "row", justifyContent: "space-between", marginBottom: 20 },
+
+card: {
+
+flex: 1,
+
+backgroundColor: "#fff",
+
+borderRadius: 10,
+
+padding: 15,
+
+marginRight: 10,
+
+},
+
+cardLarge: {
+
+backgroundColor: "#F89DBF",
+
+marginVertical: 10,
+
+position: "relative",
+
+},
+
+cardTitle: { fontSize: 18, fontWeight: "bold", color: "#000" },
+
+cardNumber: { position: "absolute", right: 10, bottom: 10, fontSize: 30, color: "#ccc" },
+
+cardNumberLarge: { position: "absolute", right: 10, top: 10, fontSize: 40, color: "#fff" },
+
+cardQuestion: { color: "#fff", marginTop: 10 },
+
+cardLink: { color: "#fff", fontWeight: "bold", marginTop: 5 },
+
+sectionTitle: { fontSize: 20, fontWeight: "bold", marginTop: 20 },
+
+sectionSubtitle: { textAlign: "center", marginBottom: 20 },
+
+productCard: {
+
+borderWidth: 1,
+
+borderColor: "#ddd",
+
+borderRadius: 10,
+
+padding: 15,
+
+marginBottom: 20,
+
+},
+
+imagePlaceholder: {
+
+height: 120,
+
+backgroundColor: "#eee",
+
+borderRadius: 10,
+
+marginBottom: 10,
+
+},
+
+productTitle: { fontWeight: "bold" },
+
+productDescription: { fontSize: 13, color: "#666" },
+
+productRating: { marginTop: 5, color: "#F05080" },
+
+productLink: { textAlign: "right", color: "#F05080", fontWeight: "bold" },
+
+imageCardRow: { flexDirection: "row", justifyContent: "space-between", marginVertical: 20 },
+
+imageCard: {
+
+width: "30%",
+
+backgroundColor: "#f9f9f9",
+
+padding: 10,
+
+borderRadius: 10,
+
+},
+
+imageSlot: { height: 80, backgroundColor: "#ddd", borderRadius: 10, marginBottom: 10 },
+
+imageCardTitle: { fontWeight: "bold" },
+
+imageCardDescription: { fontSize: 12, color: "#666" },
+
+statsContainer: { flexDirection: "row", justifyContent: "space-between", marginVertical: 20 },
+
+statsBox: { width: "48%" },
+
+statsNumber: { fontSize: 28, fontWeight: "bold" },
+
+statsText: { fontWeight: "bold" },
+
+statsSub: { fontSize: 13, color: "#444" },
+
+paragraph: { fontSize: 14, color: "#555", marginBottom: 20 },
+
+subsectionTitle: { fontSize: 18, fontWeight: "bold", textAlign: "center" },
+
+subsectionSub: { fontSize: 16, fontWeight: "bold", textAlign: "center" },
+
+signature: {
+
+fontSize: 18,
+
+fontStyle: "italic",
+
+color: "#00BFD5",
+
+textAlign: "center",
+
+marginTop: 10,
+
+},
+
+});   
