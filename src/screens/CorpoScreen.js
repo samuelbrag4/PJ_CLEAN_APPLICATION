@@ -35,7 +35,40 @@ const CorpoScreen = () => {
         "A exposição ao sol sem proteção pode causar manchas e envelhecimento precoce. Use protetor solar diariamente, mesmo em dias nublados, para manter sua pele protegida.",
       imagem: "https://www.maria.pt/wp-content/uploads/2019/06/1-59.jpg", // Coloque o link da imagem aqui
     },
+    
   ];
+
+  const infoCards2 = [
+    {
+      titulo: "Estresse",
+      descricao:
+        "O estresse libera hormônios como o cortisol, que afetam diretamente a barreira da pele, tornando-a mais sensível e propensa a inflamações e alergias. Técnicas de relaxamento ajudam no equilíbrio corporal.",
+      imagem:
+        "https://www.psicologoeterapia.com.br/wp-content/uploads/estresse-e-psicologia-2.jpg",
+    },
+    {
+      titulo: "Clima",
+      descricao:
+        "Mudanças bruscas de temperatura, vento frio ou calor excessivo ressecam e sensibilizam a pele do corpo. Ajustar os cuidados conforme a estação é essencial para evitar danos.",
+      imagem:
+        "https://widoctor.com.br/wp-content/uploads/2020/05/hot-weather-temperatures.jpg",
+    },
+    {
+      titulo: "Roupas",
+      descricao:
+        "Tecidos sintéticos e roupas muito apertadas dificultam a respiração da pele, podendo causar irritações, suor excessivo e até acne corporal. Prefira tecidos naturais como algodão.",
+      imagem:
+        "https://static1.minhavida.com.br/articles/d3/81/c6/ba/apertada-orig-1.jpg",
+    },
+    {
+      titulo: "Banhos Prolongados",
+      descricao:
+        "Banhos muito quentes e demorados removem a oleosidade natural da pele, deixando-a ressecada e vulnerável. Opte por água morna e evite o uso excessivo de sabonetes agressivos.",
+      imagem:
+        "https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3523556:1718716527/WhatsApp%20Image%202024-06-18%20at%2010.15.40.jpeg?f=16x9&h=574&w=1020&$p$f$h$w=65f706d",
+    },
+  ];
+  
 
   const tools = [
     {
@@ -65,6 +98,34 @@ const CorpoScreen = () => {
         "Ideal para aplicar cremes com movimentos circulares, melhora a absorção dos ativos e promove relaxamento.",
       imagem:
         "https://http2.mlstatic.com/D_NQ_NP_2X_990510-MLA83238645725_032025-F.webp",
+    },
+    {
+      titulo: "Bucha Vegetal Natural",
+      descricao:
+        "Feita de fibras naturais, promove esfoliação eficaz durante o banho, ajudando na renovação celular e deixando a pele mais macia.",
+      imagem:
+        "https://cdn.awsli.com.br/2500x2500/1994/1994328/produto/180911782/74487acd59.jpg",
+    },
+    {
+      titulo: "Pedra-Pomes para Pés",
+      descricao:
+        "Ideal para remover calosidades e asperezas dos pés, deixando a pele mais lisa e suave ao toque.",
+      imagem:
+        "https://images.tcdn.com.br/img/img_prod/159791/lixa_de_madeira_para_pes_mista_com_pedra_pomes_01_ou_12_unidades_4859_1_20240718174555.jpg",
+    },
+    {
+      titulo: "Óleo Corporal Hidratante",
+      descricao:
+        "Rico em nutrientes e antioxidantes, hidrata profundamente, deixando a pele nutrida, luminosa e com toque sedoso.",
+      imagem:
+        "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_800/v1/imagens/products/B49418/NSPA-OL-DES-HID-CPO-QUIN-AMEN_V3_B49418.jpg",
+    },
+    {
+      titulo: "Ventosas de Silicone",
+      descricao:
+        "Utilizadas para massagens com efeito de vácuo, ajudam a ativar a circulação, aliviar tensões e potencialmente reduzir celulites.",
+      imagem:
+        "https://m.media-amazon.com/images/I/51hRSfKXSBL._AC_UF1000,1000_QL80_.jpg",
     },
   ];
 
@@ -133,6 +194,13 @@ const CorpoScreen = () => {
         tools={tools}
         corPrincipal="#DBBD9C"
         gradientColors={["#fff", "#d2ad84"]}
+      />
+
+<SkinTypeGrid
+        corPrincipal="#DBBD9C"
+        infoCards={infoCards2}
+        categoria={"CORPO"}
+        title="O que influencia na saúde e beleza da sua pele corporal?"
       />
 
     </ScrollView>
