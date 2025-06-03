@@ -113,27 +113,81 @@ export default function HomeScreen() {
           mesmo.
         </Text>
 
-        {popularProducts.map((product) => (
-          <View key={product.id} style={styles.productCard}>
-            <Image
-              source={product.image}
-              style={styles.productImage}
-              resizeMode="cover"
-            />
-            <Text style={styles.productTitle}>{product.title}</Text>
-            <Text style={styles.productDescription}>
-              {product.description}
-            </Text>
-            <Text style={styles.productRating}>{product.rating}</Text>
-            <Text style={styles.productLink}>Get Started</Text>
-          </View>
-        ))}
+        {popularProducts.map((produto, i) => (
+  <View key={i} style={styles.productCard}>
+    <Image
+      source={{ uri: produto.imagem }}
+      style={{ width: "100%", height: 120, borderRadius: 10, marginBottom: 10 }}
+      resizeMode="cover"
+    />
+    <Text style={styles.productTitle}>{produto.titulo}</Text>
+    <Text style={styles.productDescription}>{produto.descricao}</Text>
+    <Text style={styles.productRating}>{produto.nota}</Text>
+    <Text style={styles.productLink}>Get Started</Text>
+  </View>
+))}
 
-        <Text style={styles.sectionTitle}>
-          Autocuidado: importância, como praticar e dicas
-        </Text>
-        <Text style={styles.signature}>By clean</Text>
+<View style={styles.statsContainer}>
 
+<View style={styles.statsBox}>
+
+  <Text style={styles.statsNumber}>84%</Text>
+
+  <Text style={styles.statsText}>Dos Brasileiros</Text>
+
+  <Text style={styles.statsSub}>
+
+    Buscam ter uma rotina de autocuidado, mas apenas um terço consegue, revela pesquisa
+
+  </Text>
+
+</View>
+
+<View style={styles.statsBox}>
+
+  <Text style={styles.statsNumber}>97%</Text>
+
+  <Text style={styles.statsText}>Dos Brasileiros</Text>
+
+  <Text style={styles.statsSub}>
+
+    Buscam ter uma rotina de autocuidado, mas apenas um terço consegue, revela pesquisa
+
+  </Text>
+
+</View>
+
+</View>
+
+
+
+<Text style={styles.paragraph}>
+
+61,7% dos brasileiros adotaram algum ritual de autocuidado. Este dado é um sinal positivo de que cada vez mais pessoas estão reconhecendo a necessidade de equilibrar a saúde mental e física em suas vidas.
+
+</Text>
+
+
+
+<Text style={styles.subsectionTitle}>Autocuidado:</Text>
+
+<Text style={styles.subsectionSub}>importância, como</Text>
+
+<Text style={styles.subsectionSub}>praticar e dicas</Text>
+
+<Text style={styles.signature}>By clean</Text>
+      
+
+
+
+
+
+
+
+
+
+
+      
         <Text style={styles.sectionTitle}>Qual Seu Tipo De Pele?</Text>
         <View style={{ gap: 20 }}>
           <SkinTypeCard
@@ -377,4 +431,28 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
+
+
+  imageSlot: { height: 80, backgroundColor: "#ddd", borderRadius: 10, marginBottom: 10 },
+
+imageCardTitle: { fontWeight: "bold" },
+
+imageCardDescription: { fontSize: 12, color: "#666" },
+
+statsContainer: { flexDirection: "row", justifyContent: "space-between", marginVertical: 20 },
+
+statsBox: { width: "48%" },
+
+statsNumber: { fontSize: 28, fontWeight: "bold" },
+
+statsText: { fontWeight: "bold" },
+
+statsSub: { fontSize: 13, color: "#444" },
+
+paragraph: { fontSize: 14, color: "#555", marginBottom: 20 },
+
+subsectionTitle: { fontSize: 18, fontWeight: "bold", textAlign: "center" },
+
+subsectionSub: { fontSize: 16, fontWeight: "bold", textAlign: "center" },
+
 });
