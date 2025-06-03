@@ -5,9 +5,11 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Image,
 } from "react-native";
 import Header from "../src/components/Header";
-import Footer from "../src/components/Footer";
+
+
 
 const SkinTypeCard = ({ title, type, description, highlight }) => {
   return (
@@ -31,15 +33,34 @@ const SkinTypeCard = ({ title, type, description, highlight }) => {
 };
 
 export default function HomeScreen() {
+  const popularProducts = [
+    {
+      imagem: "https://creamy.vtexassets.com/assets/vtex.file-manager-graphql/images/10bf8c82-5581-4b70-8c4b-712651152076___cd36f2ce8e2234cf1cf4ea132c04b2c0.png",
+      titulo: "Ácido Mandélico",
+      descricao: "O Ácido Mandélico conta com ativos que possuem efeito comprovado no clareamento e prevenção de manchas. Também é seborregulador e antiacneico, atuando na redução da oleosidade excessiva e da acne. Esfolia gentilmente a pele, promovendo a uniformização do tom e da textura. Principais ativos: ácido mandélico + alfa-arbutin + alantoína.",
+      nota: "⭐️⭐️⭐️⭐️⭐️ (25)",
+    },
+    {
+      imagem: "https://creamy.vtexassets.com/assets/vtex.file-manager-graphql/images/a1502766-65a2-4d16-bf13-9de46a1d68b8___ad927ad9afecd9294ff7927d9c888043.png",
+      titulo: "Ácido Glicólico",
+      descricao: "O Ácido Glicólico auxilia na uniformização da pele, melhora a textura, deixa os poros menos aparentes, controla a oleosidade e possui ação anti-aging. Estimula a produção de colágeno nas camadas mais profundas, reparando e prevenindo os danos causados pela idade, sol e agressões externas. Principais ativos: ácido glicólico 10% + niacinamida + alfa-bisabolol.",
+      nota: "⭐️⭐️⭐️⭐️ (13)",
+    },
+    {
+      imagem: "https://creamy.vtexassets.com/arquivos/ids/157070-768-768/01.jpg?v=638446358897930000",
+      titulo: "Calming Cream",
+      descricao: "O Calming Cream é um hidratante ultraleve de rápida absorção. Oferece alívio para a pele sensível ou sensibilizada por fatores externos, como uso de ácidos e demaquilantes. Recompõe a barreira cutânea, oferecendo uma hidratação natural e não oleosa. Traz uma poderosa e inédita combinação de ativos, o Creamy Calming Complex, que atua reduzindo a vermelhidão, descamação e coceira, sintomas associados à pele seca ou sensibilizada.",
+      nota: "⭐️⭐️⭐️⭐️⭐️ (40)",
+    },
+  ];
+  
   return (
     <View style={styles.container}>
-      {/* Header */}
       <View style={styles.headerWrapper}>
         <Header themeColor="#F05080" activePage="Home" />
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        {/* Seção inicial */}
         <Text style={styles.mainTitle}>Aqui a sua Beleza Entra</Text>
         <Text style={styles.mainSubtitle}>em Primeiro Lugar</Text>
         <Text style={styles.description}>
@@ -61,28 +82,28 @@ export default function HomeScreen() {
 
         {/* Cards 1, 2, 3 */}
         <View style={styles.corContainer}>
-        <View style={styles.cardRow}>
-          <View style={styles.card}>
-            <Text style={styles.cardTitle}>Página De{"\n"}Skincare.</Text>
-            <Text style={styles.cardNumber}>1</Text>
+          <View style={styles.cardRow}>
+            <View style={styles.card}>
+              <Text style={styles.cardTitle}>Página De{"\n"}Skincare.</Text>
+              <Text style={styles.cardNumber}>1</Text>
+            </View>
+
+            <View style={styles.card}>
+              <Text style={styles.cardTitle}>Página De{"\n"}Corpo.</Text>
+              <Text style={styles.cardNumber}>2</Text>
+            </View>
           </View>
 
-          <View style={styles.card}>
-            <Text style={styles.cardTitle}>Página De{"\n"}Corpo.</Text>
-            <Text style={styles.cardNumber}>2</Text>
+          <View style={[styles.card, styles.cardLarge]}>
+            <Text style={styles.cardTitle}>Página De{"\n"}Maquiagem.</Text>
+            <Text style={styles.cardQuestion}>
+              O que não pode faltar na maquiagem?
+            </Text>
+            <TouchableOpacity>
+              <Text style={styles.cardLink}>LER MAIS</Text>
+            </TouchableOpacity>
+            <Text style={styles.cardNumberLarge}>3</Text>
           </View>
-        </View>
-
-        <View style={[styles.card, styles.cardLarge]}>
-          <Text style={styles.cardTitle}>Página De{"\n"}Maquiagem.</Text>
-          <Text style={styles.cardQuestion}>
-            O que não pode faltar na maquiagem?
-          </Text>
-          <TouchableOpacity>
-            <Text style={styles.cardLink}>LER MAIS</Text>
-          </TouchableOpacity>
-          <Text style={styles.cardNumberLarge}>3</Text>
-        </View>
         </View>
 
         {/* Produtos Populares */}
@@ -92,25 +113,27 @@ export default function HomeScreen() {
           mesmo.
         </Text>
 
-        {[1, 2, 3].map((_, i) => (
-          <View key={i} style={styles.productCard}>
-            <View style={styles.imagePlaceholder} />
-            <Text style={styles.productTitle}>Produto Tal</Text>
+        {popularProducts.map((product) => (
+          <View key={product.id} style={styles.productCard}>
+            <Image
+              source={product.image}
+              style={styles.productImage}
+              resizeMode="cover"
+            />
+            <Text style={styles.productTitle}>{product.title}</Text>
             <Text style={styles.productDescription}>
-              Kit anti-acne avançado com 5 produtos: um gel de limpeza com mix
-              de tensoativos + salicílico + glicerina, um sérum com mix de 4
-              ativos
+              {product.description}
             </Text>
-            <Text style={styles.productRating}>⭐️⭐️⭐️⭐️⭐️ (18)</Text>
+            <Text style={styles.productRating}>{product.rating}</Text>
             <Text style={styles.productLink}>Get Started</Text>
           </View>
         ))}
+
         <Text style={styles.sectionTitle}>
           Autocuidado: importância, como praticar e dicas
         </Text>
         <Text style={styles.signature}>By clean</Text>
 
-        {/* Cards de Tipo de Pele */}
         <Text style={styles.sectionTitle}>Qual Seu Tipo De Pele?</Text>
         <View style={{ gap: 20 }}>
           <SkinTypeCard
@@ -145,7 +168,6 @@ export default function HomeScreen() {
           />
         </View>
 
-        {/* Texto sobre o blog */}
         <View style={styles.blogSection}>
           <Text style={styles.blogTitle}>
             Venha Conhecer Nosso Blog Sobre Auto Cuidado
@@ -198,7 +220,7 @@ const styles = StyleSheet.create({
   corContainer: {
     backgroundColor: "#FFB7C5",
     marginLeft: -20,
-    marginRight:-20,
+    marginRight: -20,
     paddingLeft: 20,
     paddingRight: 20,
     paddingTop: 30,
@@ -246,9 +268,9 @@ const styles = StyleSheet.create({
     padding: 15,
     marginBottom: 20,
   },
-  imagePlaceholder: {
+  productImage: {
+    width: "100%",
     height: 120,
-    backgroundColor: "#eee",
     borderRadius: 10,
     marginBottom: 10,
   },
@@ -281,7 +303,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 
-  // 👇 Estilos novos para os cards de pele
+  // Estilos dos cards de tipo de pele
   skinCard: {
     backgroundColor: "#00E6D1",
     borderRadius: 12,
