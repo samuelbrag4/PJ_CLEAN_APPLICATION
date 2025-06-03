@@ -80,7 +80,7 @@ export default function HomeScreen() {
         <Text style={styles.subsectionSub}>importância, como</Text>
         <Text style={styles.subsectionSub}>praticar e dicas</Text>
 
-        
+
         <Text style={styles.signature}>By clean</Text>
 
         {/* Cards de Tipo de Pele */}
@@ -128,7 +128,7 @@ export default function HomeScreen() {
 
       </ScrollView>
 
-     
+      
     </View>
   );
 }
