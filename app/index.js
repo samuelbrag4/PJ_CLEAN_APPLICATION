@@ -185,8 +185,6 @@ export default function HomeScreen() {
 
 
 
-
-
       
         <Text style={styles.sectionTitle}>Qual Seu Tipo De Pele?</Text>
         <View style={{ gap: 20 }}>
