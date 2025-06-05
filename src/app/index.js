@@ -129,6 +129,12 @@ export default function HomeScreen() {
   </View>
 ))}
 
+     <Image
+  source={{ uri: 'https://i.imgur.com/cMoobPd.png' }}
+  style={{ width: 200, height: 100, borderRadius: 10, marginVertical: 20, marginLeft: 100  }}
+  resizeMode="cover"
+/>
+
 <View style={styles.statsContainer}>
 
 <View style={styles.statsBox}>
@@ -180,7 +186,7 @@ export default function HomeScreen() {
 <Text style={styles.signature}>By clean</Text>
       
 <Video
-  source={{ uri: "https://www.youtube.com/watch?v=iIgZEz4Ziw8 " }}
+  source={{ uri: "https://www.youtube.com/watch?v=bcA0dGJM5-k " }}
   rate={1.0}
   volume={1.0}
   isMuted={false}
@@ -188,6 +194,12 @@ export default function HomeScreen() {
   useNativeControls
   style={{ width: 500, height: 200, marginTop: 10, marginBottom: 10 }}
 />
+
+<Text style={styles.paragraph}>
+
+Você sabia que autocuidado é tão importante como cuidar da saúde? Vivemos em um mundo tão agitado que, pensar em parar uns minutos para cuidar de si mesmo, pode não ser tão fácil assim.
+
+</Text>
 
       
         <Text style={styles.sectionTitle}>Qual Seu Tipo De Pele?</Text>
@@ -224,6 +236,11 @@ export default function HomeScreen() {
           />
         </View>
 
+        <Image
+  source={{ uri: 'https://i.imgur.com/cMoobPd.png' }}
+  style={{ width: 200, height: 100, borderRadius: 10, marginVertical: 20, marginLeft: 100  }}
+  resizeMode="cover"
+/>
         <View style={styles.blogSection}>
           <Text style={styles.blogTitle}>
             Venha Conhecer Nosso Blog Sobre Auto Cuidado
