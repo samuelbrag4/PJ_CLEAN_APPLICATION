@@ -6,13 +6,9 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
-  
 } from "react-native";
 import { Video } from "expo-av";
-import { WebView } from "react-native-webview";
 import Header from "../components/Header.js";
-
-
 
 const SkinTypeCard = ({ title, type, description, highlight }) => {
   return (
@@ -42,7 +38,6 @@ export default function HomeScreen() {
       titulo: "Ácido Mandélico",
       descricao: "O Ácido Mandélico conta com ativos que possuem efeito comprovado no clareamento e prevenção de manchas. Também é seborregulador e antiacneico, atuando na redução da oleosidade excessiva e da acne. Esfolia gentilmente a pele, promovendo a uniformização do tom e da textura. Principais ativos: ácido mandélico + alfa-arbutin + alantoína.",
       nota: "⭐️⭐️⭐️⭐️⭐️ (25)",
-    
     },
     {
       imagem: "https://creamy.vtexassets.com/assets/vtex.file-manager-graphql/images/a1502766-65a2-4d16-bf13-9de46a1d68b8___ad927ad9afecd9294ff7927d9c888043.png",
@@ -57,7 +52,7 @@ export default function HomeScreen() {
       nota: "⭐️⭐️⭐️⭐️⭐️ (40)",
     },
   ];
-  
+
   return (
     <View style={styles.container}>
       <View style={styles.headerWrapper}>
@@ -118,102 +113,68 @@ export default function HomeScreen() {
         </Text>
 
         {popularProducts.map((produto, i) => (
-  <View key={i} style={styles.productCard}>
-    <Image
-      source={{ uri: produto.imagem }}
-      style={{ width: "100%", height: 120, borderRadius: 10, marginBottom: 10 }}
-      resizeMode="cover"
-    />
-    <Text style={styles.productTitle}>{produto.titulo}</Text>
-    <Text style={styles.productDescription}>{produto.descricao}</Text>
-    <Text style={styles.productRating}>{produto.nota}</Text>
-    <Text style={styles.productLink}>Get Started</Text>
-  </View>
-))}
+          <View key={i} style={styles.productCard}>
+            <Image
+              source={{ uri: produto.imagem }}
+              style={{ width: 100, height: 150, borderRadius: 10, marginBottom: 10 }}
+              resizeMode="cover"
+            />
+            <Text style={styles.productTitle}>{produto.titulo}</Text>
+            <Text style={styles.productDescription}>{produto.descricao}</Text>
+            <Text style={styles.productRating}>{produto.nota}</Text>
+            <Text style={styles.productLink}>Get Started</Text>
+          </View>
+        ))}
 
-     <Image
-  source={{ uri: 'https://i.imgur.com/cMoobPd.png' }}
-  style={{ width: 200, height: 100, borderRadius: 10, marginVertical: 20, marginLeft: 100  }}
-  resizeMode="cover"
-/>
+        <Image
+          source={{ uri: 'https://i.imgur.com/cMoobPd.png' }}
+          style={{ width: 200, height: 100, borderRadius: 10, marginVertical: 20, marginLeft: 100 }}
+          resizeMode="cover"
+        />
 
-<View style={styles.statsContainer}>
+        <View style={styles.statsContainer}>
+          <View style={styles.statsBox}>
+            <Text style={styles.statsNumber}>84%</Text>
+            <Text style={styles.statsText}>Dos Brasileiros</Text>
+            <Text style={styles.statsSub}>
+              Buscam ter uma rotina de autocuidado, mas apenas um terço consegue, revela pesquisa
+            </Text>
+          </View>
 
-<View style={styles.statsBox}>
+          <View style={styles.statsBox}>
+            <Text style={styles.statsNumber}>97%</Text>
+            <Text style={styles.statsText}>Dos Brasileiros</Text>
+            <Text style={styles.statsSub}>
+              Buscam ter uma rotina de autocuidado, mas apenas um terço consegue, revela pesquisa
+            </Text>
+          </View>
+        </View>
 
-  <Text style={styles.statsNumber}>84%</Text>
+        <Text style={styles.paragraph}>
+          61,7% dos brasileiros adotaram algum ritual de autocuidado. Este dado é um sinal positivo de que cada vez mais pessoas estão reconhecendo a necessidade de equilibrar a saúde mental e física em suas vidas.
+        </Text>
 
-  <Text style={styles.statsText}>Dos Brasileiros</Text>
+        <Text style={styles.subsectionTitle}>Autocuidado:</Text>
+        <Text style={styles.subsectionSub}>importância, como</Text>
+        <Text style={styles.subsectionSub}>praticar e dicas</Text>
+        <Text style={styles.signature}>By clean</Text>
 
-  <Text style={styles.statsSub}>
+        <Video
+          source={{ uri: "https://www.youtube.com/watch?v=bcA0dGJM5-k" }}
+          rate={1}
+          volume={1}
+          isMuted={false}
+          resizeMode="cover"
+          useNativeControls={true}
+          style={{ width: 800, height: 200, marginTop: 10, marginBottom: 10, borderRadius: 10 }}
+          isLooping={true}
+          shouldPlay={true}
+        />
 
-    Buscam ter uma rotina de autocuidado, mas apenas um terço consegue, revela pesquisa
+        <Text style={styles.paragraph}>
+          Você sabia que autocuidado é tão importante como cuidar da saúde? Vivemos em um mundo tão agitado que, pensar em parar uns minutos para cuidar de si mesmo, pode não ser tão fácil assim.
+        </Text>
 
-  </Text>
-
-</View>
-
-<View style={styles.statsBox}>
-
-  <Text style={styles.statsNumber}>97%</Text>
-
-  <Text style={styles.statsText}>Dos Brasileiros</Text>
-
-  <Text style={styles.statsSub}>
-
-    Buscam ter uma rotina de autocuidado, mas apenas um terço consegue, revela pesquisa
-
-  </Text>
-
-</View>
-
-</View>
-
-
-
-<Text style={styles.paragraph}>
-
-61,7% dos brasileiros adotaram algum ritual de autocuidado. Este dado é um sinal positivo de que cada vez mais pessoas estão reconhecendo a necessidade de equilibrar a saúde mental e física em suas vidas.
-
-</Text>
-
-
-
-<Text style={styles.subsectionTitle}>Autocuidado:</Text>
-
-<Text style={styles.subsectionSub}>importância, como</Text>
-
-<Text style={styles.subsectionSub}>praticar e dicas</Text>
-
-<Text style={styles.signature}>By clean</Text>
-      
-{/* <Video
-  source={{ uri: "https://www.youtube.com/watch?v=bcA0dGJM5-k" }}
-  rate={1}
-  volume={1}
-  isMuted={false}
-  resizeMode="cover"
-  useNativeControls={true}
-  style={{ width: 800, height: 200, marginTop: 10, marginBottom: 10, borderRadius: 10 }}
-  isLooping={true}
-  isFullScreen={true}
-  shouldPlay={true}
-/> */}
-
-
-<WebView
-  style={{ width: 350, height: 200, borderRadius: 10, marginTop: 10, marginBottom: 10 }}
-  javaScriptEnabled={true}
-  source={{ uri: "https://www.youtube.com/embed/bcA0dGJM5-k" }}
-/>
-
-<Text style={styles.paragraph}>
-
-Você sabia que autocuidado é tão importante como cuidar da saúde? Vivemos em um mundo tão agitado que, pensar em parar uns minutos para cuidar de si mesmo, pode não ser tão fácil assim.
-
-</Text>
-
-      
         <Text style={styles.sectionTitle}>Qual Seu Tipo De Pele?</Text>
         <View style={{ gap: 20 }}>
           <SkinTypeCard
@@ -249,10 +210,10 @@ Você sabia que autocuidado é tão importante como cuidar da saúde? Vivemos em
         </View>
 
         <Image
-  source={{ uri: 'https://i.imgur.com/cMoobPd.png' }}
-  style={{ width: 200, height: 100, borderRadius: 10, marginVertical: 20, marginLeft: 100  }}
-  resizeMode="cover"
-/>
+          source={{ uri: 'https://i.imgur.com/cMoobPd.png' }}
+          style={{ width: 200, height: 100, borderRadius: 10, marginVertical: 20, marginLeft: 100 }}
+          resizeMode="cover"
+        />
         <View style={styles.blogSection}>
           <Text style={styles.blogTitle}>
             Venha Conhecer Nosso Blog Sobre Auto Cuidado
@@ -352,12 +313,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 15,
     marginBottom: 20,
-  },
-  productImage: {
-    width: "100%",
-    height: 120,
-    borderRadius: 10,
-    marginBottom: 10,
   },
   productTitle: { fontWeight: "bold" },
   productDescription: { fontSize: 13, color: "#666" },
@@ -463,28 +418,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-
-  imageSlot: { height: 80, backgroundColor: "#ddd", borderRadius: 10, marginBottom: 10 },
-
-imageCardTitle: { fontWeight: "bold" },
-
-imageCardDescription: { fontSize: 12, color: "#666" },
-
-statsContainer: { flexDirection: "row", justifyContent: "space-between", marginVertical: 20 },
-
-statsBox: { width: "48%" },
-
-statsNumber: { fontSize: 28, fontWeight: "bold" },
-
-statsText: { fontWeight: "bold" },
-
-statsSub: { fontSize: 13, color: "#444" },
-
-paragraph: { fontSize: 14, color: "#555", marginBottom: 20 },
-
-subsectionTitle: { fontSize: 20, fontWeight: "bold", textAlign: "center" },
-
-subsectionSub: { fontSize: 20, fontWeight: "bold", textAlign: "center" },
-
-
+  statsContainer: { flexDirection: "row", justifyContent: "space-between", marginVertical: 20 },
+  statsBox: { width: "48%" },
+  statsNumber: { fontSize: 28, fontWeight: "bold" },
+  statsText: { fontWeight: "bold" },
+  statsSub: { fontSize: 13, color: "#444" },
+  paragraph: { fontSize: 14, color: "#555", marginBottom: 20 },
+  subsectionTitle: { fontSize: 20, fontWeight: "bold", textAlign: "center" },
+  subsectionSub: { fontSize: 20, fontWeight: "bold", textAlign: "center" },
 });
