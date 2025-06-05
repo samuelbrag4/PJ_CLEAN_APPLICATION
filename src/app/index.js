@@ -8,6 +8,7 @@ import {
   Image,
 } from "react-native";
 import Header from "../components/Header.js";
+import { Video } from 'expo-av';
 
 
 
@@ -178,13 +179,15 @@ export default function HomeScreen() {
 
 <Text style={styles.signature}>By clean</Text>
       
-
-
-
-
-
-
-
+<Video
+  source={{ uri: "https://www.youtube.com/watch?v=iIgZEz4Ziw8 " }}
+  rate={1.0}
+  volume={1.0}
+  isMuted={false}
+  resizeMode="contain"
+  useNativeControls
+  style={{ width: 500, height: 200, marginTop: 10, marginBottom: 10 }}
+/>
 
       
         <Text style={styles.sectionTitle}>Qual Seu Tipo De Pele?</Text>
