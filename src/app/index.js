@@ -6,9 +6,11 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
+  
 } from "react-native";
+import { Video } from "expo-av";
+import { WebView } from "react-native-webview";
 import Header from "../components/Header.js";
-import { Video } from 'expo-av';
 
 
 
@@ -185,14 +187,24 @@ export default function HomeScreen() {
 
 <Text style={styles.signature}>By clean</Text>
       
-<Video
-  source={{ uri: "https://www.youtube.com/watch?v=bcA0dGJM5-k " }}
-  rate={1.0}
-  volume={1.0}
+{/* <Video
+  source={{ uri: "https://www.youtube.com/watch?v=bcA0dGJM5-k" }}
+  rate={1}
+  volume={1}
   isMuted={false}
-  resizeMode="contain"
-  useNativeControls
-  style={{ width: 500, height: 200, marginTop: 10, marginBottom: 10 }}
+  resizeMode="cover"
+  useNativeControls={true}
+  style={{ width: 800, height: 200, marginTop: 10, marginBottom: 10, borderRadius: 10 }}
+  isLooping={true}
+  isFullScreen={true}
+  shouldPlay={true}
+/> */}
+
+
+<WebView
+  style={{ width: 350, height: 200, borderRadius: 10, marginTop: 10, marginBottom: 10 }}
+  javaScriptEnabled={true}
+  source={{ uri: "https://www.youtube.com/embed/bcA0dGJM5-k" }}
 />
 
 <Text style={styles.paragraph}>
