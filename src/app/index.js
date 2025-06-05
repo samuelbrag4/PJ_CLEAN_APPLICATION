@@ -291,7 +291,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   cardLarge: {
-    backgroundColor: "#F89DBF",
+    backgroundColor: "#FFA2B8",
     marginVertical: 10,
     position: "relative",
   },
@@ -351,14 +351,14 @@ const styles = StyleSheet.create({
   signature: {
     fontSize: 18,
     fontStyle: "italic",
-    color: "#00BFD5",
+    color: "#4DFFDE",
     textAlign: "center",
     marginTop: 10,
   },
 
   // Estilos dos cards de tipo de pele
   skinCard: {
-    backgroundColor: "#00E6D1",
+    backgroundColor: "#4DFFDE",
     borderRadius: 12,
     padding: 20,
     shadowColor: "#000",
@@ -450,9 +450,9 @@ statsSub: { fontSize: 13, color: "#444" },
 
 paragraph: { fontSize: 14, color: "#555", marginBottom: 20 },
 
-subsectionTitle: { fontSize: 18, fontWeight: "bold", textAlign: "center" },
+subsectionTitle: { fontSize: 20, fontWeight: "bold", textAlign: "center" },
 
-subsectionSub: { fontSize: 16, fontWeight: "bold", textAlign: "center" },
+subsectionSub: { fontSize: 20, fontWeight: "bold", textAlign: "center" },
 
 
 });
