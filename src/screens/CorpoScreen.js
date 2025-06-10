@@ -15,13 +15,13 @@ const CorpoScreen = () => {
       titulo: "Hidratação",
       descricao:
       "Manter a pele hidratada é essencial para evitar o ressecamento e a descamação. Cremes com ativos como ureia e ácido hialurônico ajudam a reter a umidade e proteger a pele.",
-      imagem: "https://www.gioesteticaavancada.com.br/wp-content/uploads/2020/08/post_thumbnail-d9966bb36fc0dfe546bb23cfb5a2c9f9.jpeg", // Coloque o link da imagem aqui
+      imagem: "https://www.palmolive.com.br/content/dam/cp-sites/personal-care/palmolive-latam/pt-br/experiencias/pele-ressecada/pele-ressecada-palmolive.jpg",
     },
     {
       titulo: "Nutrição",
       descricao:
         "A nutrição da pele ajuda a manter sua elasticidade e maciez. Produtos com vitaminas, óleos vegetais e manteigas naturais nutrem profundamente e restauram a barreira cutânea.",
-      imagem: "https://nutrimaiaralima.com.br/wp-content/uploads/2020/09/nutricao-no-combate-as-doencas.jpeg", // Coloque o link da imagem aqui
+      imagem: "https://nutrimaiaralima.com.br/wp-content/uploads/2020/09/nutricao-no-combate-as-doencas.jpeg", 
     },
     {
       titulo: "Rotina",
@@ -33,7 +33,7 @@ const CorpoScreen = () => {
       titulo: "Proteção",
       descricao:
         "A exposição ao sol sem proteção pode causar manchas e envelhecimento precoce. Use protetor solar diariamente, mesmo em dias nublados, para manter sua pele protegida.",
-      imagem: "https://www.maria.pt/wp-content/uploads/2019/06/1-59.jpg", // Coloque o link da imagem aqui
+      imagem: "https://www.maria.pt/wp-content/uploads/2019/06/1-59.jpg", 
     },
     
   ];

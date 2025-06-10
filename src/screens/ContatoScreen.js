@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -9,8 +16,8 @@ const ContatoScreen = () => {
       {/* Header */}
       <Header themeColor="#DBBD9C" activePage="Contato" />
 
-      {/* Conteúdo principal */}
-      <View style={styles.content}>
+      {/* Conteúdo principal com rolagem */}
+      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
         <View style={styles.card}>
           <Text style={styles.title}>Entre em Contato</Text>
           <View style={styles.form}>
@@ -42,7 +49,7 @@ const ContatoScreen = () => {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </ScrollView>
 
       {/* Footer */}
       <Footer themeColor="#DBBD9C" />
@@ -53,10 +60,10 @@ const ContatoScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "linear-gradient(180deg, rgba(255, 255, 255, 0.90) 0%, rgba(217, 191, 169, 0.90) 25%, rgba(228, 208, 186, 0.90) 75%, rgba(255, 255, 255, 0.90) 100%)",
+    backgroundColor: "#FFF", // Substituí o linear-gradient inválido por cor sólida
   },
   content: {
-    flex: 1,
+    flexGrow: 1,
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
@@ -64,7 +71,7 @@ const styles = StyleSheet.create({
   card: {
     width: "90%",
     maxWidth: 400,
-    backgroundColor: "#FFFFFF", 
+    backgroundColor: "#FFFFFF",
     borderRadius: 10,
     padding: 20,
     shadowColor: "#000",
@@ -93,7 +100,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#DBBD9C",
     fontSize: 14,
-    color: "#8C7A65", 
+    color: "#8C7A65",
   },
   textarea: {
     height: 100,
