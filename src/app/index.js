@@ -268,48 +268,64 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
   },
-  buttonText: { color: "#fff" },
-  aboutButtonText: { color: "#F05080" },
-  corContainer: {
-    backgroundColor: "#FFB7C5",
-    marginLeft: -20,
-    marginRight: -20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 30,
-  },
-  cardRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 20,
-  },
-  card: {
-    flex: 1,
-    backgroundColor: "#fff",
-    borderRadius: 10,
-    padding: 15,
-    marginRight: 10,
-  },
-  cardLarge: {
-    backgroundColor: "#F89DBF",
-    marginVertical: 10,
-    position: "relative",
-  },
-  cardTitle: { fontSize: 18, fontWeight: "bold", color: "#000" },
-  cardNumber: {
-    position: "absolute",
-    right: 10,
-    bottom: 10,
-    fontSize: 30,
-    color: "#ccc",
-  },
-  cardNumberLarge: {
-    position: "absolute",
-    right: 10,
-    top: 10,
-    fontSize: 40,
-    color: "#fff",
-  },
+  // Segunda parte da home
+buttonText: { color: "#fff" },
+aboutButtonText: { color: "#F05080" },
+corContainer: {
+  backgroundColor: "#F05080",
+  marginLeft: -20,
+  marginRight: -20,
+  paddingLeft: 20,
+  paddingRight: 20,
+  paddingTop: 30,
+},
+cardRow: {
+  flexDirection: "row",
+  justifyContent: "space-between",
+  marginBottom: 50,
+},
+card: {
+  flex: 1,
+  backgroundColor: "#F05080", // branco
+  borderRadius: 10,
+  padding: 15,
+  marginRight: 10,
+  shadowColor: "#000",
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.2,
+  shadowRadius: 4,
+  elevation: 5, // Android
+},
+cardLarge: {
+  backgroundColor: "#FFFFFF", // branco
+  marginVertical: 10,
+  position: "relative",
+  shadowColor: "#F05080",
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.2,
+  shadowRadius: 4,
+  elevation: 5,
+},
+cardTitle: {
+  fontSize: 18,
+  fontWeight: "bold",
+  color: "#000",
+},
+cardNumber: {
+  position: "absolute",
+  right: 10,
+  bottom: 10,
+  fontSize: 30,
+  color: "#F05080",
+},
+cardNumberLarge: {
+  position: "absolute",
+  right: 10,
+  top: 10,
+  fontSize: 40,
+  color: "#F05080",
+},
+
   cardQuestion: { color: "#fff", marginTop: 10 },
   cardLink: { color: "#fff", fontWeight: "bold", marginTop: 5 },
   sectionTitle: { fontSize: 20, fontWeight: "bold", marginTop: 20 },
@@ -430,7 +446,63 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
-
+  // Segunda parte da home
+buttonText: { color: "#fff" },
+aboutButtonText: { color: "#F05080" },
+corContainer: {
+  backgroundColor: "#fff",
+  marginLeft: -20,
+  marginRight: -20,
+  paddingLeft: 20,
+  paddingRight: 20,
+  paddingTop: 30,
+},
+cardRow: {
+  flexDirection: "row",
+  justifyContent: "space-between",
+  marginBottom: 50,
+},
+card: {
+  flex: 1,
+  backgroundColor: "#FFFFFF", // branco
+  borderRadius: 10,
+  padding: 15,
+  marginRight: 10,
+  shadowColor: "#000",
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.2,
+  shadowRadius: 4,
+  elevation: 5, // Android
+},
+cardLarge: {
+  backgroundColor: "#FFFFFF", // branco
+  marginVertical: 10,
+  position: "relative",
+  shadowColor: "#000",
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.2,
+  shadowRadius: 4,
+  elevation: 5,
+},
+cardTitle: {
+  fontSize: 18,
+  fontWeight: "bold",
+  color: "#000",
+},
+cardNumber: {
+  position: "absolute",
+  right: 10,
+  bottom: 10,
+  fontSize: 30,
+  color: "#ccc",
+},
+cardNumberLarge: {
+  position: "absolute",
+  right: 10,
+  top: 10,
+  fontSize: 40,
+  color: "#F05080",
+},
 
   imageSlot: { height: 80, backgroundColor: "#ddd", borderRadius: 10, marginBottom: 10 },
 
