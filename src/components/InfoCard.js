@@ -5,7 +5,6 @@ const InfoCard = ({
   image,
   title,
   description,
-  buttonText = "Ler mais",
   onPress,
   cardColor = "#fff",
   buttonColor = "#5FCED4",
@@ -13,6 +12,7 @@ const InfoCard = ({
   descriptionColor = "#555",
 }) => {
   return (
+    
     <View style={[styles.card, { backgroundColor: cardColor }]}>
       <Image source={{ uri: image }} style={styles.image} />
       <View style={styles.content}>
@@ -22,7 +22,6 @@ const InfoCard = ({
           style={[styles.button, { backgroundColor: buttonColor }]}
           onPress={onPress}
         >
-          <Text style={styles.buttonText}>{buttonText}</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -57,17 +56,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginBottom: 18,
     lineHeight: 18,
-  },
-  button: {
-    alignSelf: "flex-start",
-    paddingVertical: 8,
-    paddingHorizontal: 22,
-    borderRadius: 6,
-  },
-  buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: 15,
   },
 });
 

@@ -19,7 +19,7 @@ const OurMissionSection = ({corPrincipal, gradientColors, subtitle, title, descr
   >
   <View style={styles.container}>
     <View style={styles.topo}>
-      <Text style={[styles.label, { color: corPrincipal }]}>{subtitle}</Text>
+      <Text style={[styles.label, { color: "#fff" }]}>{subtitle}</Text>
       <Text style={styles.titulo}>{title}</Text>
       <Text style={styles.descricao}>{descricao}</Text>
       <TouchableOpacity style={[styles.botao, { backgroundColor: corPrincipal }]}>
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    paddingVertical: 40,
+    paddingVertical: 30,
     paddingHorizontal: 20,
   },
   topo: {

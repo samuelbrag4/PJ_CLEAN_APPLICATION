@@ -14,6 +14,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Link, useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { login as loginService } from "../services/authService";
+import { FontAwesome } from "@expo/vector-icons";
 
 const LoginScreen = () => {
   const [currentColor, setCurrentColor] = useState("#00DAC7");
@@ -71,7 +72,7 @@ const LoginScreen = () => {
       setSuccess("Login realizado com sucesso! Redirecionando...");
       await AsyncStorage.setItem("token", result.data.token);
       setTimeout(() => {
-        router.replace("/"); // ou o nome da sua tela principal
+        router.replace("/"); // Tela principal
       }, 1200);
     }
   };
@@ -133,21 +134,38 @@ const LoginScreen = () => {
                 <Text style={styles.buttonText}>Entrar</Text>
               )}
             </TouchableOpacity>
+
             {error ? (
               <Text style={[styles.errorMessage, { marginTop: 12 }]}>{error}</Text>
             ) : null}
             {success ? (
               <Text style={[styles.successMessage, { marginTop: 12 }]}>{success}</Text>
             ) : null}
+
             <Text style={styles.or}>Ou</Text>
+
+            {/* Botões decorativos */}
             <View style={styles.socialButtons}>
               <TouchableOpacity style={styles.socialButton}>
+                <FontAwesome
+                  name="google"
+                  size={20}
+                  color="#DB4437"
+                  style={styles.socialIcon}
+                />
                 <Text style={styles.socialButtonText}>Entrar com Google</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.socialButton}>
+                <FontAwesome
+                  name="facebook"
+                  size={20}
+                  color="#4267B2"
+                  style={styles.socialIcon}
+                />
                 <Text style={styles.socialButtonText}>Entrar com Facebook</Text>
               </TouchableOpacity>
             </View>
+
             <Text style={styles.footerText}>
               Não tem uma conta?{" "}
               <Link href="/signup" style={[styles.linkText, { color: currentColor }]}>
@@ -162,7 +180,6 @@ const LoginScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  // ... (os mesmos estilos que você já tem)
   background: {
     flex: 1,
   },
@@ -222,6 +239,10 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     borderWidth: 1,
     borderColor: "#ddd",
+    flexDirection: "row",
+  },
+  socialIcon: {
+    marginRight: 10,
   },
   socialButtonText: {
     color: "#333",

@@ -8,9 +8,10 @@ import {
   Animated,
   ActivityIndicator,
 } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { Link, useRouter } from "expo-router";
-import { register as registerService } from "../services/authService";
+import { LinearGradient } from "expo-linear-gradient"; // Para o gradiente
+import { Link } from "expo-router";
+import { FontAwesome } from "@expo/vector-icons";
+
 
 const SignUpScreen = () => {
   const [currentColor, setCurrentColor] = useState("#00DAC7");
@@ -165,10 +166,22 @@ const SignUpScreen = () => {
           <Text style={styles.or}>Ou</Text>
           <View style={styles.socialButtons}>
             <TouchableOpacity style={styles.socialButton}>
-              <Text style={styles.socialButtonText}>Criar com Google</Text>
+              <FontAwesome
+                name="google"
+                size={20}
+                color="#DB4437"
+                style={styles.socialIcon}
+              />
+              <Text style={styles.socialButtonText}>Entrar com Google</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.socialButton}>
-              <Text style={styles.socialButtonText}>Criar com Facebook</Text>
+              <FontAwesome
+                name="facebook"
+                size={20}
+                color="#4267B2"
+                style={styles.socialIcon}
+              />
+              <Text style={styles.socialButtonText}>Entrar com Facebook</Text>
             </TouchableOpacity>
           </View>
           <Text style={styles.footerText}>
@@ -243,6 +256,10 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     borderWidth: 1,
     borderColor: "#ddd",
+    flexDirection: "row",
+  },
+  socialIcon: {
+    marginRight: 10,
   },
   socialButtonText: {
     color: "#333",
