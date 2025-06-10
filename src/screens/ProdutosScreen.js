@@ -113,7 +113,7 @@ const ProdutosScreen = () => {
       brand: 'Simple Organic',
       price: 120.00,
       rating: 4.8,
-      image: 'https://simpleorganic.com.br/cdn/shop/files/kit-tom-uniforme-3_1200x.jpg?v=1748271418',
+      image: 'https://simpleorganic.com.br/cdn/shop/files/kit-pele-equilibrada-3_1024x.jpg?v=1749567352',
       category: 'skincare'
     },
 

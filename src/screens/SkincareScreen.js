@@ -19,7 +19,7 @@ const SkincareScreen = () => {
       titulo: "Seca",
       descricao:
         "Contém áreas ásperas e tensas, com linhas evidentes ou poros minúsculos, possui pele escamativa, que requer hidratação específica para cada região.",
-      imagem: "https://escolabelezapura.com.br/wp-content/uploads/2024/06/1.jpg",
+      imagem: "https://cdn.shopify.com/s/files/1/0525/6934/2107/files/Imagem_Normal_1_e4a4ed03-2416-4682-81ce-5b9a5dcd52d4_600x600.jpg?v=1675875618",
     },
     {
       titulo: "Mista",
