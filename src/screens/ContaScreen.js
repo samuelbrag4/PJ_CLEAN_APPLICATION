@@ -170,7 +170,7 @@ const ContaScreen = () => {
           {sections.map((section, index) => (
             <View key={index} style={styles.sectionCard}>
               <View style={styles.sectionHeader}>
-                <Feather name={section.icon} size={20} color="#FF7EB9" />
+                <Feather name={section.icon} size={20} color="#F05080" />
                 <Text style={styles.sectionTitle}>{section.title}</Text>
               </View>
               {section.items.map((item, itemIndex) => (
@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
   },
   headerWrapper: {
     width: "100%",
-    backgroundColor: "#FF7EB9",
+    backgroundColor: "#F05080",
   },
   loadingContainer: {
     flex: 1,
@@ -379,7 +379,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 16,
     fontWeight: "600",
-    color: "#FF7EB9",
+    color: "#F05080",
     marginLeft: 8,
   },
   itemButton: {

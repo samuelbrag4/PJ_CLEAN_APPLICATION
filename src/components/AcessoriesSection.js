@@ -27,11 +27,10 @@ const AcessoriesSection = ({ tools = [], corPrincipal, gradientColors }) => (
 
 const styles = StyleSheet.create({
     gradient: {
-        flex: 1,
         paddingVertical: 0,
     },
     container: {
-        paddingVertical: 24,
+        paddingVertical: 10,
         paddingHorizontal: 10,
     },
     label: {

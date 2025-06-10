@@ -12,15 +12,6 @@ const HeroSection = ({ linkImage, title, text, corPrincipal }) => {
             <View style={styles.containerTexto}>
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.text}>{text}</Text>
-
-                <View style={styles.buttons}>
-                    <TouchableOpacity style={[styles.buttonFilled, { backgroundColor: corPrincipal }]} >
-                        <Text style={styles.buttonTextFilled}>Ler mais</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={[styles.buttonOutlined, { borderColor: corPrincipal }]}>
-                        <Text style={[styles.buttonTextOutlined, { color: corPrincipal }]}>Sobre</Text>
-                    </TouchableOpacity>
-                </View>
             </View>
         </View>
     );
@@ -66,29 +57,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: "#555",
         marginBottom: 20,
-    },
-    buttons: {
-        flexDirection: "row",
-        gap: 10
-    },
-    buttonFilled: {
-        paddingVertical: 5,
-        paddingHorizontal: 15,
-        borderRadius: 5,
-    },
-    buttonTextFilled: {
-        color: "#fff",
-        fontWeight: "bold",
-    },
-    buttonOutlined: {
-        borderWidth: 1,
-        paddingVertical: 5,
-        paddingHorizontal: 15,
-        borderRadius: 5,
-    },
-    buttonTextOutlined: {
-        fontWeight: "bold",
-    },
+    }
 });
 
 export default HeroSection;

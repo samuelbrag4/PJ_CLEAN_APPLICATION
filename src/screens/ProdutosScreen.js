@@ -243,13 +243,18 @@ const styles = StyleSheet.create({
     borderBottomColor: '#F0F0F0',
   },
   categoryButton: {
-    paddingHorizontal: 12,
-    paddingVertical: 15,
-    borderRadius: 30,
+    paddingHorizontal: 18,
+    paddingVertical: 12,
+    borderRadius: 20,
     marginRight: 10,
     backgroundColor: '#E0E0E0',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   selectedCategoryButton: {
+    paddingHorizontal: 18,
+    paddingVertical: 12,
+    borderRadius: 20,
     backgroundColor: '#F05080',
   },
   categoryText: {
