@@ -89,12 +89,14 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-between",
     gap: 16,
+    width: "90%",
+    marginLeft: "5%"
   },
   beneficio: {
     backgroundColor: "#fff",
     borderRadius: 12,
     padding: 10,
-    width: (width - 32) / 2 - 12,
+    width: "100%",
     marginBottom: 10,
     alignItems: "center",
     shadowColor: "#eafafd",

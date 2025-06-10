@@ -1,63 +1,37 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  Image,
+} from "react-native";
 import { Link } from "expo-router";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { FontAwesome, Feather } from "@expo/vector-icons";
+import Header from "../components/Header";
+
+const SkinTypeCard = ({ title, type, description, highlight }) => (
+  <View style={styles.skinCard}>
+    {highlight && <Text style={styles.highlightText}>{highlight}</Text>}
+    <Text style={styles.skinTitle}>{title}</Text>
+    <Text style={styles.skinType}>{type}</Text>
+    <Text style={styles.skinSubtitle}>Descubra seu tipo de pele</Text>
+    {description.map((item, index) => (
+      <View key={index} style={styles.skinItem}>
+        <Text style={styles.checkmark}>✔</Text>
+        <Text style={styles.skinItemText}>{item}</Text>
+      </View>
+    ))}
+    <TouchableOpacity style={styles.skinButton}>
+      <Text style={styles.skinButtonText}>Ver Mais em Blog</Text>
+      <Text style={styles.arrow}>→</Text>
+    </TouchableOpacity>
+  </View>
+);
 
 export default function HomeScreen() {
   const [pressedCategory, setPressedCategory] = useState(null);
-
-  const navigationSections = [
-    {
-      title: "Acesso à Conta",
-      icon: "user",
-      items: [
-        { 
-          name: "Fazer Login", 
-          href: "/login",
-          icon: "sign-in",
-          description: "Acesse sua conta existente"
-        },
-        { 
-          name: "Criar Conta", 
-          href: "/signup",
-          icon: "user-plus",
-          description: "Registre-se gratuitamente"
-        }
-      ]
-    },
-    {
-      title: "Explorar Produtos",
-      icon: "shopping-bag",
-      items: [
-        { 
-          name: "Ver Produtos", 
-          href: "/produto",
-          icon: "heart",
-          description: "Descubra nossa coleção"
-        },
-        { 
-          name: "Blog", 
-          href: "/blog",
-          icon: "edit",
-          description: "Dicas e novidades de beleza"
-        }
-      ]
-    },
-    {
-      title: "Suporte",
-      icon: "help-circle",
-      items: [
-        { 
-          name: "Fale Conosco", 
-          href: "/contato",
-          icon: "envelope",
-          description: "Tire suas dúvidas"
-        }
-      ]
-    }
-  ];
 
   const productCategories = [
     {
@@ -83,15 +57,35 @@ export default function HomeScreen() {
     }
   ];
 
+  const popularProducts = [
+    {
+      imagem: "https://creamy.vtexassets.com/assets/vtex.file-manager-graphql/images/10bf8c82-5581-4b70-8c4b-712651152076___cd36f2ce8e2234cf1cf4ea132c04b2c0.png",
+      titulo: "Ácido Mandélico",
+      descricao: "Efeito clareador, antiacneico e regulador da oleosidade. Esfolia suavemente a pele.",
+      nota: "⭐️⭐️⭐️⭐️⭐️ (25)",
+    },
+    {
+      imagem: "https://creamy.vtexassets.com/assets/vtex.file-manager-graphql/images/a1502766-65a2-4d16-bf13-9de46a1d68b8___ad927ad9afecd9294ff7927d9c888043.png",
+      titulo: "Ácido Glicólico",
+      descricao: "Uniformiza, melhora textura, controla oleosidade e estimula colágeno.",
+      nota: "⭐️⭐️⭐️⭐️ (13)",
+    },
+    {
+      imagem: "https://creamy.vtexassets.com/arquivos/ids/157070-768-768/01.jpg?v=638446358897930000",
+      titulo: "Calming Cream",
+      descricao: "Hidratante leve que acalma peles sensíveis ou sensibilizadas.",
+      nota: "⭐️⭐️⭐️⭐️⭐️ (40)",
+    },
+  ];
+
   return (
     <View style={styles.container}>
-      {/* Header fixa no topo */}
       <View style={styles.headerWrapper}>
         <Header themeColor="#F05080" activePage="Home" />
       </View>
 
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {/* Seção de boas-vindas */}
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        {/* Boas-vindas */}
         <View style={styles.welcomeSection}>
           <FontAwesome name="home" size={40} color="#F05080" />
           <Text style={styles.welcomeTitle}>Bem-vindo à Home!</Text>
@@ -100,59 +94,51 @@ export default function HomeScreen() {
           </Text>
         </View>
 
-        {/* Categorias de Produtos */}
+        {/* Categorias */}
         <View style={styles.categoriesSection}>
           <Text style={styles.categoriesTitle}>Nossas Categorias</Text>
           <View style={styles.categoriesGrid}>
             {productCategories.map((category, index) => (
-              <TouchableOpacity 
-                key={index} 
+              <TouchableOpacity
+                key={index}
                 style={styles.categoryCard}
                 activeOpacity={0.8}
                 onPressIn={() => setPressedCategory(index)}
                 onPressOut={() => setPressedCategory(null)}
               >
                 <Link href={category.href} style={styles.categoryLink}>
-                  <View 
-                    style={[
-                      styles.categoryContent, 
-                      { borderTopColor: category.color },
-                      pressedCategory === index && styles.categoryContentPressed
-                    ]}
-                  >
-                    <View 
-                      style={[
-                        styles.categoryIconContainer, 
-                        { backgroundColor: category.color + '20' },
-                        pressedCategory === index && [
-                          styles.categoryIconContainerPressed,
-                          { backgroundColor: category.color + '40' }
-                        ]
-                      ]}
-                    >
-                      <Feather 
-                        name={category.icon} 
-                        size={pressedCategory === index ? 26 : 24} 
-                        color={category.color} 
+                  <View style={[
+                    styles.categoryContent,
+                    { borderTopColor: category.color },
+                    pressedCategory === index && styles.categoryContentPressed
+                  ]}>
+                    <View style={[
+                      styles.categoryIconContainer,
+                      { backgroundColor: category.color + '20' },
+                      pressedCategory === index && [
+                        styles.categoryIconContainerPressed,
+                        { backgroundColor: category.color + '40' }
+                      ]
+                    ]}>
+                      <Feather
+                        name={category.icon}
+                        size={pressedCategory === index ? 26 : 24}
+                        color={category.color}
                       />
                     </View>
-                    <Text 
-                      style={[
-                        styles.categoryName,
-                        pressedCategory === index && { 
-                          color: category.color,
-                          fontSize: 15
-                        }
-                      ]}
-                    >
+                    <Text style={[
+                      styles.categoryName,
+                      pressedCategory === index && {
+                        color: category.color,
+                        fontSize: 15
+                      }
+                    ]}>
                       {category.name}
                     </Text>
-                    <Text 
-                      style={[
-                        styles.categoryDescription,
-                        pressedCategory === index && { color: '#555' }
-                      ]}
-                    >
+                    <Text style={[
+                      styles.categoryDescription,
+                      pressedCategory === index && { color: '#555' }
+                    ]}>
                       {category.description}
                     </Text>
                   </View>
@@ -162,59 +148,64 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        {/* Menu de navegação */}
-        <View style={styles.sectionsContainer}>
-          {navigationSections.map((section, index) => (
-            <View key={index} style={styles.sectionCard}>
-              <View style={styles.sectionHeader}>
-                <Feather name={section.icon} size={20} color="#F05080" />
-                <Text style={styles.sectionTitle}>{section.title}</Text>
-              </View>
-              {section.items.map((item, itemIndex) => (
-                <TouchableOpacity
-                  key={itemIndex}
-                  style={styles.itemButton}
-                  activeOpacity={0.7}
-                >
-                  <Link href={item.href} style={styles.itemLink}>
-                    <View style={styles.itemContent}>
-                      <View style={styles.itemLeft}>
-                        <FontAwesome name={item.icon} size={16} color="#F05080" />
-                        <View style={styles.itemTextContainer}>
-                          <Text style={styles.itemText}>{item.name}</Text>
-                          <Text style={styles.itemDescription}>{item.description}</Text>
-                        </View>
-                      </View>
-                      <Feather name="chevron-right" size={18} color="#CCC" />
-                    </View>
-                  </Link>
-                </TouchableOpacity>
-              ))}
-            </View>
-          ))}
+        {/* Produtos Populares */}
+        <Text style={styles.sectionTitle}>Produtos Populares</Text>
+        <Text style={styles.sectionSubtitle}>
+          Os produtos mais procurados da internet! Onde você encontra eles? Aqui mesmo.
+        </Text>
+        {popularProducts.map((produto, i) => (
+          <View key={i} style={styles.productCard}>
+            <Image
+              source={{ uri: produto.imagem }}
+              style={styles.productImage}
+              resizeMode="cover"
+            />
+            <Text style={styles.productTitle}>{produto.titulo}</Text>
+            <Text style={styles.productDescription}>{produto.descricao}</Text>
+            <Text style={styles.productRating}>{produto.nota}</Text>
+            <Text style={styles.productLink}>Get Started</Text>
+          </View>
+        ))}
+
+        {/* Cards de tipos de pele */}
+        <Text style={styles.sectionTitle}>Qual Seu Tipo De Pele?</Text>
+        <View style={{ gap: 20 }}>
+          <SkinTypeCard
+            title="Produtos para pele"
+            type="Mista"
+            description={[
+              "Oleosidade na zona T: testa, nariz e queixo.",
+              "Extremidades do rosto secas.",
+              "Acessível a todas as classes.",
+            ]}
+          />
+          <SkinTypeCard
+            title="Produtos para pele"
+            type="Oleosa"
+            highlight="RECOMENDADO"
+            description={[
+              "Poros dilatados e brilho em todo o rosto.",
+              "Tendência à acne.",
+            ]}
+          />
+          <SkinTypeCard
+            title="Produtos para pele"
+            type="Seca"
+            description={[
+              "Sensível e avermelhada com facilidade.",
+              "Textura áspera e propensa à descamação.",
+            ]}
+          />
         </View>
       </ScrollView>
-
-      {/* Footer fixa no rodapé */}
-      
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#FAFAFA",
-  },
-  headerWrapper: {
-    width: "100%",
-    backgroundColor: "#F05080",
-    overflow: "hidden",
-  },
-  scrollContainer: {
-    paddingBottom: 20,
-    flexGrow: 1,
-  },
+  container: { flex: 1, backgroundColor: "#FAFAFA" },
+  headerWrapper: { width: "100%", backgroundColor: "#FFB7C5" },
+  scrollContent: { padding: 20, paddingBottom: 100 },
   welcomeSection: {
     alignItems: "center",
     paddingVertical: 25,
@@ -241,36 +232,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingHorizontal: 20,
   },
-  sectionsContainer: {
-    paddingHorizontal: 15,
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  sectionCard: {
-    backgroundColor: "#FFF",
-    borderRadius: 12,
-    padding: 15,
-    marginBottom: 15,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 5,
-    elevation: 2,
-  },
-  sectionHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 10,
-    paddingBottom: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: "#F0F0F0",
-  },
-  sectionTitle: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#F05080",
-    marginLeft: 8,
-  },
   categoriesSection: {
     paddingHorizontal: 15,
     paddingVertical: 20,
@@ -287,127 +248,152 @@ const styles = StyleSheet.create({
   categoriesGrid: {
     flexDirection: "row",
     justifyContent: "space-between",
-    flexWrap: "wrap",
+    gap: 12,
   },
   categoryCard: {
-    width: "31%",
-    marginBottom: 15,
+    flex: 1,
   },
   categoryLink: {
-    width: "100%",
+    textDecorationLine: "none",
   },
   categoryContent: {
     backgroundColor: "#FFF",
-    borderRadius: 12,
-    padding: 15,
+    borderTopWidth: 4,
+    borderTopColor: "#CCC",
+    padding: 16,
+    borderRadius: 10,
     alignItems: "center",
-    borderTopWidth: 3,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-    transform: [{ scale: 1 }],
-    height: 130,
-    justifyContent: "center",
+    transition: "all 0.3s ease",
   },
   categoryContentPressed: {
-    backgroundColor: "#F8F8F8",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 6,
-    elevation: 5,
-    transform: [{ scale: 0.98 }],
+    backgroundColor: "#F3F3F3",
+    transform: [{ scale: 1.05 }],
   },
   categoryIconContainer: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: 10,
-    transform: [{ scale: 1 }],
+    padding: 10,
+    borderRadius: 50,
+    marginBottom: 8,
+  },
+  categoryIconContainerPressed: {
+    transform: [{ scale: 1.05 }],
   },
   categoryName: {
     fontSize: 14,
     fontWeight: "600",
+    marginBottom: 2,
     color: "#333",
-    textAlign: "center",
-    marginBottom: 4,
   },
   categoryDescription: {
-    fontSize: 11,
-    color: "#666",
-    textAlign: "center",
-    lineHeight: 13,
-    paddingHorizontal: 2,
-  },
-  itemButton: {
-    paddingVertical: 8,
-  },
-  itemLink: {
-    width: "100%",
-  },
-  itemContent: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingVertical: 8,
-    paddingHorizontal: 5,
-  },
-  itemLeft: {
-    flexDirection: "row",
-    alignItems: "center",
-    flex: 1,
-  },
-  itemTextContainer: {
-    marginLeft: 12,
-    flex: 1,
-  },
-  itemText: {
-    fontSize: 15,
-    color: "#333",
-    fontWeight: "500",
-    marginBottom: 2,
-  },
-  itemDescription: {
     fontSize: 12,
-    color: "#888",
+    color: "#777",
+    textAlign: "center",
   },
-  highlightSection: {
-    backgroundColor: "#FFF",
-    borderRadius: 12,
-    padding: 20,
-    marginHorizontal: 15,
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: "600",
+    color: "#222",
+    marginTop: 20,
     marginBottom: 10,
+  },
+  sectionSubtitle: {
+    fontSize: 14,
+    color: "#666",
+    marginBottom: 20,
+  },
+  productCard: {
+    backgroundColor: "#FFF",
+    padding: 16,
+    marginBottom: 15,
+    borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
+    shadowOpacity: 0.1,
     shadowRadius: 5,
-    elevation: 2,
+    elevation: 3,
   },
-  highlightTitle: {
+  productImage: {
+    width: "100%",
+    height: 180,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  productTitle: {
     fontSize: 18,
     fontWeight: "600",
     color: "#333",
-    textAlign: "center",
-    marginBottom: 15,
   },
-  benefitsList: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
+  productDescription: {
+    fontSize: 14,
+    color: "#666",
+    marginTop: 4,
   },
-  benefitItem: {
+  productRating: {
+    fontSize: 13,
+    color: "#999",
+    marginTop: 6,
+  },
+  productLink: {
+    marginTop: 10,
+    color: "#F05080",
+    fontWeight: "600",
+    fontSize: 14,
+  },
+  skinCard: {
+    backgroundColor: "#fff",
+    padding: 16,
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 2,
+  },
+  highlightText: {
+    fontSize: 12,
+    fontWeight: "bold",
+    color: "#F05080",
+    marginBottom: 6,
+  },
+  skinTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 2,
+  },
+  skinType: {
+    fontSize: 14,
+    fontStyle: "italic",
+    color: "#666",
+    marginBottom: 6,
+  },
+  skinSubtitle: {
+    fontSize: 12,
+    color: "#999",
+    marginBottom: 8,
+  },
+  skinItem: {
     flexDirection: "row",
     alignItems: "center",
-    width: "48%",
-    marginBottom: 10,
+    marginBottom: 6,
   },
-  benefitText: {
+  checkmark: {
+    marginRight: 6,
+    color: "#00DAC7",
+    fontWeight: "bold",
+  },
+  skinItemText: {
     fontSize: 13,
     color: "#555",
-    marginLeft: 8,
-    flex: 1,
+  },
+  skinButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 10,
+  },
+  skinButtonText: {
+    color: "#F05080",
+    fontWeight: "600",
+  },
+  arrow: {
+    marginLeft: 5,
+    color: "#F05080",
   },
 });

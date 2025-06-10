@@ -7,11 +7,14 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
-  Alert
+  Alert,
+  ActivityIndicator,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../components/Header.js";
 import { Feather, FontAwesome } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getProfile, updateProfile } from "../services/authService";
 
 const ContaScreen = () => {
   const navigation = useNavigation();
@@ -36,33 +39,68 @@ const ContaScreen = () => {
     setIsLoading(true);
     setErrorMessage("");
     try {
-      setTimeout(() => {
-        const mockUser = {
-          nome: "Maria Silva",
-          email: "maria@exemplo.com",
-          senha: "senha123",
-          idioma: "pt-BR",
-          avatar: "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg",
-          createdAt: "2024-01-01T12:00:00Z",
-          verificado: true,
-        };
-        setUserData(mockUser);
-        setFormData(mockUser);
+      const token = await AsyncStorage.getItem("token");
+      if (!token) {
+        setErrorMessage("Usuário não autenticado.");
         setIsLoading(false);
-      }, 1000);
+        return;
+      }
+      const result = await getProfile(token);
+      if (result.success) {
+        setUserData(result.data);
+        setFormData({
+          nome: result.data.nome || "",
+          email: result.data.email || "",
+          senha: "",
+          idioma: result.data.idioma || "pt-BR",
+        });
+      } else {
+        setErrorMessage(result.message);
+      }
     } catch (error) {
       setErrorMessage("Erro ao buscar dados do usuário. Verifique sua conexão.");
-      setIsLoading(false);
     }
+    setIsLoading(false);
   };
 
-  const handleEdit = () => {
+  const handleEdit = async () => {
     if (isEditing) {
-      setUserData(formData);
-      setSuccessMessage("Dados atualizados com sucesso!");
-      setTimeout(() => setSuccessMessage(""), 3000);
+      // Salvar alterações
+      setErrorMessage("");
+      setSuccessMessage("");
+      setIsLoading(true);
+      try {
+        const token = await AsyncStorage.getItem("token");
+        if (!token) {
+          setErrorMessage("Usuário não autenticado.");
+          setIsLoading(false);
+          return;
+        }
+        const dataToSend = {
+          nome: formData.nome,
+          idioma: formData.idioma,
+        };
+        if (formData.senha) dataToSend.senha = formData.senha;
+        const result = await updateProfile(token, dataToSend);
+        if (result.success) {
+          setUserData(result.data);
+          setSuccessMessage("Dados atualizados com sucesso!");
+          setTimeout(() => setSuccessMessage(""), 3000);
+          setFormData({
+            ...formData,
+            senha: "",
+          });
+        } else {
+          setErrorMessage(result.message);
+        }
+      } catch (error) {
+        setErrorMessage("Erro ao atualizar dados.");
+      }
+      setIsLoading(false);
+      setIsEditing(false);
+    } else {
+      setIsEditing(true);
     }
-    setIsEditing(!isEditing);
   };
 
   const handleInputChange = (field, value) => {
@@ -86,57 +124,62 @@ const ContaScreen = () => {
       {
         text: "Sair",
         style: "destructive",
-        onPress: () => {
-          Alert.alert("Logout", "Você saiu da sua conta");
+        onPress: async () => {
+          await AsyncStorage.removeItem("token");
+          navigation.reset({
+            index: 0,
+            routes: [{ name: "LoginScreen" }],
+          });
         },
       },
     ]);
   };
 
   const sections = [
-    { 
-      title: "Meu Cadastro", 
+    {
+      title: "Meu Cadastro",
       icon: "user",
       items: [
-        { 
-          name: "Cadastro", 
-          onPress: () => navigateTo('CorpoScreen')
-        }
-      ]
+        {
+          name: "Cadastro",
+          onPress: () => navigateTo("CorpoScreen"),
+        },
+      ],
     },
-    { 
-      title: "Meus Favoritos", 
+    {
+      title: "Meus Favoritos",
       icon: "heart",
       items: [
-        { 
-          name: "Produtos salvos (12)", 
-          onPress: () => navigateTo('FavsScreen')
+        {
+          name: "Produtos salvos (12)",
+          onPress: () => navigateTo("FavsScreen"),
         },
-        { 
-          name: "Lojas favoritas (3)", 
-          onPress: () => navigateTo('FavsScreen', { tab: 'stores' })
-        }
-      ]
+        {
+          name: "Lojas favoritas (3)",
+          onPress: () => navigateTo("FavsScreen", { tab: "stores" }),
+        },
+      ],
     },
-    { 
-      title: "Meus Comentários", 
+    {
+      title: "Meus Comentários",
       icon: "message-square",
       items: [
-        { 
-          name: "Avaliações (5)", 
-          onPress: () => navigateTo('ComentScreen')
+        {
+          name: "Avaliações (5)",
+          onPress: () => navigateTo("ComentScreen"),
         },
-        { 
-          name: "Comentários (8)", 
-          onPress: () => navigateTo('ComentScreen', { tab: 'comments' })
-        }
-      ]
-    }
+        {
+          name: "Comentários (8)",
+          onPress: () => navigateTo("ComentScreen", { tab: "comments" }),
+        },
+      ],
+    },
   ];
 
   if (isLoading && !userData) {
     return (
       <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#F05080" />
         <Text style={styles.loadingText}>Carregando dados...</Text>
       </View>
     );
@@ -152,8 +195,10 @@ const ContaScreen = () => {
         <View style={styles.profileSection}>
           <Image
             source={{
-              uri: userData?.avatar ||
-                "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg"
+              uri:
+                userData?.fotoPerfil ||
+                userData?.avatar ||
+                "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg",
             }}
             style={styles.avatar}
           />
@@ -212,9 +257,7 @@ const ContaScreen = () => {
             <TextInput
               style={styles.input}
               value={formData.email}
-              onChangeText={(text) => handleInputChange("email", text)}
-              keyboardType="email-address"
-              editable={isEditing}
+              editable={false}
             />
           </View>
           <View style={styles.formGroup}>
@@ -226,6 +269,7 @@ const ContaScreen = () => {
                 onChangeText={(text) => handleInputChange("senha", text)}
                 secureTextEntry={!showPassword}
                 editable={isEditing}
+                placeholder="Nova senha"
               />
               {isEditing && (
                 <TouchableOpacity
@@ -243,24 +287,36 @@ const ContaScreen = () => {
               <TouchableOpacity
                 style={[
                   styles.languageOption,
-                  formData.idioma === "pt-BR" && styles.languageOptionSelected
+                  formData.idioma === "pt-BR" && styles.languageOptionSelected,
                 ]}
                 onPress={() => isEditing && handleInputChange("idioma", "pt-BR")}
                 disabled={!isEditing}
               >
-                <Text style={formData.idioma === "pt-BR" ? styles.languageTextSelected : styles.languageText}>
+                <Text
+                  style={
+                    formData.idioma === "pt-BR"
+                      ? styles.languageTextSelected
+                      : styles.languageText
+                  }
+                >
                   Português
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[
                   styles.languageOption,
-                  formData.idioma === "en-US" && styles.languageOptionSelected
+                  formData.idioma === "en-US" && styles.languageOptionSelected,
                 ]}
                 onPress={() => isEditing && handleInputChange("idioma", "en-US")}
                 disabled={!isEditing}
               >
-                <Text style={formData.idioma === "en-US" ? styles.languageTextSelected : styles.languageText}>
+                <Text
+                  style={
+                    formData.idioma === "en-US"
+                      ? styles.languageTextSelected
+                      : styles.languageText
+                  }
+                >
                   Inglês
                 </Text>
               </TouchableOpacity>
@@ -284,6 +340,7 @@ const ContaScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  // ... (os mesmos estilos que você já tem)
   container: {
     flex: 1,
     backgroundColor: "#FAFAFA",

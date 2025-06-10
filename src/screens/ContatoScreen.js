@@ -6,7 +6,6 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
-  Alert,
 } from "react-native";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -41,13 +40,11 @@ const ContatoScreen = () => {
       return;
     }
 
-    // Simular envio
     setSuccessMessage(
       "Mensagem enviada com sucesso! Entraremos em contato em breve."
     );
     setTimeout(() => setSuccessMessage(""), 4000);
 
-    // Limpar formulário
     setFormData({
       nome: "",
       assunto: "",
@@ -58,12 +55,12 @@ const ContatoScreen = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.headerWrapper}>
-        <Header themeColor="#DBBD9C" activePage="Contato" />
-      </View>
+      <Header themeColor="#DBBD9C" activePage="Contato" />
 
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {/* Seção de cabeçalho */}
+      <ScrollView
+        contentContainerStyle={styles.scrollContainer}
+        keyboardShouldPersistTaps="handled"
+      >
         <View style={styles.headerSection}>
           <FontAwesome name="envelope" size={40} color="#DBBD9C" />
           <Text style={styles.headerTitle}>Entre em Contato</Text>
@@ -72,7 +69,6 @@ const ContatoScreen = () => {
           </Text>
         </View>
 
-        {/* Formulário de contato */}
         <View style={styles.formContainer}>
           <View style={styles.formHeader}>
             <Text style={styles.formTitle}>Enviar Mensagem</Text>
@@ -141,7 +137,6 @@ const ContatoScreen = () => {
           </View>
         </View>
 
-        {/* Mini Footer especial para contato */}
         <View style={styles.miniFooter}>
           <View style={styles.miniFooterHeader}>
             <Text style={styles.miniFooterLogo}>Clean.</Text>
@@ -203,10 +198,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FAFAFA",
   },
-  headerWrapper: {
-    width: "100%",
-    backgroundColor: "#DBBD9C",
-  },
   scrollContainer: {
     paddingBottom: 20,
     flexGrow: 1,
@@ -236,44 +227,6 @@ const styles = StyleSheet.create({
     color: "#888",
     textAlign: "center",
     paddingHorizontal: 20,
-  },
-  sectionsContainer: {
-    paddingHorizontal: 15,
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  sectionCard: {
-    backgroundColor: "#FFF",
-    borderRadius: 12,
-    padding: 15,
-    marginBottom: 15,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 5,
-    elevation: 2,
-  },
-  sectionHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 10,
-    paddingBottom: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: "#F0F0F0",
-  },
-  sectionTitle: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#DBBD9C",
-    marginLeft: 8,
-  },
-  infoItem: {
-    paddingVertical: 6,
-    paddingHorizontal: 5,
-  },
-  infoText: {
-    fontSize: 15,
-    color: "#555",
   },
   formContainer: {
     backgroundColor: "#FFF",
