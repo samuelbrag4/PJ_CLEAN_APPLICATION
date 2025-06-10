@@ -172,7 +172,7 @@ const ProdutosScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Header themeColor="#F05080" activePage="Produtos" />
 
       {/* Filtros por categoria */}
@@ -272,12 +272,13 @@ const ProdutosScreen = () => {
           <AntDesign name="arrowup" size={24} color="#fff" />
         </TouchableOpacity>
       )}
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "#FAFAFA",
   },
   categoryContainer: {
